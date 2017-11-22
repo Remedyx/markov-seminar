@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper, final]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage[UKenglish]{isodate}
+
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{cor}{Corollary}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{rem}{Remark}[section]
+
+\renewcommand\thesection{\arabic{section}}
+
+\newlength\longest
+
+\begin{document}
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	\raggedleft % Right align the title page
+	
+	\rule{1pt}{\textheight} % Vertical line
+	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		
+		{\Huge\bfseries Stochastic Integration}\\[2\baselineskip] % Title
+		{\large\textit{The Itô integral and Itô's formula}}\\[4\baselineskip] % Subtitle or further description
+		{\Large\textsc{Remedyx \\
+		Lamalini}} % Author name, lower case for consistent small caps
+		
+		\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+		
+		{\noindent University of Zurich, \today }\\[\baselineskip] % Publisher and logo
+	}
+
+\end{titlepage}
+\newpage 
+\thispagestyle{empty}
+\null\vfill
+\begin{center}
+\begin{flushleft}
+\textit{\Large In precisely built mathematical structures, mathematicians find the same sort of beauty others find in enchanting pieces of music, or in magnificent architecture. There is, however, one great difference between the beauty of mathematical structures and that of great art. Music by Mozart, for instance, impresses greatly even those who do not know musical theory; the cathedral in Cologne overwhelms spectators even if they know nothing about Christianity. The beauty in mathematical structures, however, cannot be appreciated without understanding of a group of numerical formulae that express laws of logic. Only mathematicians can read "musical scores" containing many numerical formulae, and play that "music" in their hearts. } 
+\end{flushleft}
+\end{center}
+\hfill Kiyosi Itô \textit{(1915-2008)}
+\vfill\vfill
+
+\newpage
+
+\section{Historic Background}
+
+%Source:
+% http://www-groups.dcs.st-and.ac.uk/~history/Biographies/Ito.html
+
+% Gauss Award
+%http://www.kyoto-u.ac.jp/en/about/profile/honor/awards/gauss.html 
+
+
+Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influencal that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
+\\\\
+At its heart, the most basic concept of Itô calculus is Itô's integral and among the most important results is a version of the fundamental theorem of calculus, known as Itô's formula.
+\\\\
+In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being its first laureate, a price given to honor mathematicians for outstanding mathematical contributions that have found significant applications outside of the field of mathematics. The Gauss price is considered to be the highest honor conferred for applications of mathematics.
+\\
+\\
+The selection of Kiyosi Itô for the first laureate reflects the achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
+\section{Abstract}
+We give a short introduction
+\end{document}
