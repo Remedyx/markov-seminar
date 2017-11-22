@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper, final]{book}
+\documentclass[11pt,a4paper, final]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -18,7 +18,7 @@
 
 \renewcommand\thesection{\arabic{section}}
 
-\newlength\longest
+
 
 \begin{document}
 \begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
@@ -71,5 +71,14 @@ In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being i
 \\
 The selection of Kiyosi Itô for the first laureate reflects the achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
 \section{Abstract}
-We give a short introduction
+It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economy. 
+\\\\
+Quite generally speaking, we will often sketch proofs by reducing them to their most important steps (such as for instance localization) and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
+\\\\
+We will introduce the notion of Itô's integral, first for predictable step functions and later on expand this result to obtain a general Itô integral. Moreover we will introduce Itô's formula for single martingales and for several semimartingales.
+\newpage  
+
+\noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"}.
+\\\\
+We will finish by giving several applications of Itô's formula. 
 \end{document}
