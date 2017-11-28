@@ -86,7 +86,9 @@ We will finish by giving several applications of Itô's formula.
 
 % source:
 % https://quant.stackexchange.com/questions/17665/stochastic-differentials-itos-formula-for-a-self-financing-portfolio
-\section{Application of Itô's formula in Finance/Motivation}
+\section{Application of Itô's formula in Finance}
+In order to motivate the importance of Itô's formula we start by giving an example from mathematical finance. \\
+\\
 Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
 $$ V=a_t S_t + b_t \beta_t $$
 Now let $$a_t=2 B_t;\quad b_t=-1-B_t^2-20 B_t;\quad S_t=10+B_t;\quad \beta_t=1$$
@@ -97,67 +99,74 @@ We now can easily show using Itô's formula, that this portfolio is self-financi
 &=20B_t + 2B_t^2-t-B_t^2-20B_t \\
 &=B_t^2-t 
 \end{align*}
-
 Applying Itô's formula [$f(B_t) \Longrightarrow df=f'(B_t)dB_t + \frac{1}{2} f"(B_t)dt$] and quadratic variation [$(dB_t)^2=dt$] to it we get
 \begin{align*}  dV_t &= (2B_t dB_t + \frac{1}{2}\cdot 2 \langle B, B \rangle_t)-dt\\
 &= 2 B_t dB_t\\
 &= a_t dS_t + b_t d\beta_t
 \end{align*}
-
-And since $dS_t = dB_t$ and $d\beta_t=0$ we have
+Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
 \begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
 which is a characterization of a self-financing portfolio.
-\\\\
-In general many models in economics, engineering and finance can be written informally as
-$$ (\star) \quad dZ(t) = f(t, Z(t))dt + g(t,Z(t)) dM(t), $$
+\newpage
+\noindent The preceeding example motivates a more general setting that often occurs in many models in the fields of economics, engineering and mathematical. Informally it can be stated as
+$$ \quad dZ(t) = f(t, Z(t))dt + g(t,Z(t)) dM(t), $$
 where $Z(t)$ is the process of interest, as the value of a certain portfolio in the example above.\\
-In order to make sense of $(\star)$, we need to define integrals of the form
-$$ \int_0^t Y(s,\omega) \; dM(s)$$
-where $M(t)$ is a martingale and the most natural choice is to choose the very important martingale, i.e. a Brownian motion as such integrator.
+\\
+In order to make sense of the above expression, we need to define integrals of the form
+\begin{align*} \int_0^t Y(s,\omega) \; dM(s) \tag{$\star$} 
+\end{align*}
+where $M(t)$ is a martingale. It turns out that the Brownian motion is the most natural choice as an integrator for our integral above. 
 
 
 
 \section{The Itô Integral}
-First, let us recall the term of bounded variation.
+Before we introduce the notion of Itô's integral we start with some preliminaries.
 \begin{defn}
 A real-valued function $f: [a,b] \rightarrow \mathbb{R}$ is said to be of \textit{bounded variation} if its total variation is finite.\\
-i.e. if $$ \sup_P \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \infty $$
-over all partitions $P = \{x_1, ..., x_n \mid x_1<...<x_n\}$ of $[a,b]$.
+\\ This means that 
+$$ \sup_P \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \infty $$
+over all partitions $P = \{x_1, ..., x_n \mid x_1<...<x_n\}$ of the interval $[a,b]$.
 \end{defn}
 
+\noindent We do want to make sense out of $(\star)$ above for choosing a martingale $M(t)$ as an integrator. If $M(t)$ were of bounded variation on finite $t$ intervals, we could define this just as the Stielftjes integral. However, as before-mentioned we do in particular want to be able to choose a Brownian motion as an integrator. 
+\\\\
+However, as we have seen in class, the paths of a Brownian motion are nowhere differential, henceforth they cannot be of bounded variation. \\
+\\
+In fact, the following result shows that there is a general problem which arises when we choose continuous paths martingales that are of bounded variation on finite $t$ intervals
 \begin{prop}  \label{first Prop}
 If $M(t)$ is a martingale with continuous paths that are of bounded variation on finite $t$ intervals, then $M(t) = M(0)$ for each $t$ a.s.
 \end{prop}
 
-\subsection{The variance process}
-Let us recall following property of the standard Brownian motion:
-\begin{itemize}
-\item $B^2(t)-t$ is a martingale
-\end{itemize}
-Our aim in this section is to extend this statement to martingales $M(t)$ by introducing the so called \textit{quadratic variation of $M(t)$} or the \textit{variance process}, denoted by $A(t)$.
+\subsection{Construction of Itô's integral}
+Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuous martingale with repsect to the right continuous filtration $\lbrace \mathcal{F}_t \rbrace$, moreover we request that $M(t)$ is square integrable, i.e. $\mathbb{E}(M^2(t)) < \infty$ for all $t \in \mathbb{R}$. By $B(t)$ we will always denote a standard Brownian motion - it will start at the origin and be of variance $t$ at time $t$. 
 \\\\
-
+ Finally it is worth mentioning that, in order to simplify the expoistion, assumptions in the main results will often be stronger than necessary. 
+\\
+\\ 
+Let us recall that the standard Brownian motion $B(t)$ satisfies that $B^2(t)-t$ is again a martingale. 
+Our aim in this section is to extend this statement to martingales $M(t)$ by introducing the so called \textit{quadratic variation of $M(t)$} or the \textit{variance process}, denoted by $A(t)$.
 \begin{thm}
-There exists a unique increasing, continuous process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
+There exists a unique increasing, continuous process, called the variation process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
 \end{thm}
-
-
 \begin{proof}
-\textsc{Uniqueness:} Suppose that $A_1(t)$ and $A_2(t)$ both satisfy the conditions of the theorem, then $A_1(t)-A_2(t)$ satisfies the assumptions of Proposition \ref{first Prop}, so $A_1(t)-A_2(t)=A_1(0)-A_2(0)=0$. And therefore $A_1(t)=A_2(t) \; \forall t$.
+\textsc{Uniqueness:} Suppose that $A_1(t)$ and $A_2(t)$ both satisfy the conditions of the theorem, then $A_1(t)-A_2(t)$ satisfies the assumptions of Proposition \ref{first Prop}, so $A_1(t)-A_2(t)=A_1(0)-A_2(0)=0$. And therefore $A_1(t)=A_2(t) \;$ for all $t \in \mathbb{R}$. 
 \\\\
 %localization nicht ganz klar ;(
-\textsc{Existence:} In this part we will use the "localization" technique, which allows us to reduce it to the uniformly bounded case. Moreover we will assume that the statement has been proved for uniformly bounded martingale $M(t)$. %Macht nicht so viel Sinn?
-Given $M(t)$, let 
-$$\tau_n = n \wedge \inf\{t \geq 0: |M(t)|\geq n\}$$
-This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n$. Note that by the definition of the stopping times it is bounded by $n$; $| M_n(t) |\leq n$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ so that $M_n^2(t)-A_n(t)$ is a martingale. We also have that for $m<n$ $$M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$$ is a martingale.\\
-Since $M_n(t \wedge \tau_m)=M_m(t)$, the uniqueness statement implies that 
-$$A_n(t \wedge \tau_m)=A_m(t) \quad i.e.,\quad  A_n(t)=A_m(t) \quad for \;t\leq \tau_m.$$
+\textsc{Existence:} In this part we will use the "localization" technique, which allows us to reduce it to the uniformly bounded case. Moreover we will assume that the statement has been proved for uniformly bounded martingales $M(t)$. %Macht nicht so viel Sinn?
+\\\\
+Given $M(t)$, $n \in \mathbb{N}$ we define
+$$\tau_n := n \wedge \inf\{t \geq 0: |M(t)|\geq n\}$$
+This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ so that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ $$M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$$ is a martingale.
+\newpage
+
+\noindent Since $M_n(t \wedge \tau_m)=M_m(t)$, the uniqueness statement implies that 
+$$A_n(t \wedge \tau_m)=A_m(t) \quad i.e.\quad  A_n(t)=A_m(t) \quad for \;t\leq \tau_m.$$
 So we may define the process $A(t)$ by $A(t)=A_n(t)$ for $t<\tau_n$. Also note that $A_n(t) \uparrow A(t)$ and $A_n(t)$ is constant for $t\geq \tau_n$, since we have the following
-$$\mathbb{E}[A_n(t)-A_n(\tau_n), t>\tau_n]= \mathbb{E}[M_n^2(t)-M_n^2(\tau_n), t>\tau_n]=0$$.
-By Jensen's inequality,
+$$\mathbb{E}[A_n(t)-A_n(\tau_n), t>\tau_n]= \mathbb{E}[M_n^2(t)-M_n^2(\tau_n), t>\tau_n]=0$$
+Moreover, by Jensen's inequality we obtain that
 $$M_n^2(t)=M^2(t \wedge \tau_n) \leq \mathbb{E}[M^2(t) \mid \mathscr{F}_{t \wedge \tau_n}],$$
-therefore $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t$ and we can pass to the limit in the martingale property to conclude that $M^2(t)-A(t)$ indeed is a martingale: 
-$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathscr{F}_s]=M_n^2(s)-A_n(s), \quad s<t.$$
+which entails that $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t \in \mathbb{R}$ and we can pass to the limit in the martingale property to conclude that $M^2(t)-A(t)$ is indeed is a martingale
+$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathscr{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t.$$
 
 \end{proof}
 
