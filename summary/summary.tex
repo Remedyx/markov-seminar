@@ -68,11 +68,80 @@ in particular if $X$ is a random variable such that $X \in L^s$ then it always f
 \mathcal{F}_T := \lbrace A \in \mathcal{F}: A \cap \lbrace T \leq n \rbrace \in \mathcal{F}_n \text{ for all } n \in \mathbb{N} \rbrace 
 \end{align*}
 \end{defn}
-\begin{rem} The sigma algebra at the stopping time $T$ $\mathcal{F}_T$ encodes the information up to the random time $T$. In other words, if we interprete our filtered probability space as an random experiment, then the maximum information that can be found until the random time $T$ sets in is $\mathcal{F}_T.$
+\begin{rem} The sigma algebra at the stopping time $T$ $\mathcal{F}_T$ encodes the information up to the random time $T$. In other words, if we interprete our filtered probability space as an random experiment, then the maximum information that can be found until the random time $T$ is in $\mathcal{F}_T.$
 \end{rem}
 \begin{thm}[Optional stopping theorem - weak version] Let $X$ be a martingale. Let $X^T:=(X_n^T)_{n \in \mathbb{N}}$ be given by $X_n^T:= X_{n \wedge T}$ then $X^T$ is also a martingale. Moreover if $S, T$ are almost surely finite stopping times with $S \leq T$ almost surely, then
 \begin{align*}
 \mathbb{E}(X_T \mid \mathcal{F}_S) = X_S
 \end{align*}
+\end{thm}
+\begin{thm}[Martingale convergence Theorem] Let $X$ be a super-martingale that is bounded in $L^1$ (i.e. $\sup_{n \in \mathbb{N}} \mathbb{E}(|X_n|) < \infty$). Then there exists a random variable $X_\infty \in L^1$ such that $X_n \to X_\infty$ almost surely, moreover 
+\begin{align*}
+\mathbb{E}(|X_\infty|) \leq \sup_{n \in \mathbb{N}} \mathbb{E}(|X_n|)
+\end{align*}
+\end{thm}
+\begin{lem}[Doob's inequalities] Let $X$ be a non-negative submartingale and $X_n^*:= \max_{k \leq n} X_k$ for $n \in \mathbb{N}$, then we have for any $\lambda >0$
+\begin{align*}
+\lambda \mathbb{P}(X_n^* > \lambda)  \leq \mathbb{E}(X_n 1_{X_n^* > \lambda})  \leq \mathbb{E}(X_n) 
+\end{align*}
+In addition, for $p > 1$, we have
+\begin{align*}
+\|X_n^*\|_p \leq \frac{p}{p-1} \| X_n \|_p 
+\end{align*}
+\end{lem}
+\newpage
+\begin{thm}[Closed martingale convergence theorem] Let $X$ be a martingale and $p>1$. Then the following statements are equivalent:
+\begin{enumerate}
+\item $\sup_{n \in \mathbb{N}} \|X_n\|_p < \infty$ 
+\item $X_n$ converges almost surely and in $L^p$ to $X_\infty \in L^p$ 
+\item There exists a random varaible $X_\infty \in L^p$ such that 
+\begin{align*}
+\mathbb{E}(X_\infty \mid \mathcal{F}_n) = X_n \text{ for all } n \in \mathbb{N}
+\end{align*}
+\end{enumerate}
+If any (and consequently all) of these conditions hold true, we say that $X$ is a closed martingale in $L^p.$
+\end{thm}
+\begin{defn} A family $\mathcal{H}$ of random variables is called uniformly integrable (UI) if 
+\begin{align*}
+\lim_{\lambda \to \infty} \sup_{X \in \mathcal{H}} \mathbb{E}( |X| 1_{|X| > \lambda} ) = 0 
+\end{align*}
+\end{defn}
+\noindent \textbf{Exercise:} Prove that $\mathcal{H}$ is UI if there exists $G: [0, \infty) \to [0, \infty)$ non-decreasing such that 
+\begin{enumerate}
+\item $\lim_{t \to \infty} \frac{G(t)}{t} = \infty$ 
+\item $\sup_{X \in \mathcal{H}} \mathbb{E}(G(X)) \infty$ 
+\end{enumerate}
+\begin{thm}[UI convergence Theorem] Let $(X_n)_{n \in \mathbb{N}}$ a stochastic process, then the following statements are equivalent:
+\begin{enumerate}
+\item $(X_n)_{n \in \mathbb{N}}$ is UI and $X_n \to X_\infty$ in probability.
+\item $X_n \to X_\infty$ in $L^1$.
+\end{enumerate}
+\end{thm}
+\begin{thm}[Characterisation of UI martingales through closedness] Let $X$ be a martingale. The following assertions are equivalent:
+\begin{enumerate}
+\item $X$ is UI. 
+\item $X$ converges almost surely and in $L^1$ to $X_\infty \in L^1.$ 
+\item There exists $X_\infty \in L^1$ such taht $\mathbb{E}(X_\infty \mid \mathcal{F}_n) = X_n$, i.e. the martingale is closed. 
+\end{enumerate}
+\end{thm}
+\begin{thm}[Optional stopping - strong version] Let $X$ be a closed (and thus UI) martingale. Then for any stopping times $S$ and $T$, one has 
+\begin{align*}
+\mathbb{E}(X_T \mid \mathcal{F}_S)= X_{T \wedge S}
+\end{align*}
+\end{thm}
+\newpage
+\begin{defn} Let $\mathcal{F}$ be a sigma-algebra and consider a sequence \\ $\dots \subset \mathcal{H}_2 \subset \mathcal{H}_1 \subset \mathcal{F}$ of sigma-algebras (i.e. we lose information over time). Let $Y_1 \in L^p( \Omega, \mathcal{H}_1, \mathbb{P})$ for some $p \in [1, \infty)$. Then $Y=(Y_n)_{n \in \mathbb{N}}$ is called a backward-martingale if $Y_n= \mathbb{E}(Y_1 \mid \mathcal{H}_n)$ for all $n \in \mathbb{N}$. 
+\end{defn}
+\begin{thm}[Convergence theorem for backward-martingales] \ \newline Let $Y=(Y_n)_{n \in \mathbb{N}}$ be a backward-martingale. Then $Y$ converges almost surely and in $L^p$ to $Y_\infty = \mathbb{E}(Y_1 \mid \mathcal{H}_\infty )$ where $\mathcal{H}_\infty = \cap_{n \in \mathbb{N}} \mathcal{H}_n$. 
+\end{thm}
+\begin{thm}[Kolmogorov's Law of Large Numbers] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables with $\xi_1 \in L^1$. Let $S_n = \xi_1 + \dots + \xi_n$ be the simple random walk, then we have
+\begin{align*}
+\frac{S_n}{n} \to \mathbb{E}(X_1) \text{ almost surely and in } L^1
+\end{align*}
+\end{thm}
+\begin{proof}
+\textbf{Exercise.} Kolmogorov's LLN can be shown in it's full generality (i.e. for $L^1$ RV) by using backwards martingales and Kolomogorov's 0-1 Law. 
+\end{proof}
+\begin{thm}[Kolmogorov's 0-1 Law] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables and let $\mathcal{H}_n = \sigma( \xi_j : j \geq n )$. Then, the sigma algebra $\mathcal{H}_\infty := \cup_{n \in \mathbb{N}} \mathcal{H}_n$ is trivial, i.e. for every event $A \in \mathcal{H}_\infty$ we have  \\ $\mathbb{P}(A) \in \lbrace 0 ,1 \rbrace$. 
 \end{thm}
 \end{document}
