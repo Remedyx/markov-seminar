@@ -12,7 +12,6 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}{Proposition}[section]
 \newtheorem{cor}{Corollary}[section]
-\theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{exmp}{Example}[section]
 \newtheorem{rem}{Remark}[section]
@@ -124,8 +123,8 @@ Before we introduce the notion of Itô's integral we start with some preliminari
 \begin{defn}
 A real-valued function $f: [a,b] \rightarrow \mathbb{R}$ is said to be of \textit{bounded variation} if its total variation is finite.\\
 \\ This means that 
-$$ \sup_P \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \infty $$
-over all partitions $P = \{x_1, ..., x_n \mid x_1<...<x_n\}$ of the interval $[a,b]$.
+$$ \sup_{P \in \mathcal{P}} \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \infty $$
+where the supremum is taken over all partitions of $[a,b]$, i.e. over the set \\  $\mathcal{P}= \lbrace P = \lbrace x_1 , \dots , x_n \rbrace \mid P \text{ is a partition of $[a,b]$ with $x_i \leq x_{i+1}$} \rbrace$
 \end{defn}
 
 \noindent We do want to make sense out of $(\star)$ above for choosing a martingale $M(t)$ as an integrator. If $M(t)$ were of bounded variation on finite $t$ intervals, we could define this just as the Stielftjes integral. However, as before-mentioned we do in particular want to be able to choose a Brownian motion as an integrator. 
@@ -145,8 +144,8 @@ Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuo
 \\ 
 Let us recall that the standard Brownian motion $B(t)$ satisfies that $B^2(t)-t$ is again a martingale. 
 Our aim in this section is to extend this statement to martingales $M(t)$ by introducing the so called \textit{quadratic variation of $M(t)$} or the \textit{variance process}, denoted by $A(t)$.
-\begin{thm}
-There exists a unique increasing, continuous process, called the variation process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
+\begin{thm} \label{variancethm}
+There exists a unique increasing, continuous process, called the variance process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
 \end{thm}
 \begin{proof}
 \textsc{Uniqueness:} Suppose that $A_1(t)$ and $A_2(t)$ both satisfy the conditions of the theorem, then $A_1(t)-A_2(t)$ satisfies the assumptions of Proposition \ref{first Prop}, so $A_1(t)-A_2(t)=A_1(0)-A_2(0)=0$. And therefore $A_1(t)=A_2(t) \;$ for all $t \in \mathbb{R}$. 
@@ -169,5 +168,105 @@ which entails that $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t \i
 $$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathscr{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t.$$
 
 \end{proof}
-
+\noindent In order to construct Itô's integral we will proceed by defining it for so called predictable step functions. For the time being, we will consistently use $A(t)$ to denote the variance process corresponding to the martingale $M(t)$. 
+\begin{defn} \label{defitopredictable} A predictable step function is a stochastic process of the following type
+\begin{align*}
+Y(t, \omega) = Y_0 ( \omega)1_{\{0\}} (t) + \sum_{i=1}^\infty Y_i( \omega) 1_{(t_i,t_{i+1}]}(t)
+\end{align*}
+with times $0=t_1 < t_2 < \dots $ such that $t_k \uparrow \infty$ as $k \to \infty$, $Y_i \in \mathcal{F}_{t_i}$ and $|Y_i( \omega)| \leq K$ for all $i \in \mathbb{N}$ for some constant $K$. 
+For such a predictable step function, the Itô integral is defined to be 
+\begin{align*}
+\int_0^t Y(s) dM(s) = \sum_{i=1}^\infty Y_i(M(t \wedge t_{i+1}) - M(t \wedge t_i))
+\end{align*}
+\end{defn}
+\noindent We notice that the above sum is finite. The following Theorem is a cornerstone when it comes to extend the Itô integral to more general integrands.
+\newpage
+\begin{thm} \label{thminequalty} Let $Y(t)$ be a preditable step function, then
+\begin{align*}
+M^*(t) = \int_0^t Y(s) dM(s)
+\end{align*}
+is a continuous, square integrable martingale. The variance process corresponding to $M^*(t)$ is given by
+\begin{align*}
+A^*(t) = \int_0^t Y^2(s) dA(s)
+\end{align*}
+Moreover we have
+\begin{align*}
+\mathbb{E}\left( \sup_{0 \leq s \leq t} (M^*(s))^2 \right) \leq 4 \mathbb{E}(A^*(t))
+\end{align*}
+\end{thm}
+\begin{proof}
+The continuity and square integrability statements, as well as the fact that $M^*(t)$ is adapted, are all immediate consequences from the very definition of Itô's integral given in Definition \ref{defitopredictable}.
+\\\\
+For the martingale property, take $s < t$ arbitrary and note that for all $i \in \mathbb{N}$ the expression
+\begin{align*}
+M(t \wedge t_{i+1}) - M(t \wedge t_i) - M (s \wedge t_{i+1}) + M( s \wedge t_i)
+\end{align*}
+can be written in the form of obvious martingales by considering all the cases for $s,t$. 
+\\\\
+To prove the second statement, notice that $A^*(t)$ is increasing and continuous, thus by Theorem \ref{variancethm} it is enough to check that $(M^*(t))^2 - A^*(t)$ is a martingale. 
+\\\\
+The final statement is just a consequence of Doob's inequality. 
+\end{proof}
+\noindent Since we have $M^*(0)=0$ and by Theorem \ref{variancethm} we know that $(M^*(t))^2 -A(t)$ is again a martingale we arrive easily at
+\begin{cor} \begin{align*}
+\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right) 
+\end{align*}
+\end{cor}
+\noindent This isometry will be crucial when we want to extend the Itô integral to more general integrands. We will do this next.
+\newpage
+\begin{defn} Let $\mathcal{H}$ denote the space of all adapted stochastic processes $Y(t)$ with left continuous paths and for which we have
+\begin{align*}
+\mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right) < \infty, \text{ for all } T >0
+\end{align*}
+Then $( \mathcal{H}, \| \cdot \|_T )$ has the structure of a normed space where the norm $\| \cdot \|_T$ on $\mathcal{H}$ is given by 
+\begin{align*}
+\| Y\|_T^2 := \mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right), \text{ for all } T >0 
+\end{align*}
+\end{defn}
+\begin{rem} \ \begin{enumerate}
+\item Naturally we say for a sequence $(Y_n)_{n \in \mathbb{N}}$ in $\mathcal{H}$ and $Y \in \mathcal{H}$ that $Y_n$ converges to $Y$ in $\mathcal{H}$ (and denote this by $Y_n \to_\mathcal{H} Y$) if $\| Y_n - Y \|_T \to 0$ as $n \to \infty$ for all $T >0$. 
+\item All predictable step functions $Y$ are in $\mathcal{H}$
+\end{enumerate}
+\end{rem}
+\noindent By the above remark we know that the set of predictable space functions is a subset of the normed space $\mathcal{H}$, in fact much more is true, as the following Proposition states
+\begin{prop}
+The class of predictable step functions is dense in $\mathcal{H}$ 
+\end{prop}
+\noindent The above Proposition states that our definition of predictable step functions are in a way the building blocks to more general integrands, i.e. elements in $\mathcal{H}$, in the sense that every element in $\mathcal{H}$ can be approximated by a sequence $(Y_n)_{n \in \mathbb{N}}$ of predictable step functions.  Unsurprisingly this brings us in a position to define the Itô integral for general integrands in $\mathcal{H}$. 
+\begin{thm}[Itô's integral for general integrands in $\mathcal{H}$] Itô's integral for predictable step functions as defined in Definition \ref{defitopredictable} extends uniquely to $Y \in \mathcal{H}$ in such a way that it is a continuous, square integrable martingale, moreover it satisfies 
+\begin{align*}
+\int_0^t Y_n(s) dM(s) \to \int_0^t Y(s) dM(s) \text{ as } n \to \infty
+\end{align*}
+in probability, uniformly on bounded $t$ sets, whenever we have $Y_n \to_\mathcal{H} Y$ for $Y_n$ predictable step functions. Furthermore, it's quadratic variation process is given by 
+\begin{align*}
+\int_0^t Y^2(s) dA(s)
+\end{align*}
+thus 
+\begin{align*}
+\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2 \right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right) 
+\end{align*}
+\end{thm}
+\newpage
+\begin{proof}
+By the density of the class of predictable step functions in $\mathcal{H}$ we can  for given $Y \in \mathcal{H}$ choose a sequence $(Y_n)_{n \in \mathbb{N}}$ of predictable step functions such that $Y_n \to_\mathcal{H} Y$. Since convergent sequences (with respect to the norm $\| \cdot \|_T$) are always Cauchy we obtain by linearty and inequality stated in Theorem \ref{thminequalty} that
+\begin{align*}
+\mathbb{E} \left( \sup_{0 \leq t \leq T} \left[ \int_0^t Y_n(s) dM(s) - \int_0^t Y_m(s) dM(s) \right]^2 \right) \leq 4 \| Y_n -Y_m \|_T^2 \to 0 
+\end{align*}
+as $m,n \to \infty$. By passing to a subsequence $Y_{n_k}$ of $Y_n$ and using the Borel-Cantelli lemma, it follows that \begin{align*}
+\int_0^t Y_{n_k} (s) dM(s) \to \int_0^t Y(s) dM(s) \text{ almost surely}
+\end{align*}
+and uniformly on bounded $t$ sets. Moreover, the uniformity of the convergence yields that the limit has continuous paths. 
+\\\\
+These lines of reasoning have also shown that the limit is independent of the choice of the approximating sequence $(Y_n)_{n \in \mathbb{N}}$ we have made at the beginning of the proof. 
+\\\\
+To check that the limit above is also a square integrable martingale and that 
+\begin{align*}
+\left( \int_0^t Y(s) dM(s) \right)^2 - \int_0^t Y^2(s) dA(s)
+\end{align*}
+is also a martingale it is enough to notice that the convergence $Y_n \to_\mathcal{H}$ implies both
+\begin{align*}
+\int_0^t Y_n(s) dM(s) \to \int_0^t Y(s) dM(s) \text{ and } \int_0^t Y_n^2(s)dA(s) \to \int_0^t Y^2(s) dA(s)
+\end{align*}
+in $L^1$ and $L^2$. This permits passage to the limit in the conditional expectations relevant to the verify the martingale property in the two cases. 
+\end{proof}
 \end{document}
