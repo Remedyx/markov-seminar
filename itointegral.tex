@@ -11,10 +11,10 @@
 \newtheorem{lem}{Lemma}[section]
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}{Proposition}[section]
-\newtheorem{cor}{Corollary}[section]
+\newtheorem{cor}{Corollary}[thm]
 \newtheorem{defn}{Definition}[section]
 \newtheorem{exmp}{Example}[section]
-\newtheorem{rem}{Remark}[section]
+\newtheorem{rem}{Remark}[defn]
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -40,19 +40,33 @@
 	}
 
 \end{titlepage}
-\newpage 
-\thispagestyle{empty}
-\null\vfill
-\begin{center}
-\begin{flushleft}
-\textit{\Large In precisely built mathematical structures, mathematicians find the same sort of beauty others find in enchanting pieces of music, or in magnificent architecture. There is, however, one great difference between the beauty of mathematical structures and that of great art. Music by Mozart, for instance, impresses greatly even those who do not know musical theory; the cathedral in Cologne overwhelms spectators even if they know nothing about Christianity. The beauty in mathematical structures, however, cannot be appreciated without understanding of a group of numerical formulae that express laws of logic. Only mathematicians can read "musical scores" containing many numerical formulae, and play that "music" in their hearts. } 
-\end{flushleft}
-\end{center}
-\hfill Kiyosi Itô \textit{(1915-2008)}
-\vfill\vfill
+%\newpage 
+%\thispagestyle{empty}
+%\null\vfill
+%\begin{center}
+%\begin{flushleft}
+%\textit{\Large In precisely built mathematical structures, mathematicians find the same sort of beauty others find in enchanting pieces of music, or in magnificent architecture. There is, however, one great difference between the beauty of mathematical structures and that of great art. Music by Mozart, for instance, impresses greatly even those who do not know musical theory; the cathedral in Cologne overwhelms spectators even if they know nothing about Christianity. The beauty in mathematical structures, however, cannot be appreciated without understanding of a group of numerical formulae that express laws of logic. Only mathematicians can read "musical scores" containing many numerical formulae, and play that "music" in their hearts. } 
+%\end{flushleft}
+%\end{center}
+%\hfill Kiyosi Itô \textit{(1915-2008)}
+%\vfill\vfill
 
 \newpage
+\thispagestyle{empty}
+\vspace*{\fill} 
+\begin{quote} 
+ 
+\textit{ \Large In precisely built mathematical structures, mathematicians find the same sort of beauty others find in enchanting pieces of music, or in magnificent architecture. There is, however, one great difference between the beauty of mathematical structures and that of great art. Music by Mozart, for instance, impresses greatly even those who do not know musical theory; the cathedral in Cologne overwhelms spectators even if they know nothing about Christianity. The beauty in mathematical structures, however, cannot be appreciated without understanding of a group of numerical formulae that express laws of logic. Only mathematicians can read "musical scores" containing many numerical formulae, and play that "music" in their hearts.}
+\end{quote}
+\hfill Kiyosi Itô \textit{(1915-2008)}
+\vspace*{\fill}
 
+
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
 \section{Historic Background}
 
 %Source:
@@ -107,7 +121,7 @@ Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
 \begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
 which is a characterization of a self-financing portfolio.
 \newpage
-\noindent The preceeding example motivates a more general setting that often occurs in many models in the fields of economics, engineering and mathematical. Informally it can be stated as
+\noindent The preceeding example motivates a more general setting that often occurs in many models in the fields of economics, engineering and mathematical finance. Informally it can be stated as
 $$ \quad dZ(t) = f(t, Z(t))dt + g(t,Z(t)) dM(t), $$
 where $Z(t)$ is the process of interest, as the value of a certain portfolio in the example above.\\
 \\
@@ -116,7 +130,7 @@ In order to make sense of the above expression, we need to define integrals of t
 \end{align*}
 where $M(t)$ is a martingale. It turns out that the Brownian motion is the most natural choice as an integrator for our integral above. 
 
-
+\newpage
 
 \section{The Itô Integral}
 Before we introduce the notion of Itô's integral we start with some preliminaries.
@@ -127,19 +141,25 @@ $$ \sup_{P \in \mathcal{P}} \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \i
 where the supremum is taken over all partitions of $[a,b]$, i.e. over the set \\  $\mathcal{P}= \lbrace P = \lbrace x_1 , \dots , x_n \rbrace \mid P \text{ is a partition of $[a,b]$ with $x_i \leq x_{i+1}$} \rbrace$
 \end{defn}
 
-\noindent We do want to make sense out of $(\star)$ above for choosing a martingale $M(t)$ as an integrator. If $M(t)$ were of bounded variation on finite $t$ intervals, we could define this just as the Stielftjes integral. However, as before-mentioned we do in particular want to be able to choose a Brownian motion as an integrator. 
+\noindent As discussed in our motivating section, we strive to make sense out of integrals of the form 
+\begin{align*}
+\int_0^t Y(s, \omega) dM(s) \tag{$\star$} 
+\end{align*} by choosing a martingale $M(t)$ as an integrator. If $M(t)$ were of bounded variation on finite $t$ intervals, we could define this just as the Stieltjes integral. As before-mentioned we do in particular want to be able to choose a Brownian motion as an integrator. 
 \\\\
 However, as we have seen in class, the paths of a Brownian motion are nowhere differential, henceforth they cannot be of bounded variation. \\
 \\
-In fact, the following result shows that there is a general problem which arises when we choose continuous paths martingales that are of bounded variation on finite $t$ intervals
+In fact, the following result shows that there is a general problem which arises when we choose continuous paths martingales that are of bounded variation on finite $t$ intervals.
 \begin{prop}  \label{first Prop}
-If $M(t)$ is a martingale with continuous paths that are of bounded variation on finite $t$ intervals, then $M(t) = M(0)$ for each $t$ a.s.
+If $M(t)$ is a martingale with continuous paths that are of bounded variation on finite $t$ intervals, then $M(t) = M(0)$ for each $t \in \mathbb{R}$ almost surely.
 \end{prop}
-
-\subsection{Construction of Itô's integral}
-Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuous martingale with repsect to the right continuous filtration $\lbrace \mathcal{F}_t \rbrace$, moreover we request that $M(t)$ is square integrable, i.e. $\mathbb{E}(M^2(t)) < \infty$ for all $t \in \mathbb{R}$. By $B(t)$ we will always denote a standard Brownian motion - it will start at the origin and be of variance $t$ at time $t$. 
+\noindent The deeper meaning of the Proposition above is that we cannot just commit to the theory of Stieltjes integrals when we want to investigate integrals of the form $(\star)$ above. It is necessary for us to develop another theory, one for which bounded variation is not necessary. 
 \\\\
- Finally it is worth mentioning that, in order to simplify the expoistion, assumptions in the main results will often be stronger than necessary. 
+In the first part of this exposition we will do just that, i.e. show the construction of the Itô integral for which we can study integrals of the form $(\star)$. 
+\newpage 
+\subsection{Construction of Itô's integral}
+Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuous martingale with respect to the right continuous filtration $\lbrace \mathcal{F}_t \rbrace$, moreover we request that $M(t)$ is square integrable, i.e. $\mathbb{E}(M^2(t)) < \infty$ for all $t \in \mathbb{R}$. By $B(t)$ we will always denote a standard Brownian motion - it will start at the origin and be of variance $t$ at time $t$. 
+\\\\
+ Finally it is worth mentioning that, in order to simplify the exposition, assumptions in the main results will often be stronger than necessary. 
 \\
 \\ 
 Let us recall that the standard Brownian motion $B(t)$ satisfies that $B^2(t)-t$ is again a martingale. 
@@ -153,8 +173,8 @@ There exists a unique increasing, continuous process, called the variance proces
 %localization nicht ganz klar ;(
 \textsc{Existence:} In this part we will use the "localization" technique, which allows us to reduce it to the uniformly bounded case. Moreover we will assume that the statement has been proved for uniformly bounded martingales $M(t)$. %Macht nicht so viel Sinn?
 \\\\
-Given $M(t)$, $n \in \mathbb{N}$ we define
-$$\tau_n := n \wedge \inf\{t \geq 0: |M(t)|\geq n\}$$
+Given an arbitrary martingale $M(t)$, we define
+$$\tau_n := n \wedge \inf\{t \geq 0: |M(t)|\geq n\}, \text{ where } n \in \mathbb{N}.$$
 This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ so that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ $$M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$$ is a martingale.
 \newpage
 
@@ -176,10 +196,13 @@ Y(t, \omega) = Y_0 ( \omega)1_{\{0\}} (t) + \sum_{i=1}^\infty Y_i( \omega) 1_{(t
 with times $0=t_1 < t_2 < \dots $ such that $t_k \uparrow \infty$ as $k \to \infty$, $Y_i \in \mathcal{F}_{t_i}$ and $|Y_i( \omega)| \leq K$ for all $i \in \mathbb{N}$ for some constant $K$. 
 For such a predictable step function, the Itô integral is defined to be 
 \begin{align*}
-\int_0^t Y(s) dM(s) = \sum_{i=1}^\infty Y_i(M(t \wedge t_{i+1}) - M(t \wedge t_i))
+\int_0^t Y(s) dM(s) = \sum_{i=1}^\infty Y_i  (M(t \wedge t_{i+1}) - M(t \wedge t_i))
 \end{align*}
 \end{defn}
-\noindent We notice that the above sum is finite. The following Theorem is a cornerstone when it comes to extend the Itô integral to more general integrands.
+\noindent We notice that the above sum is finite, indeed since the $Y_i$ are uniformly bounded over all $i \in \mathbb{N}$, the dominating sum is telescopic and since $t_k \uparrow \infty$ for $k \to \infty$ we obtain a finite sum.
+\\
+\\
+The following Theorem is a cornerstone when it comes to extend the Itô integral to more general integrands.
 \newpage
 \begin{thm} \label{thminequalty} Let $Y(t)$ be a preditable step function, then
 \begin{align*}
@@ -207,8 +230,8 @@ To prove the second statement, notice that $A^*(t)$ is increasing and continuous
 \\\\
 The final statement is just a consequence of Doob's inequality. 
 \end{proof}
-\noindent Since we have $M^*(0)=0$ and by Theorem \ref{variancethm} we know that $(M^*(t))^2 -A(t)$ is again a martingale we arrive easily at
-\begin{cor} \begin{align*}
+\noindent Since we have $M^*(0)=0$ and by Theorem \ref{variancethm} we know that $(M^*(t))^2 -A(t)$ is again a martingale, we easily arrive at
+\begin{cor} \label{corisometry} \begin{align*}
 \mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right) 
 \end{align*}
 \end{cor}
@@ -225,10 +248,10 @@ Then $( \mathcal{H}, \| \cdot \|_T )$ has the structure of a normed space where 
 \end{defn}
 \begin{rem} \ \begin{enumerate}
 \item Naturally we say for a sequence $(Y_n)_{n \in \mathbb{N}}$ in $\mathcal{H}$ and $Y \in \mathcal{H}$ that $Y_n$ converges to $Y$ in $\mathcal{H}$ (and denote this by $Y_n \to_\mathcal{H} Y$) if $\| Y_n - Y \|_T \to 0$ as $n \to \infty$ for all $T >0$. 
-\item All predictable step functions $Y$ are in $\mathcal{H}$
+\item All predictable step functions $Y$ are in $\mathcal{H}$.
 \end{enumerate}
 \end{rem}
-\noindent By the above remark we know that the set of predictable space functions is a subset of the normed space $\mathcal{H}$, in fact much more is true, as the following Proposition states
+\noindent By the above remark we know that the set of predictable space functions is a subset of the normed space $\mathcal{H}$, in fact, much more is true as the following Proposition entails.
 \begin{prop}
 The class of predictable step functions is dense in $\mathcal{H}$ 
 \end{prop}
@@ -263,10 +286,10 @@ To check that the limit above is also a square integrable martingale and that
 \begin{align*}
 \left( \int_0^t Y(s) dM(s) \right)^2 - \int_0^t Y^2(s) dA(s)
 \end{align*}
-is also a martingale it is enough to notice that the convergence $Y_n \to_\mathcal{H}$ implies both
+is also a martingale it is enough to notice that the convergence $Y_n \to_\mathcal{H} Y$ implies both
 \begin{align*}
 \int_0^t Y_n(s) dM(s) \to \int_0^t Y(s) dM(s) \text{ and } \int_0^t Y_n^2(s)dA(s) \to \int_0^t Y^2(s) dA(s)
 \end{align*}
-in $L^1$ and $L^2$. This permits passage to the limit in the conditional expectations relevant to the verify the martingale property in the two cases. 
+in $L^1$ and $L^2$ respectively, because of the isometry shown in Corollarly \ref{corisometry}. This permits passage to the limit in the conditional expectations relevant to the verify the martingale property in the two cases. 
 \end{proof}
 \end{document}
