@@ -80,6 +80,10 @@ in particular if $X$ is a random variable such that $X \in L^s$ then it always f
 \mathbb{E}(|X_\infty|) \leq \sup_{n \in \mathbb{N}} \mathbb{E}(|X_n|)
 \end{align*}
 \end{thm}
+\begin{cor} Let $X$ be a super-martingale that is bounded from below (i.e. $X_n \geq c$ a.s. for some $c \in \mathbb{R}$ for all $n \in \mathbb{N}$). Then $X_n$ converges almost surely to $X_\infty \in L^1$. 
+\end{cor}
+\begin{thm}[Behaviour of Martingales with bounded increments] Let $X=(X_n)_{n \in \mathbb{N}}$ be a martingale with bounded increments (i.e. $|X_{n+1}-X_n| \leq C$). Let $\mathcal{C}:= \lbrace \limsup X_n = \liminf X_n \in \mathbb{R} \rbrace$ , $\mathcal{O}:= \lbrace \limsup X_n = + \infty \rbrace \cap \lbrace \liminf X_n = - \infty \rbrace $, then $\mathbb{P}( \mathcal{O} \cup \mathcal{C}) = 1$.  
+\end{thm}
 \begin{lem}[Doob's inequalities] Let $X$ be a non-negative submartingale and $X_n^*:= \max_{k \leq n} X_k$ for $n \in \mathbb{N}$, then we have for any $\lambda >0$
 \begin{align*}
 \lambda \mathbb{P}(X_n^* > \lambda)  \leq \mathbb{E}(X_n 1_{X_n^* > \lambda})  \leq \mathbb{E}(X_n) 
@@ -89,7 +93,6 @@ In addition, for $p > 1$, we have
 \|X_n^*\|_p \leq \frac{p}{p-1} \| X_n \|_p 
 \end{align*}
 \end{lem}
-\newpage
 \begin{thm}[Closed martingale convergence theorem] Let $X$ be a martingale and $p>1$. Then the following statements are equivalent:
 \begin{enumerate}
 \item $\sup_{n \in \mathbb{N}} \|X_n\|_p < \infty$ 
@@ -143,5 +146,67 @@ If any (and consequently all) of these conditions hold true, we say that $X$ is 
 \textbf{Exercise.} Kolmogorov's LLN can be shown in it's full generality (i.e. for $L^1$ RV) by using backwards martingales and Kolomogorov's 0-1 Law. 
 \end{proof}
 \begin{thm}[Kolmogorov's 0-1 Law] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables and let $\mathcal{H}_n = \sigma( \xi_j : j \geq n )$. Then, the sigma algebra $\mathcal{H}_\infty := \cup_{n \in \mathbb{N}} \mathcal{H}_n$ is trivial, i.e. for every event $A \in \mathcal{H}_\infty$ we have  \\ $\mathbb{P}(A) \in \lbrace 0 ,1 \rbrace$. 
+\end{thm}
+\noindent Next we will remind the very important Borel-Cantelli Lemmas. We recall the following definiton. Let $(A_n)_{n \in \mathbb{N}}$ be a sequence of events in a probability space $( \Omega, \mathcal{F}, \mathbb{P})$ then we define 
+\begin{align*}
+A & = \limsup_{n \to \infty} A_n:= \bigcap_{n=1}^\infty \bigcup_{i \geq n}^\infty A_i = \lbrace A_n \text{ infinitely often} \rbrace  
+\\
+A^c &:= \liminf_{n \to \infty} A_n := \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\infty A_i = \lbrace A_n \text{ eventually} \rbrace 
+\end{align*}
+We remark that the following is true
+\begin{align*}
+\omega \in \bigcap_{n=1}^\infty \bigcup_{i \geq n}^\infty A_i &\iff \forall n \in \mathbb{N}, \exists i \geq n : \omega \in A_i   \\
+\omega \in \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\infty A_i^c &\iff \exists n \in \mathbb{N}, \forall i \geq n : \omega \in A_i
+\end{align*}
+\begin{thm}[Borel-Cantelli Lemma 1] If $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) < \infty$, then we have $\mathbb{P}(A_n \text{ i.o.} \rbrace=0$.
+\end{thm}
+\begin{thm}[Borel-Cantelli Lemma 2] If the events $A_n$ are independent and $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) = \infty$, then we have $\mathbb{P}( A_n \text{ i.o.} \rbrace = 1$ 
+\end{thm}
+\newpage
+\begin{thm}[Extension of Borel Cantelli Lemma] Let $\mathcal{F}= (\mathcal{F}_n)_{n = 1}^\infty$ be a Filtration and suppose $A_n \in \mathcal{F}_n$, then we have
+\begin{align*}
+ \lbrace A_n \text{ i.o.}\rbrace = \left \lbrace \sum_{n \geq k} \mathbb{P}(A_n \mid \mathcal{F}_{n-1} ) = \infty \right \rbrace 
+\end{align*}
+for all $k \in \mathbb{N}$ up to a set of measure zero. 
+\end{thm}
+\noindent We now give some results that are related to the Central Limit Theorem (CLT). We will first recall the classical result.
+\begin{thm}[CLT] Let $X_1, X_2, \dots$ be a sequence of i.i.d. $L^2$ random variables with $\mathbb{E}(X)= \mu$ and Var$(X)= \sigma >0$. Let $S_n= X_1 + \dots + X_n$, then we have
+\begin{align*}
+\frac{S_n-n \mu }{n \sigma} \implies \mathcal{N}(0,1) 
+\end{align*}
+\end{thm}
+\noindent It is our goal to generalize this result, i.e. weaken the conditions and then give a central limit theorem for martingales. 
+\\\\
+The outline is the following: Let $\lbrace X_{n,k} : 1 \leq k \leq J(n), n \in \mathbb{N}_{ \geq 1 } \rbrace$ be an array of centered random variables. Here $K$ can be random, however it is almost surely finite with $J(n) \to \infty$ as $n \to \infty$.  
+\\\\
+Let $( \xi_j)_{j \in \mathbb{N}}$ be a sequence of (centered?) i.i.d. random variables, we then set 
+\begin{align*}
+X_{n,k} = \frac{\xi_k}{\sqrt{n}}
+\end{align*}
+Suppose that $X_{n,k} \in L^2( \mathcal{F})$ and let \begin{align*}
+S_n := \sum_{k=1}^{J(n)} X_{n,k}
+\end{align*}
+\begin{thm}[Mc Leish] In the situation as above, let us define \\ $T_n = \prod_{k=1}^{J(n)} (1 + it X_{n,k})$ and suppose that
+\begin{enumerate}
+\item $T_n$ is UI and $\mathbb{E}(T_n) \to 1$ as $n \to \infty$.
+\item $ \sum_{k=1}^{J(n)} X_{n,k}^2 \to 1$ in Probability.
+\item $\max_{k \leq n} |X_{n,k}| \to 0$ in Probability. 
+\end{enumerate}
+Then $S_n \implies \mathcal{N}(0,1)$ as $n \to \infty$. 
+\end{thm}
+\newpage
+\begin{thm}[Martingale Central Limit Theorem] Let $X_{n,k}$ where $1 \leq k \leq m_n$ ($m_n$ is deterministic with $m_n \to \infty$ as $n \to \infty$) be a $\mathcal{F}_{n,k}$-measurable martingale difference array. Suppose that 
+\begin{enumerate}
+\item $\mathbb{E}(X_{n,k} \mid \mathcal{F}_{n,k-1}) = 0$ 
+\item $V_n:= \sum_{j=1}^{m_n} X_{n,j}^2 \to 1$ in Probability.
+\item (Lindenberg Condition) For any $\epsilon >0$ we have that 
+\begin{align*}
+\lim_{n \to \infty}  \sum_{k=1}^n \mathbb{E}(X_{n,k}^2 1_{ | X_{n,k}| > \epsilon}) = 0 
+\end{align*}
+\end{enumerate}
+Then we have as $n \to \infty$ 
+\begin{align*}
+S_n=  \sum_{k=1}^{m_n} X_{n,k} \implies \mathcal{N}(0,1) 
+\end{align*}
 \end{thm}
 \end{document}
