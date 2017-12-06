@@ -361,4 +361,43 @@ Let $R:= \lbrace x \in \mathcal{H} : \mathbb{P}_x ( R_x < \infty) = 1 \rbrace$ t
 \item All states are transient, in particular $\mathbb{P}_x( N_y < \infty, \text{ for all } y \in \mathcal{H} \rbrace = 1$ for all $x \in \mathcal{H}$. 
 \end{enumerate}
 \end{cor}
+\newpage
+\subsection{Stationary measures}
+We consider a Markov Chain with transition probability $Q$. 
+\begin{defn} Let $\mu$ be a non-trivial measure on $\mathcal{H}$ such that $\mu_x< \infty$ for all $x \in \mathcal{H}$. We say that $\mu$ is stationary if $\mu = \mu Q$.  That is
+\begin{align*}
+\mu (x) =  \sum_{y \in \mathcal{H}} \mu(y) Q(y,x), \text{ for all } x \in \mathcal{H}
+\end{align*}
+\end{defn}
+\begin{defn} We say that $\mu$ is reversible if it satisfies the detailed balance, i.e. 
+\begin{align*}
+\mu_x Q_{xy} = \mu_y Q_{yx}, \text{ for all } x,y \in  \mathcal{H}
+\end{align*}
+\end{defn}
+\textbf{Exercise}: Check that if $\mu$ is reversible, then it is also stationary. 
+\begin{lem} Let $z \in R$ and define for all $x \in \mathcal{H}$
+\begin{align*}
+\hat{\pi}(x):= \sum_{n=0}^\infty \mathbb{P}_z ( \omega_n =x, R_z >n )
+\end{align*}
+Then $\hat{\pi}$ is a stationary measure and we have $\hat{\pi}(x) >0 $ if and only if $x \sim z$ i.e. $G_{zx}>0$. 
+\end{lem}
+\begin{prop} If the chain is irreducible the solution $\mu = \mu Q$ is unique up to a multiplicative constant. 
+\end{prop}
+\begin{proof}
+Exercise! 
+\end{proof}
+\begin{thm} Assume that the chain is irreducible and recurrent. Then we have the following dichotomy. 
+\begin{enumerate}
+\item The chain is positive recurrent, i.e. there exists a stationary measure with finite mass. Moreover we then have, the probability measure \\ $ \pi_x = 1/ \mathbb{E}_x(R_x)$ is staionary, $\pi$ is called the equilibrium measure. 
+\item The chain is null recurrent, i.e. all stationary measures have infinite mass. Moreover we then have, $\mathbb{E}_x(R_x) =  \infty$ for all $x \in \mathcal{H}$. 
+\end{enumerate}
+\end{thm}
+\begin{prop} Assume the chain is irreducible $(G_{xy} >0)$ and there exists a equilibrium measure $\pi$. Then the chain is positive recurrent, in particular $\pi$ is unique. 
+\end{prop}
+\newpage
+\begin{thm}[Ergodic Theorem] Let $f,g: \mathcal{H} \to \mathbb{R}_+.$ and $z \in R$. Assume that $\int f d \hat{\pi} < \infty$ and $g(x) >0$ for some $x \sim z$. Then we have $\mathbb{P}_z$-almost surely
+\begin{align*}
+\dfrac{\sum_{j=0}^n f( \omega_j)}{\sum_{j=0}^n g( \omega_j)} \to \dfrac{\int f d \hat{\pi}}{\int g d \hat{\pi}} \text{ as } n \to \infty 
+\end{align*}
+\end{thm}
 \end{document}
