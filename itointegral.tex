@@ -292,4 +292,47 @@ is also a martingale it is enough to notice that the convergence $Y_n \to_\mathc
 \end{align*}
 in $L^1$ and $L^2$ respectively, because of the isometry shown in Corollarly \ref{corisometry}. This permits passage to the limit in the conditional expectations relevant to the verify the martingale property in the two cases. 
 \end{proof}
+\newpage
+\subsection{Itô's formula and applications}
+Itô's formula is a central identity used in stochastic comptations and a version of the fundamental theorem of calculus having an extra term involving the second derivative. 
+
+\begin{thm}[Itô's formula] \label{itosformula}
+Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^2$-function satisfiying
+\begin{align*}
+\mathbb{E}\left( \int_0^t [f'(M(s))]^2 dA(s) \right) < \infty \text{ and } 
+\mathbb{E}\left( \int_0^t \mid f"(M(s))\mid dA(s) \right) < \infty
+\end{align*}
+Then we have the identity
+\begin{align*}
+f(M(t))-f(M(0))= \int_0^t f'(M(s)) dM(s) + \frac{1}{2} \int_0^t f"(M(s)) dA(s). \quad (\star)
+\end{align*}
+\end{thm}
+\noindent For the proof of this Theorem we need to extend the concept of the variance process to the one of \textit{covariance processes} associated with \textit{two} martingales:
+\begin{thm}
+Given two square integrable continuous martingales $M_1(t)$, $M_2(t)$; there exists a unique continuous \textit{covariance process}, denoted by \\
+$\langle M_1,M_2\rangle_t$, of bounded variation such that $\langle M_1,M_2\rangle_0=0$ and 
+\begin{align*}M_1(t) M_2(t)-\langle M_1(t),M_2(t) \rangle_t \quad \text{is a martingale.}
+\end{align*}
+\end{thm}
+
+\begin{proof}
+The uniqueness can be proven as in the proof of the Theorem \ref{variancethm} for the variance processe, and the existence can be shown by polarization.
+\end{proof}
+\noindent We are now in a position to present a sketch of the proof of Theorem \ref{itosformula}.
+\begin{proof}
+By localization, it is enough to prove the result for uniformly bounded martingales satisfying $\lvert M(s) \rvert \leq K$ and $\langle M,M\rangle_s\leq K$ for all $0\leq s \leq t$ and some constant $K$.\\
+\\
+The equation $(\star)$ follows immediately in the case that $f(x)=x$. %By FTC?
+Using induction on $k \in \mathbb{N}$ one can show that it also holds for $f(x)=x^k$ and is therefore true for any $f$ being polynomial.
+The idea in the inductive step is to assume that the statement holds for $f(x)=x^k$ and showing that is is also true for $g(x)=x f(x)$ using the integration by parts formula and the identity (won't be proven here)
+% Das chömmer so leider nöd stoh lah :(
+
+\begin{center} %MARCO!!! Wie chanmer das schöner darstelle? :(
+For $M_1(t), M_2(t)$ bounded and conituous martingales, one has:
+$M_1(t) M_2(t)=M_1(0) M_2(0) + \int_0^t M_1(s) dM_2(s) + \int_0^t M_2(s) dM_1(s) + \langle M_1,M_2\rangle_t$
+\end{center}
+Using $M_1(t)=M(t)$ and $M_2(t)= \int_0^t f'(M(s)) dM(s)$ one can conclude the result for $f$ being polynomial.\\
+For the general case you have to choose polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are unfiformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
+To pass to the limit one can now use the last statement of Theorem \ref{thminequalty}.
+\end{proof}
 \end{document}
