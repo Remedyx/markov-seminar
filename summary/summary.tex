@@ -400,4 +400,28 @@ Exercise!
 \dfrac{\sum_{j=0}^n f( \omega_j)}{\sum_{j=0}^n g( \omega_j)} \to \dfrac{\int f d \hat{\pi}}{\int g d \hat{\pi}} \text{ as } n \to \infty 
 \end{align*}
 \end{thm}
+\begin{cor} The following holds 
+\begin{enumerate}
+\item If the chain is positive recurrent, then for $\mu \in \mathcal{M}( \mathcal{H})$ one has $\mathbb{P}_\mu$ almost surely that 
+\begin{align*}
+\frac{1}{n} \sum_{j=0}^n f( \omega_j) \to \int f d \pi, \text{ as } n \to \infty 
+\end{align*}
+where $\pi$ is the equilibrium measure. 
+\item If the chain is null-recurrent, then for any $\mu \in \mathcal{M}( \mathcal{H})$ one has $\mathbb{P}_\mu$ almost surely that 
+\begin{align*}
+\frac{1}{n} \sum_{j=0}^n 1_{ \omega_j = x } \to 0, \text{ as } n \to \infty \text{ for all } x \in \mathcal{H}.
+\end{align*}
+\end{enumerate}
+\end{cor}
+\begin{defn} Let $x \in R$ be a recurrent state and consider the set \\  $P_x:= \lbrace n \in \mathbb{N}_{ \geq 1} : Q_{x,x}^n >0 \rbrace$. This set is then infinite (because $x$ is recurrent) and the period of $x$ is defined to be the greatest common divisor of the set $P_x$. That is, the period of $x$ is the number $d= \gcd P_x$. A state $x$ is called aperiodic if $d=1$, else it is called periodic with period $d$. A Markov chain is called aperiodic if every state is aperiodic. 
+\end{defn}
+\begin{prop} Let $X$ be an irreducible markov chain, then all states $x$ have the same period $d$. In particular for an irreducible chain it is enough to find one recurrent state to conclude that the chain is aperiodic. 
+\end{prop}
+\begin{thm} Suppose the chain is positive recurrent and aperiodic, then 
+\begin{align*}
+\sum_{x \in \mathcal{H}} | \mathbb{P}_z( \omega_n =x) - \pi (x) | \to 0, \text{ as } n \to \infty 
+\end{align*}
+i.e. the law of $\omega_n$ under $\mathbb{P}_z$ converges in total variation to $\pi$. 
+\end{thm}
+\textbf{Exercise:} Given a transition probability $Q$. Show that $\tilde{Q} = (I + Q)/2$ defines an irreducible aperiodic chain, it is called the lazy chain. 
 \end{document}
