@@ -7,6 +7,7 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage[UKenglish]{isodate}
+\usepackage{epigraph}
 
 \newtheorem{lem}{Lemma}[section]
 \newtheorem{thm}{Theorem}[section]
@@ -75,8 +76,9 @@
 % Gauss Award
 %http://www.kyoto-u.ac.jp/en/about/profile/honor/awards/gauss.html 
 
+\epigraph{\textit{People all over realized that what Itô had done explained things that were unexplainable before.}}{Prof. Daniel Strook, MIT}
 
-Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influencal that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
+\noindent Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influencal that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
 \\\\
 At its heart, the most basic concept of Itô calculus is Itô's integral and among the most important results is a version of the fundamental theorem of calculus, known as Itô's formula.
 \\\\
@@ -84,14 +86,18 @@ In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being i
 \\
 \\
 The selection of Kiyosi Itô for the first laureate reflects the achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
+\\\\
+%Source for this paragraph https://en.wikipedia.org/wiki/Order_of_Culture#2006
+% and http://www-history.mcs.st-andrews.ac.uk/Obits2/Ito_Times.html
+One week before his death he was awarded the Culture Medal of Japan, also known as the Order of culture, it is Japan's highest prize awarded by the Emperor himself. The Japanese mathematical community was intensely proud of him. Largely through his influence and prestige, probability theory is still strongly cultivated in Japan. Japanese probabilists tended to refer to him among themselves as \textit{"the Emperor"}. 
+\newpage 
 \section{Abstract}
 It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economy. 
 \\\\
 Quite generally speaking, we will often sketch proofs by reducing them to their most important steps (such as for instance localization) and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
 \\\\
 We will introduce the notion of Itô's integral, first for predictable step functions and later on expand this result to obtain a general Itô integral. Moreover we will introduce Itô's formula for single martingales and for several semimartingales.
-\newpage  
-
+\\\\
 \noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"}.
 \\\\
 We will finish by giving several applications of Itô's formula. 
@@ -99,6 +105,7 @@ We will finish by giving several applications of Itô's formula.
 
 % source:
 % https://quant.stackexchange.com/questions/17665/stochastic-differentials-itos-formula-for-a-self-financing-portfolio
+\newpage 
 \section{Application of Itô's formula in Finance}
 In order to motivate the importance of Itô's formula we start by giving an example from mathematical finance. \\
 \\
@@ -294,7 +301,8 @@ in $L^1$ and $L^2$ respectively, because of the isometry shown in Corollarly \re
 \end{proof}
 \newpage
 \subsection{Itô's formula and applications}
-Itô's formula is a central identity used in stochastic comptations and a version of the fundamental theorem of calculus having an extra term involving the second derivative. 
+\epigraph{\textit{To some extent, the whole sequal of this book is but an unending series of applications of Itô's formula.}}{Revuz and Yor, page 140/560}
+\noindent Itô's formula is a central identity used in stochastic comptations and a version of the fundamental theorem of calculus having an extra term involving the second derivative. 
 
 \begin{thm}[Itô's formula] \label{itosformula}
 Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^2$-function satisfiying
@@ -317,22 +325,25 @@ $\langle M_1,M_2\rangle_t$, of bounded variation such that $\langle M_1,M_2\rang
 
 \begin{proof}
 The uniqueness can be proven as in the proof of the Theorem \ref{variancethm} for the variance processe, and the existence can be shown by polarization.
+%Polarization is not clear at all, we need to somehow establish that this is an inner product. 
 \end{proof}
 \noindent We are now in a position to present a sketch of the proof of Theorem \ref{itosformula}.
 \begin{proof}
 By localization, it is enough to prove the result for uniformly bounded martingales satisfying $\lvert M(s) \rvert \leq K$ and $\langle M,M\rangle_s\leq K$ for all $0\leq s \leq t$ and some constant $K$.\\
 \\
-The equation $(\star)$ follows immediately in the case that $f(x)=x$. %By FTC?
+The equation $(\star)$ follows immediately in the case that $f(x)=x$, by just applying Definition \ref{defitopredictable}.
 Using induction on $k \in \mathbb{N}$ one can show that it also holds for $f(x)=x^k$ and is therefore true for any $f$ being polynomial.
-The idea in the inductive step is to assume that the statement holds for $f(x)=x^k$ and showing that is is also true for $g(x)=x f(x)$ using the integration by parts formula and the identity (won't be proven here)
+The idea in the inductive step is to assume that the statement holds for $f(x)=x^k$ and showing that it is also true for $g(x)=x f(x)$ using the integration by parts formula stated below.
 % Das chömmer so leider nöd stoh lah :(
-
-\begin{center} %MARCO!!! Wie chanmer das schöner darstelle? :(
-For $M_1(t), M_2(t)$ bounded and conituous martingales, one has:
-$M_1(t) M_2(t)=M_1(0) M_2(0) + \int_0^t M_1(s) dM_2(s) + \int_0^t M_2(s) dM_1(s) + \langle M_1,M_2\rangle_t$
-\end{center}
-Using $M_1(t)=M(t)$ and $M_2(t)= \int_0^t f'(M(s)) dM(s)$ one can conclude the result for $f$ being polynomial.\\
-For the general case you have to choose polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are unfiformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
+\\\\
+ %MARCO!!! Wie chanmer das schöner darstelle? :(
+For $M_1(t), \ M_2(t)$ bounded and continuous martingales, one can prove the integration by parts formula, i.e. show the identity:
+\begin{align*}
+M_1(t) M_2(t)=M_1(0) M_2(0) + \int_0^t M_1(s) dM_2(s) + \int_0^t M_2(s) dM_1(s) + \langle M_1,M_2\rangle_t
+\end{align*}
+\noindent Setting now $M_1(t)=M(t)$ and $M_2(t)= \int_0^t f'(M(s)) dM(s)$ one can conclude the result for $f$ being polynomial.\\
+\\
+For the general case one chooses a sequence of polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are unfiformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
 To pass to the limit one can now use the last statement of Theorem \ref{thminequalty}.
 \end{proof}
 \end{document}
