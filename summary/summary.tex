@@ -455,9 +455,100 @@ In this section we consider $H$ to be complete, separable metric space with Bore
 \begin{align*}
 \begin{cases} T_t \circ T_s = T_{t+s} \\ T_0(x) = x \end{cases}
 \end{align*}
-Let $I = \lbrace A \in \mathcal{F}: T_t^{-1}(A)=A \text{ for all } t \in \mathbb{R} \rbrace$ (necessary?) 
 \begin{defn} Let $\mu$ be a measure on $H$. We say that $\mu$ is an invariant measure if $\mu (T_t^{-1}(A))= \mu (A)$ for all $A \in \mathcal{F}$ and for all $t \in \mathbb{R}$. \\  $(H, \mathcal{F},  \mu , T_t) $ is called a dynamical system. 
 \end{defn}
-\begin{defn} $\mu$ is called ergodic if $\mu(A) \in \lbrace 0 ,1 \rbrace $ for all $A \in I$. 
+\begin{defn} $\mu$ is called ergodic if for every $a \in \mathcal{F}$ with $T_t^{-1}(A)=A$ for all $t \in \mathbb{R}$ we have  $\mu(A) \in \lbrace 0 ,1 \rbrace $. 
 \end{defn}
+\noindent We consider the functional expression
+\begin{align*}
+R_t(f) = \frac{1}{t} \int_0^t f(T_sx)ds, \text{ for } f : H \to \mathbb{R} \text{ measurable}
+\end{align*}
+and we wonder under what conditions we have that $R_t(f) \to \int f d \mu$ as $t \to \infty$ and for which $\mu$? We start by discussing some functional analytic properties.
+\begin{defn} A unitary operator is a bounded linear operator $U: H \to H$ on a Hilbert space $H$ that satisfies the following:
+\begin{enumerate}
+\item $U$ is surjective, and 
+\item $U$ preserves the inner product of the Hilbert space $H$. That is we have 
+\begin{align*}
+\langle Ux, Uy \rangle_H = \langle x, y \rangle_H, \text{ for all } x,y \in H. 
+\end{align*}
+\end{enumerate}
+\end{defn}
+\begin{lem} Let $U_s : L^2(H, F, \mu)=:H \to H$ be defines as $H_sf(x)=f(T_sx)$ for all $s \in \mathbb{R}$. Then $U_s$ is an unitary operator on $L^2( \mu)$.
+\end{lem}
+\begin{lem} If $U$ is a unitary operator on a Hilbert space $H$, then we have ran$(I-U)^\perp = \ker(I-U)$ where $I: H \to H$ is the identity operator. 
+\end{lem}
+\begin{thm}[Von Neumann Ergodic Theorem] Let $U$ be a unitary operator on a Hilbert space $H$. Let $P$ be the orthogonal projection on $\ker(I-U)$. Then we have for all $x \in H$ 
+\begin{align*}
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n U^k f = Pf \text{ in H}
+\end{align*}
+\end{thm}
+\begin{rem} The convergence above is of course meant with respect to the norm in $H$ which is induced by the scalar product that is given on $H$. 
+\end{rem}
+\begin{lem} Let us define $\mathcal{I}:= \lbrace A \in \mathcal{F} : T_t^{-1}(A) = A \text{ for all } t \in \mathbb{R} \rbrace$, then $\mathcal{I}$ is a $\sigma$-algebra, it is called the $\sigma$-algebra of invariant sets. 
+\end{lem}
+\begin{proof}
+Exercise!
+\end{proof}
+\begin{cor} Let $\mu$ be an invariant measure under $(T_t)_{t \in \mathbb{R}}$, $\mathcal{I}$ the $\sigma$-algebra of invariant sets as above, then we have 
+\begin{align*}
+\lim_{t \to \infty} \frac{1}{t} \int_0^t f (T_s \omega) ds = \mathbb{E}(f \mid \mathcal{I}) \text{ in } L^2( \mu).
+\end{align*}
+\end{cor}
+\newpage
+\section{Continuous time Martingales}
+\begin{defn} Let $X=(X_t)_{t \in T}$ be a stochastic process on some filtered probability space $( \Omega, \mathcal{F}, ( \mathcal{F}_t)_{t \in T}, \mathbb{P})$. Then we say that $X$ is a martingale if  
+\begin{enumerate}
+\item $X$ is $\mathcal{F}_t$-adapted, i.e. $X_t$ is $\mathcal{F}_t$-measurable for all $t \in T$.
+\item $X_t$ is $\mathbb{P}$-integrable for all $t \in T$. 
+\item $\mathbb{E}(X_t \mid \mathcal{F}_s) = X_s$ for all $s < t$.
+\end{enumerate}
+\end{defn}
+\begin{defn} Let $(X_t)_{t \geq 0}$ and $(Y_t)_{t \geq 0}$ be stochastic processes. We say 
+\begin{enumerate}
+\item $X_t$ and $Y_t$ are indistinguishable if  $\mathbb{P}(X_t = Y_t, \text{ for all } t \in \mathbb{R}_0^+)=1$
+\item $X_t$ is a modification of $Y_t$ (and vice versa) if $\mathbb{P}(X_t=Y_t)=1$ for all $t \in \mathbb{R}_0^+$ 
+\item $X_t$ and $Y_t$ have the same FDD (Finite Dimensional Distributions) if for all $n \in \mathbb{N}$ and for all $H \in \mathcal{B}( \mathbb{R}^n)$ we have 
+\begin{align*}
+\mathbb{P}( (X_{t_1}, \dots , X_{t_n}) \in H ) = \mathbb{P}( (Y_{t_1}, \dots , Y_{t_n}) \in H)
+\end{align*}
+\end{enumerate}
+\end{defn}
+\begin{rem} We do indeed have that $1) \implies 2) \implies 3)$. 
+\end{rem}
+\begin{defn} Let $(\mathcal{F}_t)_{t \geq 0}$ be a Filtration. We define the left respectively right continuous Filtrations as 
+\begin{align*}
+\mathcal{F}_{t^-}:= \bigvee_{s <t} \mathcal{F}_s \text{ and } \mathcal{F}_{t^+} := \bigcap_{s >t} \mathcal{F}_s
+\end{align*}
+\end{defn}
+\begin{rem} We have the inclusions $\mathcal{F}_{t^-} \subset \mathcal{F}_t \subset \mathcal{F}_{t^+}$ for all $t \in \mathbb{R}_0^+$ and it is very well possible that these inclusions are strict. 
+\end{rem}
+\begin{defn} Let $(\mathcal{F}_t)_{t \geq 0}$ be a Filtration. We define
+\begin{align*}
+\tilde{\mathcal{F}}_t := \sigma ( \mathcal{F}_{t^+}, \mathcal{N}), \text{ where } \mathcal{N} \text{ is the set of $\mathbb{P}$-negligible sets}. 
+\end{align*}
+We say that out Filtration $( \mathcal{F}_t)_{t \geq 0}$ satisfies the usual conditions if $\mathcal{F}_t = \tilde{\mathcal{F}}_t$ for all $t \in \mathbb{R}_0^+$.
+\end{defn}
+\noindent We come now to our main result in this section. It states that we can regulate martingales, i.e. represent them as modifications through cadlag (continue a droite, limites a gauche) martingales. 
+\begin{thm}[Martingale regularization theorem] \ \\ Let $(X_t)_{t \geq 0}$ be a $ \mathcal{F}_t$-martingale, then there exists $(\widetilde{X_t})_{t \geq 0}$ a $\widetilde{\mathcal{F}_t}$-martingale which is cadlag such that $X_t = \mathbb{E}( \widetilde{X_t} \mid \mathcal{F}_t) $ almost surely for all $t \geq 0$. \\
+Moreover, if $(\mathcal{F}_t)_{t \geq 0}$ satisfies the usual conditions, then $\widetilde{X_t}$ is a cadlag modification of $X_t$. 
+\end{thm}
+\newpage
+\noindent The Martingale regularization theorem is a powerful tool when it comes to extending statements we already know from discrete time martingales to continuous time martingales, because we can regularize them by cadlag representations and then approximate them (using for instance that $\mathbb{Q}$ is dense in $\mathbb{R}$). 
+\begin{thm}[Convergence Theorem] Let $X$ be a cadlag martingale with respect to $( \mathcal{F}_t)_{t \geq 0}$. If $X$ is bounded in $L^1$, i.e. if $\sup_{t \geq 0} \| X_t \|_{L^1} < \infty$, then $X_t \to X_\infty$ as $t \to \infty$ for some $X_\infty \in L^1( \Omega, \mathcal{F}_\infty, \mathbb{P})$. \\
+Moreover if $X$ is UI, then $X_t \to X_\infty$ in $L^1( \Omega, \mathcal{F}, \mathbb{P})$. 
+\end{thm}
+\begin{proof}
+Exercise!
+\end{proof}
+\begin{thm}[Stopping Theorem] Let $X$ be a cadlag martingale and let $\tau \leq \Lambda$ be stopping times with respect to $( \mathcal{F}_t)_{t \geq 0}$. If $\Lambda \leq C$ for some constant $C >0$, then 
+\begin{align*}
+\mathbb{E}(X_\Lambda \mid \mathcal{F}_\tau ) = X_\tau \tag{$\star$}
+\end{align*}
+Moreover, if $X$ is UI, then $(\star)$ above is true for all stopping times $\tau \leq \Lambda.$ 
+\end{thm}
+\begin{proof}
+Exercise!
+\end{proof}
+\newpage
+\section{Brownian Motion}
 \end{document}
