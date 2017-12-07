@@ -415,6 +415,8 @@ where $\pi$ is the equilibrium measure.
 \end{cor}
 \begin{defn} Let $x \in R$ be a recurrent state and consider the set \\  $P_x:= \lbrace n \in \mathbb{N}_{ \geq 1} : Q_{x,x}^n >0 \rbrace$. This set is then infinite (because $x$ is recurrent) and the period of $x$ is defined to be the greatest common divisor of the set $P_x$. That is, the period of $x$ is the number $d= \gcd P_x$. A state $x$ is called aperiodic if $d=1$, else it is called periodic with period $d$. A Markov chain is called aperiodic if every state is aperiodic. 
 \end{defn}
+\begin{prop} A chain is aperiodic if and only if there exists a positive integer $k >0$ such that $Q_{xy}^k >0$ for all $x,y \in \mathcal{H}$.
+\end{prop}
 \begin{prop} Let $X$ be an irreducible markov chain, then all states $x$ have the same period $d$. In particular for an irreducible chain it is enough to find one recurrent state to conclude that the chain is aperiodic. 
 \end{prop}
 \begin{thm} Suppose the chain is positive recurrent and aperiodic, then 
@@ -424,4 +426,38 @@ where $\pi$ is the equilibrium measure.
 i.e. the law of $\omega_n$ under $\mathbb{P}_z$ converges in total variation to $\pi$. 
 \end{thm}
 \textbf{Exercise:} Given a transition probability $Q$. Show that $\tilde{Q} = (I + Q)/2$ defines an irreducible aperiodic chain, it is called the lazy chain. 
+\newpage
+\begin{thm} Let $Z=(Z_k)_{k \in \mathbb{N}}$ identically distributed random variables such that
+\begin{enumerate}
+\item $\mathbb{E}(Z_k^2)=1$ 
+\item $\mathbb{E}(Zk \mid \mathcal{F}_{k-1}) = 0$ where $\mathcal{F}_k = \sigma (Z_1, \dots , Z_k)$
+\item $Z$ is erogidic, in this regime this means 
+\begin{align*}
+\frac{1}{n} \sum_{j=1}^n f(Z_j) \to \mathbb{E}(f(Z)), \text{ almost surely, for all integrable $f$}.
+\end{align*}
+\end{enumerate}
+Then we have that
+\begin{align*}
+\frac{Z_1 + \dots + Z_n}{\sqrt{n}} \implies \mathcal{N}(0,1), \text{ as } n  \to \infty 
+\end{align*}
+\end{thm}
+\begin{proof}
+Follows by McLeish CLT.
+\end{proof}
+\begin{cor} Let $\mathcal{H}$ be a finite state space and $Q$ be an irreducible transition Matrix with equilibrium measure $\pi$. If $\int f d  \pi =0$ and $\sigma = \int f^2 d \pi <  \infty$ then we have that 
+\begin{align*}
+\frac{1}{\sqrt{n}} \sum_{j=1}^n f ( \omega_j) \implies \mathcal{N}(0, \sigma^2), \text{ as } n  \to \infty 
+\end{align*}
+\end{cor}
+\newpage
+\section{Ergodicity}
+In this section we consider $H$ to be complete, separable metric space with Borel $\sigma$-algebra $\mathcal{F}$. For all $t \in \mathbb{R}$ let $T_t : H \to H$ be a family of bijective measurable transformations such that they satisfy the semigroup property, i.e.
+\begin{align*}
+\begin{cases} T_t \circ T_s = T_{t+s} \\ T_0(x) = x \end{cases}
+\end{align*}
+Let $I = \lbrace A \in \mathcal{F}: T_t^{-1}(A)=A \text{ for all } t \in \mathbb{R} \rbrace$ (necessary?) 
+\begin{defn} Let $\mu$ be a measure on $H$. We say that $\mu$ is an invariant measure if $\mu (T_t^{-1}(A))= \mu (A)$ for all $A \in \mathcal{F}$ and for all $t \in \mathbb{R}$. \\  $(H, \mathcal{F},  \mu , T_t) $ is called a dynamical system. 
+\end{defn}
+\begin{defn} $\mu$ is called ergodic if $\mu(A) \in \lbrace 0 ,1 \rbrace $ for all $A \in I$. 
+\end{defn}
 \end{document}
