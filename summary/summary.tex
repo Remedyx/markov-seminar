@@ -551,13 +551,29 @@ Exercise!
 \end{proof}
 \newpage
 \section{Brownian Motion}
+Before we introduce Brownian Motion we start with some preliminary reminders that might be useful later on. 
+\begin{defn} Let $X$ be a real valued random variable, we say that $X$ is standard Gaussian and denote this by $X \sim \mathcal{N}(0,1)$ if its probability density function is given by 
+\begin{align*}
+f(x) = \frac{1}{\sqrt{2 \pi}} \exp \left( \frac{-x^2}{2} \right), \text{ for all } x \in \mathbb{R}.
+\end{align*}
+\end{defn}
+\noindent The concept of a standard Gaussian (also known as normal) random variable can be extended to the multivariate i.e. the vector case. 
+\begin{defn} A random vector $X=(X_1, \dots , X_n), \ n \in \mathbb{N}$ is said to have the multivariate Gaussian distribution if every linear combination of its components $Y=a_1 X_1 + \dots + a_n X_n$ where $a_i \in \mathbb{R}$ for all $i \in \mathbb{N}$ is standard Gaussian distributed (i.e. Gaussian in dimension 1). 
+\end{defn}
+\noindent We extend the definition of the mean and covariance of a random vector in the most natural way
+\begin{defn} Let $X=(X_1, \dots , X_n), \ n \in \mathbb{N}$ be a random vector in $L^2$ (that is by definition that all its components are in $L^2)$ then we define the mean of $X$, $\mathbb{E}(X):= ( \mathbb{E}(X_1), \dots , \mathbb{E}(X_n))$ and its Covariance/Dispersion Matrix $D=(D_{i,j})_{1 \leq i,j \leq n }$ where $D_{i,j} := \text{Cov}(X_i, X_j) := \mathbb{E}(X_i X_j)- \mathbb{E}(X_i)\mathbb{E}(X_j)$. We notice that the Covariance Matrix is symmetric. 
+\end{defn}
+\begin{thm} Let $X$ be a Gaussian vector (i.e. $X$ has the multivariate Gaussian distribution), then the law of $X$ is fully characterized by its mean and its covariance matrix as defined above. 
+\end{thm}
+\noindent We are now ready to start on the relevant definitions in order to introduce what a Brownian motion is. 
 \begin{defn} A stochastic process $X=(X_t)_{t \geq 0}$ is Gaussian if for every $n \in \mathbb{N}_{ \geq 1}$ and times $t_1, \dots , t_n  \in [0,  \infty)$ the vector $(X_{t_1}, \dots , X_{t_n})$ has a multivariate Gaussian distribution. 
 \end{defn}
 \begin{rem} \ \begin{enumerate}
-\item A Gaussian process $X$ is fully characterized by its mean $\mathbb{E}(X_t)$ and by its covariance kernel $K(t,t'):= \text{Cov}(X_t, X_{t'})$ 
+\item A Gaussian process $X$ is fully characterized by its mean $\mathbb{E}(X_t)$ and by its covariance kernel $K(t,t'):= \text{Cov}(X_t, X_{t'})= \mathbb{E}(X_t X_{t'})- \mathbb{E}(X_t) \mathbb{E}(X_{t'})$ 
 \item If $\mathbb{E}(X_t)=0$, then we have $K(t,t')=\text{Cov}(X_t, X_{t'})=\mathbb{E}(X_tX_{t'})$
 \end{enumerate}
 \end{rem}
+\newpage 
 \begin{prop}[Characterization] \label{charbmprop} The following two statements are equivalent:
 \begin{enumerate}
 \item $(X_t)_{t \geq 0}$ has stationary, independent increments and $X_t \sim \mathcal{N}(0,t)$ for all $t \geq 0$.
@@ -576,4 +592,36 @@ Exercise!
 \end{rem}
 \begin{defn} A Brownian motion is a stochastic process $(B_t)_{t \geq 0}$ with continuous sample paths (i.e. a continuous stochastic process) which satisfies either property 1) or 2) (and consequently both of them) in Propositon \ref{charbmprop}.
 \end{defn}
+\begin{defn} A Gaussian Hilbert space $W$ is a closed subspace of $L^2( \Omega, \mathcal{F}, \mathbb{P})$ of centered Gaussian Random Variables.
+\end{defn}
+\begin{defn} A Gaussian process $\Phi$ indexed by a separable Hilbert space $H$ is an isomorphism $\Phi : H \to W$ where $W$ is a Gaussian Hilbert space, such that 
+\begin{align*}
+\mathbb{E}( \Phi(h) \Phi(g)) = \langle h , g \rangle_H, \text{ for all } h,g \in H. 
+\end{align*}
+\end{defn}
+\noindent Here is a rough sketch of the construction of a Brownian Motion. \\ Let $H= L^2([0, \infty), dx)$ and let $( \varphi_n)_{n \in \mathbb{N}}$ be an ONB of $H$. Let now $\xi_1, \xi_2, \dots $ be a sequence of i.i.d. $\mathcal{N}(0,1)$ random variables. 
+\\\\
+Let $W:= \overline{\text{span}( \xi_1, \xi_2, \dots )}$, then $W$ is a Gaussian Hilbert space. If we now require that $\Phi: H \to W$ linear satisfies \begin{align*}
+\Phi( \varphi_n) = \xi_n, \text{ for all } n \in \mathbb{N}
+\end{align*}
+Then by linearty of $\Phi$ and the fact that every element $h \in H$ can be written as $h = \sum_{n=1}^\infty \alpha_n \varphi_n$ for some $\alpha_i \in \mathbb{R}$, we get that 
+\begin{align*}
+\Phi(h) = \sum_{n=1}^\infty \alpha_n \xi_n 
+\end{align*}
+Consequently $\Phi$ is an isomorphism. Moreover we have that 
+\begin{align*}
+\mathbb{E}( \Phi(h) \Phi(g)) = \mathbb{E} \left( \sum_{n=1}^\infty \alpha_n \xi_n \sum_{k=1}^\infty \beta_k \xi_k \right) = \sum_{i=1}^\infty \alpha_i \beta_i \mathbb{E}( \xi_i^2) = \sum_{i=1}^\infty \alpha_i \beta_i 
+\end{align*}
+Analogeously, since $ \varphi_n$ form an ONB of $L^2$ we get that 
+\begin{align*}
+\langle h, g \rangle_{L^2} = \int_0^\infty \sum_{n=1}^\infty \alpha_n \varphi_n(x) \sum_{k=1}^\infty \beta_k \varphi_k(x) dx = \sum_{i=1}^\infty \alpha_i \beta_i 
+\end{align*}
+Thus $\Phi$ is a Gaussian process indexed by the Hilbert Space $L^2$. We also notice that $\mathbb{E}( \Phi(h))=0$ and consequently 
+\begin{align*}
+\mathbb{E} ( ( \Phi(h))^2) = \text{Var}( \Phi(h))= \| h \|_H^2 = \sum_{n=1}^\infty \alpha_n^2 < \infty
+\end{align*}
+Where the finiteness of the above sum comes from the fact that $\| \cdot \|_{H^2}$ is a well-defined norm on $H=L^2.$ This entails that we have
+\begin{align*}
+\Phi(h)= \lim_{N \to \infty} \underbrace{\sum_{n=1}^N \alpha_n \xi_n}_{ \sim \mathcal{N}(0, \sum_{n=1}^N \alpha_n^2)} \sim \mathcal{N}\left( 0, \sum_{n=1}^\infty \alpha_n^2 \right)
+\end{align*}
 \end{document}
