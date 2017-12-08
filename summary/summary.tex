@@ -551,4 +551,29 @@ Exercise!
 \end{proof}
 \newpage
 \section{Brownian Motion}
+\begin{defn} A stochastic process $X=(X_t)_{t \geq 0}$ is Gaussian if for every $n \in \mathbb{N}_{ \geq 1}$ and times $t_1, \dots , t_n  \in [0,  \infty)$ the vector $(X_{t_1}, \dots , X_{t_n})$ has a multivariate Gaussian distribution. 
+\end{defn}
+\begin{rem} \ \begin{enumerate}
+\item A Gaussian process $X$ is fully characterized by its mean $\mathbb{E}(X_t)$ and by its covariance kernel $K(t,t'):= \text{Cov}(X_t, X_{t'})$ 
+\item If $\mathbb{E}(X_t)=0$, then we have $K(t,t')=\text{Cov}(X_t, X_{t'})=\mathbb{E}(X_tX_{t'})$
+\end{enumerate}
+\end{rem}
+\begin{prop}[Characterization] \label{charbmprop} The following two statements are equivalent:
+\begin{enumerate}
+\item $(X_t)_{t \geq 0}$ has stationary, independent increments and $X_t \sim \mathcal{N}(0,t)$ for all $t \geq 0$.
+\item $(X_t)_{t \geq 0}$ is a Gaussian process with mean zero and covariance kernel $\mathbb{E}(X_t X_{t'}) = t  \wedge t'$ for all $t,t' \in  \mathbb{R}_{0}^+$. 
+\end{enumerate}
+\end{prop}
+\begin{rem} We recall the following
+\begin{enumerate}
+\item Independence of the increments means that for all times $0 \leq t_1 \leq t_2  \leq \dots \leq t_n< \infty$ where $n \in \mathbb{N}$, $X_{t_n}-X_{t_{n-1}}, \dots , X_{t_3}-X_{t_2}, X_{t_2}-X_{t_1}$ are independent.
+\item Stationarity of the increments means that for all $s <t$ we have that $X_t-X_s$ is equal in distribution as $X_{t-s}$. 
+\item We can also summarize 1) and 2) above as, if for all $t \in \mathbb{R}_0^+$ we have  \begin{align*}
+&(X_{t_n}-X_{t_{n-1}} , \dots , X_{t_3}-X_{t_2}, X_{t_2}-X_{t_1}) \\  &\sim (X_{t+t_n}-X_{t+t_{n-1}} , \dots , X_{t+t_3}-X_{t+t_2}, X_{t+t_2}-X_{t+t_1})
+\end{align*} 
+\item Since $X_t \sim \mathcal{N}(0,t)$ we have by the stationarity $X_t-X_s \sim X_{t-s} \sim  \mathcal{N}(0,t-s)$. 
+\end{enumerate}
+\end{rem}
+\begin{defn} A Brownian motion is a stochastic process $(B_t)_{t \geq 0}$ with continuous sample paths (i.e. a continuous stochastic process) which satisfies either property 1) or 2) (and consequently both of them) in Propositon \ref{charbmprop}.
+\end{defn}
 \end{document}
