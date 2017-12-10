@@ -22,6 +22,9 @@
 
 
 \begin{document}
+\thispagestyle{empty}
+\tableofcontents
+\newpage
 \section{Conditional Expection}
 We start with some preliminaries, things known or less known.
 \\\\
@@ -599,7 +602,9 @@ f(x) = \frac{1}{\sqrt{2 \pi}} \exp \left( \frac{-x^2}{2} \right), \text{ for all
 \mathbb{E}( \Phi(h) \Phi(g)) = \langle h , g \rangle_H, \text{ for all } h,g \in H. 
 \end{align*}
 \end{defn}
-\noindent Here is a rough sketch of the construction of a Brownian Motion. \\ Let $H= L^2([0, \infty), dx)$ and let $( \varphi_n)_{n \in \mathbb{N}}$ be an ONB of $H$. Let now $\xi_1, \xi_2, \dots $ be a sequence of i.i.d. $\mathcal{N}(0,1)$ random variables. 
+\newpage
+\subsection{Construction of Brownian Motion}
+\noindent Here is a sketch of the construction of a Brownian Motion. \\ Let $H= L^2([0, \infty), dx)$ and let $( \varphi_n)_{n \in \mathbb{N}}$ be an ONB of $H$. Let now $\xi_1, \xi_2, \dots $ be a sequence of i.i.d. $\mathcal{N}(0,1)$ random variables. 
 \\\\
 Let $W:= \overline{\text{span}( \xi_1, \xi_2, \dots )}$, then $W$ is a Gaussian Hilbert space. If we now require that $\Phi: H \to W$ linear satisfies \begin{align*}
 \Phi( \varphi_n) = \xi_n, \text{ for all } n \in \mathbb{N}
@@ -624,4 +629,67 @@ Where the finiteness of the above sum comes from the fact that $\| \cdot \|_{H^2
 \begin{align*}
 \Phi(h)= \lim_{N \to \infty} \underbrace{\sum_{n=1}^N \alpha_n \xi_n}_{ \sim \mathcal{N}(0, \sum_{n=1}^N \alpha_n^2)} \sim \mathcal{N}\left( 0, \sum_{n=1}^\infty \alpha_n^2 \right)
 \end{align*}
+Using our work done above, we can set $X_t:= \Phi( 1_{[0,t]})$ and following our calculations above, it is obvious to conclude that $X_t$ is a Gaussian process. Moreover we have 
+\begin{align*}
+\mathbb{E}(X_t X_s) = \mathbb{E} \left( \Phi(1_{[0,t]}) \Phi(1_{[0,s]}) \right) &= \langle 1_{[0,t]},  1_{[0,s]}  \rangle_{L^2} \\ &= \int_0^\infty 1_{[0,t]}(x) 1_{[0,s]}(x) ds = t \wedge s  
+\end{align*}
+We have thus shown that the process $X_t = \Phi(1_{[0,t]})$ satisfies 2) in Proposition \ref{charbmprop} and consequently also 1). We are not done yet with the construction, because we need a continuous process. 
+\\\\
+We are however in a good position to complete the construction. We will consistently use $\Phi$ for the same isomorphism as constructed above. Moreover, we notice that is enough to construct a Brownian Motion on an interval $[0,1]$, by continuity and glueing the functions together we can then extend this to a Brownian Motion on the real line $[0, \infty)$.
+\\\\
+Consider the Haar function, for this we first define the mother wavelet function as 
+\begin{align*}
+\Psi (t) := \begin{cases}1, & \text{if } 0 \leq t \leq 1/2 \\
+-1, & \text{if } 1/2 \leq t \leq 1 \\ 0, & \text{else} \end{cases}
+\end{align*}
+We then define for all $n \in \mathbb{N}_0$ and $k=0,1, \dots , 2^n-1$ the Haar function as 
+\begin{align*}
+\Psi_{n,k}(t) = 2^{n/2} \Psi(2^n t-k), \text{ where } t \in [0,1]
+\end{align*}
+This function is supported on the dyadic intervals on $[0,1]$, that is on \\ $I_{n,k} = [k 2^{-n}, (k+1)2^{-n}]$ for $k=0, \dots , 2^n-1$ and $n \in \mathbb{N}_0$. Thus we easily conclude that for all $t \in [0,1]$ we have 
+\begin{align*}
+\left| \int_0^t \Psi_{n,k}(x) dx \right| &\leq \int_0^t | 2^{n/2} \Psi(2^n x-k ) |dx = 2^{n/2} \int_{k2^{-n}}^{(k+1)2^{-n}} |\Psi(2^n x-k)|dx
+ \\ &\leq 2^{n/2} \int_{k2^{-n}}^{(k+1)2^{-n}} dx = 2^{n/2} 2^{-n} = 2^{-n/2}
+\end{align*}
+Furthermore, it is possible to show that $\lbrace 1, \Psi_{n,k} \rbrace_{n \geq 0, k =0, \dots , 2^n-1}$ form an ONB of $L^2([0,1], dx)$. We define now a process by
+\begin{align*}
+Z_n(t) :=& \sum_{k=0}^{2^n-1} \xi_{n,k} \int_0^t \Psi_{n,k}(x) dx = \sum_{k=0}^{2^n-1} \xi_{n,k} \langle 1_{[0,t]}, \Psi_{n,k} \rangle_{L^2} \\ 
+& \text{where } (\xi_{n,k})_{ \substack{ k = 0, \dots , 2^n-1 \\ n \geq 0 }} \text{ is an array of i.i.d. } \mathcal{N}(0,1)
+\end{align*}
+Then $Z_n$ is continuous for all $n \geq 0$. We can estimate 
+\begin{align*}
+\max_{t \in [0,1]} |Z_n(t)|  &\leq \sum_{k=0}^{2^n-1} | \xi_{n,k} | \left| \int_0^t \Psi_{n,k}(x) dx \right| \\ & \leq \max_{k =0, \dots , 2^n-1} |\xi_{n,k}| \sum_{k=0}^{2^n-1} \left| \int_{k2^{-n}}^{(k+1)2^{-n}} \Psi_{n,k}(x) dx \right|  \\
+&\leq \max_k | \xi_{n,k}|  \left| \int_0^1 \Psi_{n,k}(x) dx \right| \leq  \max_{k} | \xi_{n,k} | 2^{-n/2}
+\end{align*}
+\newpage
+Since all the $\xi_{n,k}$ are i.i.d. $\mathcal{N}(0,1)$ we obtain for arbitrary $\lambda >0$ 
+\begin{align*}
+\mathbb{P}( \max_k | \xi_{n,k}| > \lambda ) \leq 2^n \mathbb{P}( | \mathcal{N}| > \lambda) \leq 2^n \frac{e^{- \lambda^2/2}}{\lambda}
+\end{align*}
+Let now $\lambda_n = n 2^{-n/2}$ then we obtain by our estimate on the previous page that $\lbrace \max_{t \in [0,1]} | Z_n(t) | > \lambda_n \rbrace \subset \lbrace \max_k | \xi_{n,k} | 2^{-n/2}  > \lambda_n \rbrace$ and consequentaly 
+\begin{align*}
+\mathbb{P}( \max_{t \in [0,1]}| Z_n(t) | > n 2^{-n/2} ) &\leq  \mathbb{P}( \max_k | \xi_{n,k} | 2^{n/2} > n 2^{n/2} )  = \mathbb{P}( \max_{k} | \xi_{n,k} | >n )  \\
+& \leq 2^n \frac{e ^{-n^2/2}}{n}
+\end{align*}
+By the ratio test, one can easily show that this upper estimate is summable, thus by Borel-Cantelli Lemma we get that eventually 
+\begin{align*}
+\max_{t \in [0,1]} |Z_n(t) | \leq n 2^{-n/2}
+\end{align*}
+Again, by the ratio test, this expression is summable and thus we get that 
+\begin{align*}
+\sum_{n=0}^\infty \max_{t \in [0,1]}  | Z_n(t)| < \infty 
+\end{align*}
+Since all the $Z_n$ are continuous, and the convergence above is uniformly over all $t \in [0,1]$ this entails that $\sum Z_n(t)$ converges almost surely to a continuous function on $[0,1]$. 
+\\\\
+We define now 
+\begin{align*}
+B(t):= t \xi_{0,0} + \sum_{n=1}^\infty  \sum_{k=1}^{2^n-1} \xi_{n,k} \langle 1_{[0,t]}, \Psi_{n,k} \rangle 
+\end{align*}
+Since $\lbrace 1, \Psi_{n,k} \rbrace_{n \geq 0, k =0, \dots , 2^n-1}$ is an ONB of $L^2([0,1], dx)$ we can write every element $h \in L^2$ as $h = \sum_{ \alpha \in A } \langle x_\alpha, x \rangle x_\alpha.$ We thus have
+\begin{align*}
+\Phi( 1_{[0,t]}) &= \Phi \left( \sum_{n=0}^\infty \sum_{k=0}^{2^n-1} \langle 1_{[0,t]}, \Psi_{n,k} \rangle \Psi_{n,k}  \right) \\
+& = t \xi_{0,0} + \sum_{n=1}^\infty \sum_{k=1}^{2^n-1} \langle 1_{[0,t]}, \Psi_{n,k} \rangle \Phi \left( \Psi_{n,k} \right) \\
+& = t \xi_{0,0} + \sum_{n=1}^\infty \sum_{k=1}^{2^n-1} \langle 1_{[0,t]}, \Psi_{n,k} \rangle \xi_{n,k}  = B(t)
+\end{align*}
+And we have already shown, that $\Psi(1_{[0,t]})$ satisfies ii) and therefore also i), we conclude that $B(t)$ is a Brownian Motion on $[0,1]$. 
 \end{document}
