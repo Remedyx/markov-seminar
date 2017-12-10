@@ -171,9 +171,11 @@ Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuo
 \\ 
 Let us recall that the standard Brownian motion $B(t)$ satisfies that $B^2(t)-t$ is again a martingale. 
 Our aim in this section is to extend this statement to martingales $M(t)$ by introducing the so called \textit{quadratic variation of $M(t)$} or the \textit{variance process}, denoted by $A(t)$.
-\begin{thm} \label{variancethm}
+\begin{thm}[Existence of the variance process] \label{variancethm}
 There exists a unique increasing, continuous process, called the variance process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
 \end{thm}
+\begin{rem} \label{varianceprocessofBM} If $M(t)=B(t)$ is a Brownian motion, then of course the increasing process is just $A(t)=t$ since we already know that $B^2(t)-t$ is a martingale. 
+\end{rem}
 \begin{proof}
 \textsc{Uniqueness:} Suppose that $A_1(t)$ and $A_2(t)$ both satisfy the conditions of the theorem, then $A_1(t)-A_2(t)$ satisfies the assumptions of Proposition \ref{first Prop}, so $A_1(t)-A_2(t)=A_1(0)-A_2(0)=0$. And therefore $A_1(t)=A_2(t) \;$ for all $t \in \mathbb{R}$. 
 \\\\
@@ -316,9 +318,9 @@ f(M(t))-f(M(0))= \int_0^t f'(M(s)) dM(s) + \frac{1}{2} \int_0^t f"(M(s)) dA(s). 
 \end{align*}
 \end{thm}
 \noindent For the proof of this Theorem we need to extend the concept of the variance process to the one of \textit{covariance processes} associated with \textit{two} martingales:
-\begin{thm}
-Given two square integrable continuous martingales $M_1(t)$, $M_2(t)$; there exists a unique continuous \textit{covariance process}, denoted by \\
-$\langle M_1,M_2\rangle_t$, of bounded variation such that $\langle M_1,M_2\rangle_0=0$ and 
+\begin{thm}[Existence of the covariance process]
+Given two square integrable continuous martingales $M_1(t)$ and $M_2(t)$, there exists a unique continuous process, called the covariance process and denoted by
+$\langle M_1,M_2\rangle_t$, of bounded variation on bounded intervals, such that $\langle M_1,M_2\rangle_0=0$ and 
 \begin{align*}M_1(t) M_2(t)-\langle M_1(t),M_2(t) \rangle_t \quad \text{is a martingale.}
 \end{align*}
 \end{thm}
@@ -346,4 +348,46 @@ M_1(t) M_2(t)=M_1(0) M_2(0) + \int_0^t M_1(s) dM_2(s) + \int_0^t M_2(s) dM_1(s) 
 For the general case one chooses a sequence of polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are unfiformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
 To pass to the limit one can now use the last statement of Theorem \ref{thminequalty}.
 \end{proof}
+\noindent For the rest of this illustration we would like to focus on applications of Itô's formula. The following Lemma is an immediate, but nevertheless interesting consequence.
+\begin{lem} Let $B(t)$ denote a standard Brownian Motion, then 
+\begin{align*}
+\int_0^t B(s) dB(s) = \frac{1}{2}( B^2(t)-t)
+\end{align*}
+\end{lem}
+\begin{proof}
+Let us consider $f: \mathbb{R} \to \mathbb{R}$, given by $f(x) = x^2/2$, then we have $f \in C^2( \mathbb{R})$ and $f'(x)=x, \ f''(x) = 1$. We check the conditions of Itô's formula, recall that by Remark \ref{varianceprocessofBM} we have that the quadratic variance process associated to a Brownian Motion $B(t)$ is just given by $A(t)=t$, as a consequence we simply have $dA(s)=ds$. 
+\begin{align*}
+\mathbb{E} \left( \int_0^t B^2(s) dA(s) \right) &= \mathbb{E} \left( \int_0^t B^2(s) ds \right) = \int_0^t \mathbb{E}(B^2(s) ) ds \\ &  = \int_0^t s ds = \frac{t^2}{2} < \infty 
+\end{align*} 
+Moreover, we have
+\begin{align*}
+\mathbb{E} \left( \int_0^t dA(s) \right) = \mathbb{E}\left( \int_0^t ds \right) = t < \infty 
+\end{align*}
+By Itô's formula we obtain
+\begin{align*}
+\frac{B^2(t)}{2}- 0 = \int_0^t B(s) dB(s) + \frac{1}{2} \int_0^t ds 
+\end{align*}
+We conclude $\displaystyle \int_0^t B(s) dB(s) = \frac{1}{2}(B^2(t)-t)$ as claimed. 
+\end{proof}
+\begin{rem} Since we already know that the Itô integral defines a martingale, we obtain from the Lemma above that $\frac{1}{2}(B^2(t)-t)$ is a martingale. 
+\end{rem}
+\newpage
+\noindent For many applications , it is important to have a more general form of Itô's formula, in order to arrive at this result the notion of semimartingales is important. The next definition permits the formulation of results for stochastic integrals and Stieltjes integrals in a unified way. 
+\begin{defn} A continuous semimartingale is a stochastic process $X(t)$ that can be written in the form $X(t)=M(t) + D(t)$, where $M(t)$ is a continuous martingale and $D(t)$ is a continuous adapted process of bounded variation on bounded $t$ sets satisfying $D(0)=0$. 
+\\\\
+For a sequence of continuous semimartingales $X_i(t)= M_i(t) + D_i(t)$, where $i \in \mathbb{N}$, the covariance process is defined by $\langle X_i, X_j \rangle_t = \langle M_i, M_j \rangle_t$ for all $i,j \in \mathbb{N}$. 
+\\\\
+Finally, Integrals are defined by 
+\begin{align*}
+\int_0^t Y(s) dX(s) = \int_0^t Y(s) dM(s) + \int_0^t Y(s) dD(s) 
+\end{align*}
+whenever the integrals on the right hand side are well-defined. The first integral is the Itô integral, whereas the second integral is a Stieltjes integral. 
+\end{defn}
+\noindent Theorem \ref{itosformula} (Itô's formula) extends naturally to a vector of semimartingales. Its proof works analogeously to the one presented in Theorem \ref{itosformula} and will be ommited here.
+\begin{thm}[Generalization of Itô's formula] Let $X(t) = (X_1(t), \dots , X_n(t))$, where $X_i(t)$ are continuous semimartingales for all $i=1, \dots ,n$ be a vector of continuous semimartingales. Let $f: \mathbb{R}^n \to \mathbb{R}$ be a function of class $C^2$ and suppose that all integrals appearing in the formula below are well-defined, then 
+\begin{align*}
+f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)) dX_i(s)
+\\ & + \frac{1}{2} \sum_{i,j=1}^n \int_0^t \dfrac{\partial^2 f	}{\partial x_i \partial x_j}(X(s))d \langle X_i, X_j \rangle_s. 
+\end{align*}
+\end{thm}
 \end{document}
