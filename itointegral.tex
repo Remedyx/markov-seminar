@@ -101,43 +101,19 @@ We will introduce the notion of Itô's integral, first for predictable step func
 \noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"}.
 \\\\
 We will finish by giving several applications of Itô's formula. 
-
-
-% source:
-% https://quant.stackexchange.com/questions/17665/stochastic-differentials-itos-formula-for-a-self-financing-portfolio
-\newpage 
-\section{Application of Itô's formula in Finance}
-In order to motivate the importance of Itô's formula we start by giving an example from mathematical finance. \\
-\\
-Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
-$$ V=a_t S_t + b_t \beta_t $$
-Now let $$a_t=2 B_t;\quad b_t=-1-B_t^2-20 B_t;\quad S_t=10+B_t;\quad \beta_t=1$$
-where $B_t$ denotes a Brownian Motion at time $t$.
-We now can easily show using Itô's formula, that this portfolio is self-financing:
-
-\begin{align*} V&=a_t S_t + b_t \beta_t = 2 B_t(10+B_t) +(-t-B_t^2-20B_t)\cdot 1\\
-&=20B_t + 2B_t^2-t-B_t^2-20B_t \\
-&=B_t^2-t 
-\end{align*}
-Applying Itô's formula [$f(B_t) \Longrightarrow df=f'(B_t)dB_t + \frac{1}{2} f"(B_t)dt$] and quadratic variation [$(dB_t)^2=dt$] to it we get
-\begin{align*}  dV_t &= (2B_t dB_t + \frac{1}{2}\cdot 2 \langle B, B \rangle_t)-dt\\
-&= 2 B_t dB_t\\
-&= a_t dS_t + b_t d\beta_t
-\end{align*}
-Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
-\begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
-which is a characterization of a self-financing portfolio.
-\newpage
-\noindent The preceeding example motivates a more general setting that often occurs in many models in the fields of economics, engineering and mathematical finance. Informally it can be stated as
+\subsection{Motivation}
+\noindent Many models in the fields of economics, engineering and mathematical finance can be expressed through stochastic differential equations. Informally this can be stated as
 $$ \quad dZ(t) = f(t, Z(t))dt + g(t,Z(t)) dM(t), $$
-where $Z(t)$ is the process of interest, as the value of a certain portfolio in the example above.\\
+where $Z(t)$ is for example the process of interest, as the value of a certain portfolio, whereas the second term represents its variability, here $M(t)$ denotes a continuous martingale. In section 3.3 we give some concrete motivating examples. \\
 \\
 In order to make sense of the above expression, we need to define integrals of the form
 \begin{align*} \int_0^t Y(s,\omega) \; dM(s) \tag{$\star$} 
 \end{align*}
 where $M(t)$ is a martingale. It turns out that the Brownian motion is the most natural choice as an integrator for our integral above. 
+% source:
+% https://quant.stackexchange.com/questions/17665/stochastic-differentials-itos-formula-for-a-self-financing-portfolio
+\newpage 
 
-\newpage
 
 \section{The Itô Integral}
 Before we introduce the notion of Itô's integral we start with some preliminaries.
@@ -369,11 +345,11 @@ By Itô's formula we obtain
 \end{align*}
 We conclude $\displaystyle \int_0^t B(s) dB(s) = \frac{1}{2}(B^2(t)-t)$ as claimed. 
 \end{proof}
-\begin{rem} Since we already know that the Itô integral defines a martingale, we obtain from the Lemma above that $\frac{1}{2}(B^2(t)-t)$ is a martingale. 
+\begin{rem} Since we already know that the Itô integral defines a martingale, we rediscover from the lemma above the fact that $B^2(t)-t$ is a martingale. 
 \end{rem}
 \newpage
 \noindent For many applications , it is important to have a more general form of Itô's formula, in order to arrive at this result the notion of semimartingales is important. The next definition permits the formulation of results for stochastic integrals and Stieltjes integrals in a unified way. 
-\begin{defn} A continuous semimartingale is a stochastic process $X(t)$ that can be written in the form $X(t)=M(t) + D(t)$, where $M(t)$ is a continuous martingale and $D(t)$ is a continuous adapted process of bounded variation on bounded $t$ sets satisfying $D(0)=0$. 
+\begin{defn} \label{defsemimartingale} A continuous semimartingale is a stochastic process $X(t)$ that can be written in the form $X(t)=M(t) + D(t)$, where $M(t)$ is a continuous martingale and $D(t)$ is a continuous adapted process of bounded variation on bounded $t$ sets satisfying $D(0)=0$. 
 \\\\
 For a sequence of continuous semimartingales $X_i(t)= M_i(t) + D_i(t)$, where $i \in \mathbb{N}$, the covariance process is defined by $\langle X_i, X_j \rangle_t = \langle M_i, M_j \rangle_t$ for all $i,j \in \mathbb{N}$. 
 \\\\
@@ -383,11 +359,68 @@ Finally, Integrals are defined by
 \end{align*}
 whenever the integrals on the right hand side are well-defined. The first integral is the Itô integral, whereas the second integral is a Stieltjes integral. 
 \end{defn}
-\noindent Theorem \ref{itosformula} (Itô's formula) extends naturally to a vector of semimartingales. Its proof works analogeously to the one presented in Theorem \ref{itosformula} and will be ommited here.
+\begin{rem}  \ 
+\begin{enumerate} 
+\item Every continuous Martingale $M(t)$ is also a continuous semimartingale. 
+\item The decomposition of the stochastic process $X(t)=M(t) + D(t)$ is unique thanks to Proposition \ref{first Prop}. 
+\end{enumerate} 
+\end{rem}
+\noindent Theorem (Itô's formula) extends naturally to a vector of semimartingales. Its proof works analogeously to the one presented in Theorem \ref{itosformula} and will be ommited here.
 \begin{thm}[Generalization of Itô's formula] Let $X(t) = (X_1(t), \dots , X_n(t))$, where $X_i(t)$ are continuous semimartingales for all $i=1, \dots ,n$ be a vector of continuous semimartingales. Let $f: \mathbb{R}^n \to \mathbb{R}$ be a function of class $C^2$ and suppose that all integrals appearing in the formula below are well-defined, then 
 \begin{align*}
 f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)) dX_i(s)
 \\ & + \frac{1}{2} \sum_{i,j=1}^n \int_0^t \dfrac{\partial^2 f	}{\partial x_i \partial x_j}(X(s))d \langle X_i, X_j \rangle_s. 
 \end{align*}
 \end{thm}
+\noindent As an application of the generalized Itô's formula we will provide a method to generate many new martingales from a given one. 
+\newpage
+\begin{thm} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ is a function of class $C^2$ and satisfies \begin{align*}
+\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2 f}{\partial x^2}= 0 
+\end{align*}
+Let $M(t)$ be a continuous square integrable martingale and define $X(t):=(M(t), \langle M, M \rangle_t )$. If for every $t \in \mathbb{R}_+$ 
+\begin{align*}
+\mathbb{E} \left( \int_0^t \left[ \left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2 + \left| \dfrac{\partial f}{\partial y} (X(s)) \right| \right] d \langle M, M \rangle_s \right) < \infty \tag{$\diamondsuit$}
+\end{align*}
+then $f(X(t))$ is a martingale. 
+\end{thm}
+\begin{proof}
+We have $n=2$ and $X(t)=(M(t), \langle M, M \rangle_t)$, i.e. $X_1(t)=  M(t)$ and $X_2(t)= \langle M, M \rangle_t$ which are indeed both continuous semimartingales, in particular we have for $X_2$ the unique decomposition (see Definition \ref{defsemimartingale}) $X_2(t)=0 + \langle M, M \rangle_t$ because $\langle M, M \rangle$ is (locally) of bounded variation. This entails that $\langle X_1, X_2 \rangle_t = \langle M(t), 0 \rangle_t=0= \langle X_2, X_1 \rangle_t = \langle X_2, X_2 \rangle_t$.  
+\\\\
+Therefore the sum on Itô's formula breaks down to the three terms below
+\begin{align*}
+f(X(t))-f(X(0)) = &\int_0^t \dfrac{\partial f}{\partial x}(X(s))dM(s) + \int_0^t \dfrac{\partial f}{\partial y}(X(s)) d \langle M, M \rangle_s  \\
+& +\frac{1}{2} \int_0^t \dfrac{\partial^2f}{\partial x^2}(X(s)) d \langle M, M \rangle_s 
+\end{align*}
+They are all well defined because of the condition $(\diamondsuit)$, moreover the 2 right most terms vanish because by assumption we have that 
+\begin{align*}
+\dfrac{\partial f}{\partial y}+ \frac{1}{2} \frac{\partial^2 f}{\partial x^2} =0
+\end{align*}
+Henceforth we are left with
+\begin{align*}
+f(X(t))-f(X(0)) = \int_0^t \dfrac{\partial f}{\partial x} (X(s)) dM(s),
+\end{align*}
+which is a martingale. 
+\end{proof}
+\newpage
+\subsection{Application of Itô's formula in Finance}
+In order to motivate the importance of Itô's formula we start by giving an example from mathematical finance. \\
+\\
+Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
+$$ V=a_t S_t + b_t \beta_t $$
+Now let $$a_t=2 B_t;\quad b_t=-1-B_t^2-20 B_t;\quad S_t=10+B_t;\quad \beta_t=1$$
+where $B_t$ denotes a Brownian Motion at time $t$.
+We now can easily show using Itô's formula, that this portfolio is self-financing:
+
+\begin{align*} V&=a_t S_t + b_t \beta_t = 2 B_t(10+B_t) +(-t-B_t^2-20B_t)\cdot 1\\
+&=20B_t + 2B_t^2-t-B_t^2-20B_t \\
+&=B_t^2-t 
+\end{align*}
+Applying Itô's formula [$f(B_t) \Longrightarrow df=f'(B_t)dB_t + \frac{1}{2} f"(B_t)dt$] and quadratic variation [$(dB_t)^2=dt$] to it we get
+\begin{align*}  dV_t &= (2B_t dB_t + \frac{1}{2}\cdot 2 \langle B, B \rangle_t)-dt\\
+&= 2 B_t dB_t\\
+&= a_t dS_t + b_t d\beta_t
+\end{align*}
+Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
+\begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
+which is a characterization of a self-financing portfolio.
 \end{document}
