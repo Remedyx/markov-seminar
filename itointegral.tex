@@ -94,13 +94,13 @@ One week before his death he was awarded the Culture Medal of Japan, also known 
 \section{Abstract}
 It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economy. 
 \\\\
-Quite generally speaking, we will often sketch proofs by reducing them to their most important steps (such as for instance localization) and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
+Quite generally speaking, we will often sketch proofs by reducing them to their most important steps and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
 \\\\
 We will introduce the notion of Itô's integral, first for predictable step functions and later on expand this result to obtain a general Itô integral. Moreover we will introduce Itô's formula for single martingales and for several semimartingales.
 \\\\
 \noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"}.
 \\\\
-We will finish by giving several applications of Itô's formula. 
+A key result that we shall establish is Lévy's characterization of a Brownian Motion. The last section contains applications of Itô's formula in Finance. 
 \subsection{Motivation}
 \noindent Many models in the fields of economics, engineering and mathematical finance can be expressed through stochastic differential equations. Informally this can be stated as
 $$ \quad dZ(t) = f(t, Z(t))dt + g(t,Z(t)) dM(t), $$
@@ -140,7 +140,7 @@ If $M(t)$ is a martingale with continuous paths that are of bounded variation on
 In the first part of this exposition we will do just that, i.e. show the construction of the Itô integral for which we can study integrals of the form $(\star)$. 
 \newpage 
 \subsection{Construction of Itô's integral}
-Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuous martingale with respect to the right continuous filtration $\lbrace \mathcal{F}_t \rbrace$, moreover we request that $M(t)$ is square integrable, i.e. $\mathbb{E}(M^2(t)) < \infty$ for all $t \in \mathbb{R}$. By $B(t)$ we will always denote a standard Brownian motion - it will start at the origin and be of variance $t$ at time $t$. 
+Throughout this chapter, we will assume for simplicity that $M(t)$ is a continuous martingale with respect to the right continuous filtration $\lbrace \mathcal{F}_t \rbrace$, moreover we request that $M(t)$ is square integrable, i.e. $\mathbb{E}(M^2(t)) < \infty$ for all $t \in \mathbb{R}$. By $B(t)$ we will always denote a standard Brownian motion - it will start at the origin, have mean zero and be of variance $t$ at time $t \in \mathbb{R}_+$. 
 \\\\
  Finally it is worth mentioning that, in order to simplify the exposition, assumptions in the main results will often be stronger than necessary. 
 \\
@@ -374,7 +374,7 @@ f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)
 \end{thm}
 \noindent As an application of the generalized Itô's formula we will provide a method to generate many new martingales from a given one. 
 \newpage
-\begin{thm} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ is a function of class $C^2$ and satisfies \begin{align*}
+\begin{thm} \label{fromitotomartingale} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ is a function of class $C^2$ and satisfies \begin{align*}
 \dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2 f}{\partial x^2}= 0 
 \end{align*}
 Let $M(t)$ be a continuous square integrable martingale and define $X(t):=(M(t), \langle M, M \rangle_t )$. If for every $t \in \mathbb{R}_+$ 
@@ -401,9 +401,51 @@ f(X(t))-f(X(0)) = \int_0^t \dfrac{\partial f}{\partial x} (X(s)) dM(s),
 \end{align*}
 which is a martingale. 
 \end{proof}
+\begin{rem} Of course $f$ above could also be complex valued, to establish this, simply apply the result separately to the real and imaginary parts of $f$.
+\end{rem}
+\noindent Before we come to applications of Itô's formula in the theme of mathematical finance we present a very interesting application of the above theorem, it gives us a characterization of a standard Brownian Motion. 
+\\\\
+We recall that one way to characterize a standard Brownian Motion is to say that it is a continuous stochastic process $(B_t)_{t \geq 0}$ starting at $0$ with stationary, independent increments and $B_t \sim \mathcal{N}(0,t)$ for all $t \geq 0$. 
+\newpage
+\begin{thm}[Lévy's characterization of a standard Brownian Motion] Let $M(t)$ be a continuous, square integrable martingale. $M(t)$ is a standard Brownian Motion if and only if $M(0)=0$ and $\langle M,M \rangle_t = t$
+\end{thm}
+\begin{proof}
+Indeed if $M(t)=B(t)$ is a standard Brownian Motion, then we already know that it is a continuous, square integrable martingale with $B(0)=0$ and we also established, in Remark \ref{varianceprocessofBM}, that its variance process $\langle M, M \rangle_t$ is given by $t$.
+\\\\
+Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingtale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for $z \in \mathbb{C}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
+\begin{align*}
+f(x,y)= \exp ( zx-(z^2/2)y)
+\end{align*}
+then indeed $f$ is of class $C^2$ and it satisfies 
+\begin{align*}
+\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2f}{\partial x^2}=0 
+\end{align*}
+Moreover, we have $X(t)=(M(t), \langle M, M \rangle_t ) = (M(t), t)$. Let us now specialize $z=iu$ where $u \in \mathbb{R}$. We then easily verify that the condition $(\diamondsuit)$ in Theorem \ref{fromitotomartingale} holds, in order to see this just make use of the fact that 
+\begin{align*}
+\left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2
+\leq \left| u e^{2iu M(s) + (u^2/2) s} \right| \leq |u| e^{(u^2/2)s}
+\end{align*} 
+and similarly for the 2nd partial derivative. Theorem \ref{fromitotomartingale} now yields taht  
+\begin{align*}
+f(X(t)) = \exp \left( i u M(t) + \frac{u^2}{2}t \right) 
+\end{align*}
+is a Martingale. Therefore, for all $s <t$ we must have 
+\begin{align*}
+\mathbb{E}(f(X(t)) \mid \mathcal{F}_s) = f(X(s))
+\end{align*}
+or equivalently 
+\begin{align*}
+\mathbb{E}\left( \exp \left[ i u M(t) + \frac{u^2}{2}t \right] \mid \mathcal{F}_s \right) = \exp \left( i u M(s) + \frac{u^2}{2}s \right) 
+\end{align*}
+by rearranging those terms we get 
+\begin{align*}
+\mathbb{E} \left( e^{iu(M(t)-M(s))} \mid \mathcal{F}_s \right) = e^{- \left( \frac{u^2}{2} \right)(t-s)}
+\end{align*}
+By identifying the characteristic function we conclude that $M(t)-M(s)$ is independent of $\mathcal{F}_s$ and has a Gaussian distribution with mean $0$ and variance $t-s$. This entails that $M(t)$ is a standard Brownian motion. 
+\end{proof}
 \newpage
 \subsection{Application of Itô's formula in Finance}
-In order to motivate the importance of Itô's formula we start by giving an example from mathematical finance. \\
+In this last section we give some more concrete examples that come from the field of mathematical finance.  \\
 \\
 Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
 $$ V=a_t S_t + b_t \beta_t $$
@@ -423,4 +465,33 @@ Applying Itô's formula [$f(B_t) \Longrightarrow df=f'(B_t)dB_t + \frac{1}{2} f"
 Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
 \begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
 which is a characterization of a self-financing portfolio.
+\newpage
+\noindent We will look at the usual model for the time-evolution of an asset price $S(t)$.
+The original paper by Black and Scholes assumes that the price of the underlying asset is a stochastic process $S(t)$ solving the following stochastic differential equation (SDE)
+\begin{align*}
+dS(t)=\mu S(t) dt + \sigma S(t) dB(t)
+\end{align*}
+where $\mu$ denotes the continuously compouded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. 
+In other words, $S(t)$ is a \textit{geometric Brownian motion}.\\
+\\
+Dividing by $S(t)$ in the equation above yields
+\begin{align*}\frac{dS(t)}{S(t)}=\mu dt + \sigma dB(t)\quad (\star) \end{align*}
+Notice that the left-hand side looks similar to the derivative of $\log{S(t)}$.\\
+Applying the generalized Itô's formula for semimartingales to the function $f(t,x)=\log(x)\in C^2(\mathbb{R}_+^2,\mathbb{R})$ and using that $\partial_t f(t,x)=0$, we get 
+%[-->plug it in in $df(t,X_t)= \partial_t f(t,X_t)dt + \partial_x f(t.X_t) dX_t + 1/2 \partial_{xx} f(t,X_t) d<X,X>_t$]
+\begin{align*}
+d(\log(S_t)&=\frac{1}{S_t} \, dS_t + \frac{1}{2}\cdot \left(-\frac{1}{S^2_t} \right) d\langle S,S\rangle_t 
+= \frac{1}{S_t} dS_t -\frac{1}{2} \sigma^2 dt \\
+&\stackrel{(\star)}{=} \mu \, dt + \sigma \, dB(t) -\frac{1}{2} \sigma^2 \, dt
+=\left(\mu -\frac{1}{2} \sigma^2\right)\, dt + \sigma \, dB(t)
+\end{align*}
+It follows that
+\begin{align*}\log(S(t))-\log(S(0)) =\left(\mu -\frac{1}{2} \sigma^2\right)t + \sigma B(t)
+\end{align*}
+Taking the exponential of this equation finally gives us:
+\begin{align*}
+S(t)=S(0) \cdot \exp\left( \left(\mu - \frac{1}{2}\sigma^2\right)\cdot t + \sigma B(t)\right).
+\end{align*}
+This is the solution to the SDE, and one can see that the process $S(t)$ is lognormally distributed as predicted by the Black-Scholes model.
+
 \end{document}
