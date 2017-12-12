@@ -692,4 +692,32 @@ Since $\lbrace 1, \Psi_{n,k} \rbrace_{n \geq 0, k =0, \dots , 2^n-1}$ is an ONB 
 & = t \xi_{0,0} + \sum_{n=1}^\infty \sum_{k=1}^{2^n-1} \langle 1_{[0,t]}, \Psi_{n,k} \rangle \xi_{n,k}  = B(t)
 \end{align*}
 And we have already shown, that $\Psi(1_{[0,t]})$ satisfies ii) and therefore also i), we conclude that $B(t)$ is a Brownian Motion on $[0,1]$. 
+\newpage
+\begin{defn} The law of a Brownian Motion on $\mathcal{C}:= \lbrace \omega : [0, \infty) \to \mathbb{R} \text{ continuous} \rbrace$ will be denoted by $\mathbb{P}_0$. We denote by $\mathbb{P}_x$ the image of $\mathbb{P}_0$ by the translation map $\Theta: \mathcal{C} \to \mathcal{C}, \ \omega \mapsto \omega + x$ for all $x \in \mathbb{R}$.
+\end{defn}
+\noindent Brownian Motions have interesting scaling properties as the next Lemma shows.
+\begin{lem} Let $B=(B_t)_{t \geq 0}$ be a standard Brownian Motion, then we have 
+\begin{enumerate}
+\item For any $\alpha \in \mathbb{R}$, $B_{ \alpha^2 t} \sim \alpha B_t$.
+\item For any $s >0$ we have that $X_t = B_{s+t}-B_s$ is a Brownian Motion independent of $\mathcal{F}_s^0 = \sigma ( B_t, 0 \leq t \leq s )$. 
+\end{enumerate} 
+\end{lem}
+\begin{proof}
+Exercise!
+\end{proof}
+\begin{defn} We define $\mathcal{F}_s^0 = \sigma ( B_t : 0 \leq t \leq s)$ and $\mathcal{F}_s^+ = \cap_{t >s} \mathcal{F}_t^0$ the right-continuous extension. In particular we call $\mathcal{F}_0^+$ the germ-sigma-algebra. 
+\end{defn}
+\begin{thm}[Markov Property] For any bounded measurable $F: \mathcal{C} \to \mathbb{R}$ and any $t >0$ the Markov Property holds, i.e. we have
+\begin{align*}
+\mathbb{E}_x ( F \circ \Theta_t \mid \mathcal{F}_t^+ ) = \mathbb{E}_{ \omega_t} (F), \ x \in \mathbb{R}
+\end{align*}
+where $(\Theta_t)_{t \geq 0}$ is the shift on $\mathcal{C}$, i.e. for any $s \in \mathbb{R}$ we have 
+\begin{align*}
+\Theta_s : \begin{cases} \mathcal{C} & \longrightarrow \mathcal{C} \\
+\omega & \longmapsto \theta_s( \omega) = (\omega_{t+s})_{t \geq 0}
+\end{cases}
+\end{align*}
+\end{thm}
+\begin{rem} Markov's property for BM states that under $\mathbb{P}_x$, the conditional law of $\Theta_t \omega$ given $\mathcal{F}_t^+$ is $\mathbb{P}_{ \omega_t}$.
+\end{rem}
 \end{document}
