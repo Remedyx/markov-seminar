@@ -78,14 +78,14 @@
 
 \epigraph{\textit{People all over realized that what Itô had done explained things that were unexplainable before.}}{Prof. Daniel Strook, MIT}
 
-\noindent Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influencal that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
+\noindent Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influential that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
 \\\\
 At its heart, the most basic concept of Itô calculus is Itô's integral and among the most important results is a version of the fundamental theorem of calculus, known as Itô's formula.
 \\\\
 In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being its first laureate, a price given to honor mathematicians for outstanding mathematical contributions that have found significant applications outside of the field of mathematics. The Gauss price is considered to be the highest honor conferred for applications of mathematics.
 \\
 \\
-The selection of Kiyosi Itô for the first laureate reflects the achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
+The selection of Kiyosi Itô for the first laureate reflects his achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
 \\\\
 %Source for this paragraph https://en.wikipedia.org/wiki/Order_of_Culture#2006
 % and http://www-history.mcs.st-andrews.ac.uk/Obits2/Ito_Times.html
@@ -109,7 +109,7 @@ where $Z(t)$ is for example the process of interest, as the value of a certain p
 In order to make sense of the above expression, we need to define integrals of the form
 \begin{align*} \int_0^t Y(s,\omega) \; dM(s) \tag{$\star$} 
 \end{align*}
-where $M(t)$ is a martingale. It turns out that the Brownian motion is the most natural choice as an integrator for our integral above. 
+where $M(t)$ is a martingale. It turns out that a Brownian motion is the most natural choice as an integrator for our integral above. 
 % source:
 % https://quant.stackexchange.com/questions/17665/stochastic-differentials-itos-formula-for-a-self-financing-portfolio
 \newpage 
@@ -160,34 +160,33 @@ There exists a unique increasing, continuous process, called the variance proces
 \\\\
 Given an arbitrary martingale $M(t)$, we define
 $$\tau_n := n \wedge \inf\{t \geq 0: |M(t)|\geq n\}, \text{ where } n \in \mathbb{N}.$$
-This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ so that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ $$M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$$ is a martingale.
+This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$ for all $t \in \mathbb{R}_0^+$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ such that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ that $M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$ is a martingale. 
 \newpage
 
 \noindent Since $M_n(t \wedge \tau_m)=M_m(t)$, the uniqueness statement implies that 
 $$A_n(t \wedge \tau_m)=A_m(t) \quad i.e.\quad  A_n(t)=A_m(t) \quad for \;t\leq \tau_m.$$
 So we may define the process $A(t)$ by $A(t)=A_n(t)$ for $t<\tau_n$. Also note that $A_n(t) \uparrow A(t)$ and $A_n(t)$ is constant for $t\geq \tau_n$, since we have the following
-$$\mathbb{E}[A_n(t)-A_n(\tau_n), t>\tau_n]= \mathbb{E}[M_n^2(t)-M_n^2(\tau_n), t>\tau_n]=0$$
+$$\mathbb{E}[A_n(t)-A_n(\tau_n), t>\tau_n]= \mathbb{E}[M_n^2(t)-M_n^2(\tau_n), t>\tau_n]=0.$$
 Moreover, by Jensen's inequality we obtain that
-$$M_n^2(t)=M^2(t \wedge \tau_n) \leq \mathbb{E}[M^2(t) \mid \mathscr{F}_{t \wedge \tau_n}],$$
+$$M_n^2(t)=M^2(t \wedge \tau_n) \leq \mathbb{E}[M^2(t) \mid \mathcal{F}_{t \wedge \tau_n}],$$
 which entails that $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t \in \mathbb{R}$ and we can pass to the limit in the martingale property to conclude that $M^2(t)-A(t)$ is indeed is a martingale
-$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathscr{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t.$$
-
+$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathcal{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t.$$
 \end{proof}
 \noindent In order to construct Itô's integral we will proceed by defining it for so called predictable step functions. For the time being, we will consistently use $A(t)$ to denote the variance process corresponding to the martingale $M(t)$. 
 \begin{defn} \label{defitopredictable} A predictable step function is a stochastic process of the following type
 \begin{align*}
-Y(t, \omega) = Y_0 ( \omega)1_{\{0\}} (t) + \sum_{i=1}^\infty Y_i( \omega) 1_{(t_i,t_{i+1}]}(t)
+Y(t, \omega) = Y_0 ( \omega)1_{\{0\}} (t) + \sum_{i=1}^\infty Y_i( \omega) 1_{(t_i,t_{i+1}]}(t),
 \end{align*}
 with times $0=t_1 < t_2 < \dots $ such that $t_k \uparrow \infty$ as $k \to \infty$, $Y_i \in \mathcal{F}_{t_i}$ and $|Y_i( \omega)| \leq K$ for all $i \in \mathbb{N}$ for some constant $K$. 
 For such a predictable step function, the Itô integral is defined to be 
 \begin{align*}
-\int_0^t Y(s) dM(s) = \sum_{i=1}^\infty Y_i  (M(t \wedge t_{i+1}) - M(t \wedge t_i))
+\int_0^t Y(s) dM(s) = \sum_{i=1}^\infty Y_i  (M(t \wedge t_{i+1}) - M(t \wedge t_i)).
 \end{align*}
 \end{defn}
 \noindent We notice that the above sum is finite, indeed since the $Y_i$ are uniformly bounded over all $i \in \mathbb{N}$, the dominating sum is telescopic and since $t_k \uparrow \infty$ for $k \to \infty$ we obtain a finite sum.
 \\
 \\
-The following Theorem is a cornerstone when it comes to extend the Itô integral to more general integrands.
+The following Theorem will be a cornerstone when it comes to extend the Itô integral to more general integrands, moreover it states that our definition above of the Itô integral always yields a martingale.
 \newpage
 \begin{thm} \label{thminequalty} Let $Y(t)$ be a preditable step function, then
 \begin{align*}
@@ -195,11 +194,11 @@ M^*(t) = \int_0^t Y(s) dM(s)
 \end{align*}
 is a continuous, square integrable martingale. The variance process corresponding to $M^*(t)$ is given by
 \begin{align*}
-A^*(t) = \int_0^t Y^2(s) dA(s)
+A^*(t) = \int_0^t Y^2(s) dA(s).
 \end{align*}
 Moreover we have
 \begin{align*}
-\mathbb{E}\left( \sup_{0 \leq s \leq t} (M^*(s))^2 \right) \leq 4 \mathbb{E}(A^*(t))
+\mathbb{E}\left( \sup_{0 \leq s \leq t} (M^*(s))^2 \right) \leq 4 \mathbb{E}(A^*(t)).
 \end{align*}
 \end{thm}
 \begin{proof}
@@ -217,18 +216,18 @@ The final statement is just a consequence of Doob's inequality.
 \end{proof}
 \noindent Since we have $M^*(0)=0$ and by Theorem \ref{variancethm} we know that $(M^*(t))^2 -A(t)$ is again a martingale, we easily arrive at
 \begin{cor} \label{corisometry} \begin{align*}
-\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right) 
+\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right).
 \end{align*}
 \end{cor}
 \noindent This isometry will be crucial when we want to extend the Itô integral to more general integrands. We will do this next.
 \newpage
 \begin{defn} Let $\mathcal{H}$ denote the space of all adapted stochastic processes $Y(t)$ with left continuous paths and for which we have
 \begin{align*}
-\mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right) < \infty, \text{ for all } T >0
+\mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right) < \infty, \text{ for all } T >0.
 \end{align*}
 Then $( \mathcal{H}, \| \cdot \|_T )$ has the structure of a normed space where the norm $\| \cdot \|_T$ on $\mathcal{H}$ is given by 
 \begin{align*}
-\| Y\|_T^2 := \mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right), \text{ for all } T >0 
+\| Y\|_T^2 := \mathbb{E} \left( \int_0^T Y^2(t) dA(t) \right), \text{ for all } T >0.
 \end{align*}
 \end{defn}
 \begin{rem} \ \begin{enumerate}
@@ -238,7 +237,7 @@ Then $( \mathcal{H}, \| \cdot \|_T )$ has the structure of a normed space where 
 \end{rem}
 \noindent By the above remark we know that the set of predictable space functions is a subset of the normed space $\mathcal{H}$, in fact, much more is true as the following Proposition entails.
 \begin{prop}
-The class of predictable step functions is dense in $\mathcal{H}$ 
+The class of predictable step functions is dense in $\mathcal{H}$.
 \end{prop}
 \noindent The above Proposition states that our definition of predictable step functions are in a way the building blocks to more general integrands, i.e. elements in $\mathcal{H}$, in the sense that every element in $\mathcal{H}$ can be approximated by a sequence $(Y_n)_{n \in \mathbb{N}}$ of predictable step functions.  Unsurprisingly this brings us in a position to define the Itô integral for general integrands in $\mathcal{H}$. 
 \begin{thm}[Itô's integral for general integrands in $\mathcal{H}$] Itô's integral for predictable step functions as defined in Definition \ref{defitopredictable} extends uniquely to $Y \in \mathcal{H}$ in such a way that it is a continuous, square integrable martingale, moreover it satisfies 
@@ -247,16 +246,16 @@ The class of predictable step functions is dense in $\mathcal{H}$
 \end{align*}
 in probability, uniformly on bounded $t$ sets, whenever we have $Y_n \to_\mathcal{H} Y$ for $Y_n$ predictable step functions. Furthermore, it's quadratic variation process is given by 
 \begin{align*}
-\int_0^t Y^2(s) dA(s)
+\int_0^t Y^2(s) dA(s),
 \end{align*}
 thus 
 \begin{align*}
-\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2 \right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right) 
+\mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2 \right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right). 
 \end{align*}
 \end{thm}
 \newpage
 \begin{proof}
-By the density of the class of predictable step functions in $\mathcal{H}$ we can  for given $Y \in \mathcal{H}$ choose a sequence $(Y_n)_{n \in \mathbb{N}}$ of predictable step functions such that $Y_n \to_\mathcal{H} Y$. Since convergent sequences (with respect to the norm $\| \cdot \|_T$) are always Cauchy we obtain by linearty and inequality stated in Theorem \ref{thminequalty} that
+By the density of the class of predictable step functions in $\mathcal{H}$ we can  for given $Y \in \mathcal{H}$ choose a sequence $(Y_n)_{n \in \mathbb{N}}$ of predictable step functions such that $Y_n \to_\mathcal{H} Y$. Since convergent sequences (with respect to the norm $\| \cdot \|_T$) are always Cauchy we obtain by linearty and the inequality stated in Theorem \ref{thminequalty} that
 \begin{align*}
 \mathbb{E} \left( \sup_{0 \leq t \leq T} \left[ \int_0^t Y_n(s) dM(s) - \int_0^t Y_m(s) dM(s) \right]^2 \right) \leq 4 \| Y_n -Y_m \|_T^2 \to 0 
 \end{align*}
@@ -286,7 +285,7 @@ in $L^1$ and $L^2$ respectively, because of the isometry shown in Corollarly \re
 Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^2$-function satisfiying
 \begin{align*}
 \mathbb{E}\left( \int_0^t [f'(M(s))]^2 dA(s) \right) < \infty \text{ and } 
-\mathbb{E}\left( \int_0^t \mid f"(M(s))\mid dA(s) \right) < \infty
+\mathbb{E}\left( \int_0^t \mid f"(M(s))\mid dA(s) \right) < \infty.
 \end{align*}
 Then we have the identity
 \begin{align*}
@@ -311,7 +310,7 @@ By localization, it is enough to prove the result for uniformly bounded martinga
 \\
 The equation $(\star)$ follows immediately in the case that $f(x)=x$, by just applying Definition \ref{defitopredictable}.
 Using induction on $k \in \mathbb{N}$ one can show that it also holds for $f(x)=x^k$ and is therefore true for any $f$ being polynomial.
-The idea in the inductive step is to assume that the statement holds for $f(x)=x^k$ and showing that it is also true for $g(x)=x f(x)$ using the integration by parts formula stated below.
+The idea in the inductive step is to assume that the statement holds for $f(x)=x^k$ and showing that it is also true for $g(x)=x f(x)$ using the integration by parts formula stated in the next paragraph.
 % Das chömmer so leider nöd stoh lah :(
 \\\\
  %MARCO!!! Wie chanmer das schöner darstelle? :(
@@ -321,41 +320,41 @@ M_1(t) M_2(t)=M_1(0) M_2(0) + \int_0^t M_1(s) dM_2(s) + \int_0^t M_2(s) dM_1(s) 
 \end{align*}
 \noindent Setting now $M_1(t)=M(t)$ and $M_2(t)= \int_0^t f'(M(s)) dM(s)$ one can conclude the result for $f$ being polynomial.\\
 \\
-For the general case one chooses a sequence of polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are unfiformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
+For the general case one chooses a sequence of polynomials $f_n$ such that $f_n$ and its two first derivatives converge to $f$ and its first two derivatives are uniformly bounded on $[-K,K]$. %??? uniformly bounded? typo in script?
 To pass to the limit one can now use the last statement of Theorem \ref{thminequalty}.
 \end{proof}
 \noindent For the rest of this illustration we would like to focus on applications of Itô's formula. The following Lemma is an immediate, but nevertheless interesting consequence.
 \begin{lem} Let $B(t)$ denote a standard Brownian Motion, then 
 \begin{align*}
-\int_0^t B(s) dB(s) = \frac{1}{2}( B^2(t)-t)
+\int_0^t B(s) dB(s) = \frac{1}{2}( B^2(t)-t).
 \end{align*}
 \end{lem}
 \begin{proof}
 Let us consider $f: \mathbb{R} \to \mathbb{R}$, given by $f(x) = x^2/2$, then we have $f \in C^2( \mathbb{R})$ and $f'(x)=x, \ f''(x) = 1$. We check the conditions of Itô's formula, recall that by Remark \ref{varianceprocessofBM} we have that the quadratic variance process associated to a Brownian Motion $B(t)$ is just given by $A(t)=t$, as a consequence we simply have $dA(s)=ds$. 
 \begin{align*}
-\mathbb{E} \left( \int_0^t B^2(s) dA(s) \right) &= \mathbb{E} \left( \int_0^t B^2(s) ds \right) = \int_0^t \mathbb{E}(B^2(s) ) ds \\ &  = \int_0^t s ds = \frac{t^2}{2} < \infty 
+\mathbb{E} \left( \int_0^t B^2(s) dA(s) \right) &= \mathbb{E} \left( \int_0^t B^2(s) ds \right) = \int_0^t \mathbb{E}(B^2(s) ) ds \\ &  = \int_0^t s ds = \frac{t^2}{2} < \infty.
 \end{align*} 
 Moreover, we have
 \begin{align*}
-\mathbb{E} \left( \int_0^t dA(s) \right) = \mathbb{E}\left( \int_0^t ds \right) = t < \infty 
+\mathbb{E} \left( \int_0^t dA(s) \right) = \mathbb{E}\left( \int_0^t ds \right) = t < \infty. 
 \end{align*}
 By Itô's formula we obtain
 \begin{align*}
-\frac{B^2(t)}{2}- 0 = \int_0^t B(s) dB(s) + \frac{1}{2} \int_0^t ds 
+\frac{B^2(t)}{2}- 0 = \int_0^t B(s) dB(s) + \frac{1}{2} \int_0^t ds.
 \end{align*}
 We conclude $\displaystyle \int_0^t B(s) dB(s) = \frac{1}{2}(B^2(t)-t)$ as claimed. 
 \end{proof}
 \begin{rem} Since we already know that the Itô integral defines a martingale, we rediscover from the lemma above the fact that $B^2(t)-t$ is a martingale. 
 \end{rem}
 \newpage
-\noindent For many applications , it is important to have a more general form of Itô's formula, in order to arrive at this result the notion of semimartingales is important. The next definition permits the formulation of results for stochastic integrals and Stieltjes integrals in a unified way. 
+\noindent For many applications, it is important to have a more general form of Itô's formula, in order to arrive at this result the notion of semimartingales is important. The next definition permits the formulation of results for stochastic integrals and Stieltjes integrals in a unified way. 
 \begin{defn} \label{defsemimartingale} A continuous semimartingale is a stochastic process $X(t)$ that can be written in the form $X(t)=M(t) + D(t)$, where $M(t)$ is a continuous martingale and $D(t)$ is a continuous adapted process of bounded variation on bounded $t$ sets satisfying $D(0)=0$. 
 \\\\
 For a sequence of continuous semimartingales $X_i(t)= M_i(t) + D_i(t)$, where $i \in \mathbb{N}$, the covariance process is defined by $\langle X_i, X_j \rangle_t = \langle M_i, M_j \rangle_t$ for all $i,j \in \mathbb{N}$. 
 \\\\
 Finally, Integrals are defined by 
 \begin{align*}
-\int_0^t Y(s) dX(s) = \int_0^t Y(s) dM(s) + \int_0^t Y(s) dD(s) 
+\int_0^t Y(s) dX(s) = \int_0^t Y(s) dM(s) + \int_0^t Y(s) dD(s),
 \end{align*}
 whenever the integrals on the right hand side are well-defined. The first integral is the Itô integral, whereas the second integral is a Stieltjes integral. 
 \end{defn}
@@ -365,7 +364,7 @@ whenever the integrals on the right hand side are well-defined. The first integr
 \item The decomposition of the stochastic process $X(t)=M(t) + D(t)$ is unique thanks to Proposition \ref{first Prop}. 
 \end{enumerate} 
 \end{rem}
-\noindent Theorem (Itô's formula) extends naturally to a vector of semimartingales. Its proof works analogeously to the one presented in Theorem \ref{itosformula} and will be ommited here.
+\noindent Itô's formula (Theorem \ref{itosformula}) extends naturally to a vector of semimartingales. Its proof works analogeously to the one presented in Theorem \ref{itosformula} and will be ommited here.
 \begin{thm}[Generalization of Itô's formula] Let $X(t) = (X_1(t), \dots , X_n(t))$, where $X_i(t)$ are continuous semimartingales for all $i=1, \dots ,n$ be a vector of continuous semimartingales. Let $f: \mathbb{R}^n \to \mathbb{R}$ be a function of class $C^2$ and suppose that all integrals appearing in the formula below are well-defined, then 
 \begin{align*}
 f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)) dX_i(s)
@@ -375,9 +374,9 @@ f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)
 \noindent As an application of the generalized Itô's formula we will provide a method to generate many new martingales from a given one. 
 \newpage
 \begin{thm} \label{fromitotomartingale} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ is a function of class $C^2$ and satisfies \begin{align*}
-\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2 f}{\partial x^2}= 0 
+\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2 f}{\partial x^2}= 0. 
 \end{align*}
-Let $M(t)$ be a continuous square integrable martingale and define $X(t):=(M(t), \langle M, M \rangle_t )$. If for every $t \in \mathbb{R}_+$ 
+Let $M(t)$ be a continuous square integrable martingale and define the random vector $X(t):=(M(t), \langle M, M \rangle_t )$. If for every $t \in \mathbb{R}_+$ 
 \begin{align*}
 \mathbb{E} \left( \int_0^t \left[ \left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2 + \left| \dfrac{\partial f}{\partial y} (X(s)) \right| \right] d \langle M, M \rangle_s \right) < \infty \tag{$\diamondsuit$}
 \end{align*}
@@ -389,11 +388,11 @@ We have $n=2$ and $X(t)=(M(t), \langle M, M \rangle_t)$, i.e. $X_1(t)=  M(t)$ an
 Therefore the sum on Itô's formula breaks down to the three terms below
 \begin{align*}
 f(X(t))-f(X(0)) = &\int_0^t \dfrac{\partial f}{\partial x}(X(s))dM(s) + \int_0^t \dfrac{\partial f}{\partial y}(X(s)) d \langle M, M \rangle_s  \\
-& +\frac{1}{2} \int_0^t \dfrac{\partial^2f}{\partial x^2}(X(s)) d \langle M, M \rangle_s 
+& +\frac{1}{2} \int_0^t \dfrac{\partial^2f}{\partial x^2}(X(s)) d \langle M, M \rangle_s.
 \end{align*}
 They are all well defined because of the condition $(\diamondsuit)$, moreover the 2 right most terms vanish because by assumption we have that 
 \begin{align*}
-\dfrac{\partial f}{\partial y}+ \frac{1}{2} \frac{\partial^2 f}{\partial x^2} =0
+\dfrac{\partial f}{\partial y}+ \frac{1}{2} \frac{\partial^2 f}{\partial x^2} =0.
 \end{align*}
 Henceforth we are left with
 \begin{align*}
@@ -401,29 +400,29 @@ f(X(t))-f(X(0)) = \int_0^t \dfrac{\partial f}{\partial x} (X(s)) dM(s),
 \end{align*}
 which is a martingale. 
 \end{proof}
-\begin{rem} Of course $f$ above could also be complex valued, to establish this, simply apply the result separately to the real and imaginary parts of $f$.
+\begin{rem} Of course $f$ above could also be complex valued, to establish this, simply apply the result separately to the real and imaginary part of $f$.
 \end{rem}
 \noindent Before we come to applications of Itô's formula in the theme of mathematical finance we present a very interesting application of the above theorem, it gives us a characterization of a standard Brownian Motion. 
 \\\\
 We recall that one way to characterize a standard Brownian Motion is to say that it is a continuous stochastic process $(B_t)_{t \geq 0}$ starting at $0$ with stationary, independent increments and $B_t \sim \mathcal{N}(0,t)$ for all $t \geq 0$. 
 \newpage
-\begin{thm}[Lévy's characterization of a standard Brownian Motion] Let $M(t)$ be a continuous, square integrable martingale. $M(t)$ is a standard Brownian Motion if and only if $M(0)=0$ and $\langle M,M \rangle_t = t$
+\begin{thm}[Lévy's characterization of a standard Brownian Motion] Let $M(t)$ be a continuous, square integrable martingale. $M(t)$ is a standard Brownian Motion if and only if $M(0)=0$ and $\langle M,M \rangle_t = t$.
 \end{thm}
 \begin{proof}
 Indeed if $M(t)=B(t)$ is a standard Brownian Motion, then we already know that it is a continuous, square integrable martingale with $B(0)=0$ and we also established, in Remark \ref{varianceprocessofBM}, that its variance process $\langle M, M \rangle_t$ is given by $t$.
 \\\\
 Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingtale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for $z \in \mathbb{C}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
 \begin{align*}
-f(x,y)= \exp ( zx-(z^2/2)y)
+f(x,y)= \exp ( zx-(z^2/2)y),
 \end{align*}
 then indeed $f$ is of class $C^2$ and it satisfies 
 \begin{align*}
-\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2f}{\partial x^2}=0 
+\dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2f}{\partial x^2}=0.
 \end{align*}
-Moreover, we have $X(t)=(M(t), \langle M, M \rangle_t ) = (M(t), t)$. Let us now specialize $z=iu$ where $u \in \mathbb{R}$. We then easily verify that the condition $(\diamondsuit)$ in Theorem \ref{fromitotomartingale} holds, in order to see this just make use of the fact that 
+Moreover, we have $X(t)=(M(t), \langle M, M \rangle_t ) = (M(t), t)$. Let us now specialize on $z=iu$ where $u \in \mathbb{R}$. We then easily verify that the condition $(\diamondsuit)$ in Theorem \ref{fromitotomartingale} holds, in order to see this just make use of the fact that 
 \begin{align*}
 \left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2
-\leq \left| u e^{2iu M(s) + (u^2/2) s} \right| \leq |u| e^{(u^2/2)s}
+\leq \left| u^2 e^{2iu M(s) + (u^2/2) s} \right| \leq u^2 e^{(u^2/2)s}
 \end{align*} 
 and similarly for the 2nd partial derivative. Theorem \ref{fromitotomartingale} now yields taht  
 \begin{align*}
@@ -435,11 +434,11 @@ is a Martingale. Therefore, for all $s <t$ we must have
 \end{align*}
 or equivalently 
 \begin{align*}
-\mathbb{E}\left( \exp \left[ i u M(t) + \frac{u^2}{2}t \right] \mid \mathcal{F}_s \right) = \exp \left( i u M(s) + \frac{u^2}{2}s \right) 
+\mathbb{E}\left( \exp \left[ i u M(t) + \frac{u^2}{2}t \right] \mid \mathcal{F}_s \right) = \exp \left( i u M(s) + \frac{u^2}{2}s \right). 
 \end{align*}
-by rearranging those terms we get 
+Rearranging those terms we get 
 \begin{align*}
-\mathbb{E} \left( e^{iu(M(t)-M(s))} \mid \mathcal{F}_s \right) = e^{- \left( \frac{u^2}{2} \right)(t-s)}
+\mathbb{E} \left( e^{iu(M(t)-M(s))} \mid \mathcal{F}_s \right) = e^{- \left( \frac{u^2}{2} \right)(t-s)}.
 \end{align*}
 By identifying the characteristic function we conclude that $M(t)-M(s)$ is independent of $\mathcal{F}_s$ and has a Gaussian distribution with mean $0$ and variance $t-s$. This entails that $M(t)$ is a standard Brownian motion. 
 \end{proof}
