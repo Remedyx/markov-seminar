@@ -92,7 +92,7 @@ The selection of Kiyosi Itô for the first laureate reflects his achievements in
 One week before his death he was awarded the Culture Medal of Japan, also known as the Order of culture, it is Japan's highest prize awarded by the Emperor himself. The Japanese mathematical community was intensely proud of him. Largely through his influence and prestige, probability theory is still strongly cultivated in Japan. Japanese probabilists tended to refer to him among themselves as \textit{"the Emperor"}. 
 \newpage 
 \section{Abstract}
-It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economy. 
+It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economics. 
 \\\\
 Quite generally speaking, we will often sketch proofs by reducing them to their most important steps and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
 \\\\
@@ -123,7 +123,8 @@ A real-valued function $f: [a,b] \rightarrow \mathbb{R}$ is said to be of \texti
 $$ \sup_{P \in \mathcal{P}} \sum \limits_{i=1}^n \mid f(x_{i+1})-f(x_i)\mid < \infty $$
 where the supremum is taken over all partitions of $[a,b]$, i.e. over the set \\  $\mathcal{P}= \lbrace P = \lbrace x_1 , \dots , x_n \rbrace \mid P \text{ is a partition of $[a,b]$ with $x_i \leq x_{i+1}$} \rbrace$
 \end{defn}
-
+\begin{rem} \label{boundedvarincreasing} It can be shown that $f: [a,b] \to \mathbb{R}$ is of bounded variation if and only if it can be written as the difference $f=f_1-f_2$ of two non-decreasing functions on $[a,b]$.
+\end{rem}
 \noindent As discussed in our motivating section, we strive to make sense out of integrals of the form 
 \begin{align*}
 \int_0^t Y(s, \omega) dM(s) \tag{$\star$} 
@@ -150,7 +151,11 @@ Our aim in this section is to extend this statement to martingales $M(t)$ by int
 \begin{thm}[Existence of the variance process] \label{variancethm}
 There exists a unique increasing, continuous process, called the variance process $A(t)$ such that $A(0)=0$ and $M^2(t)-A(t)$ is a martingale.
 \end{thm}
-\begin{rem} \label{varianceprocessofBM} If $M(t)=B(t)$ is a Brownian motion, then of course the increasing process is just $A(t)=t$ since we already know that $B^2(t)-t$ is a martingale. 
+\begin{rem} \label{varianceprocessofBM}  \
+\begin{enumerate} 
+\item Since the variance process is increasing, Remark \ref{boundedvarincreasing} establishes that it is in particular of bounded variation. 
+\item If $M(t)=B(t)$ is a Brownian motion, then of course the increasing process is just $A(t)=t$ since we already know that $B^2(t)-t$ is a martingale.
+\end{enumerate} 
 \end{rem}
 \begin{proof}
 \textsc{Uniqueness:} Suppose that $A_1(t)$ and $A_2(t)$ both satisfy the conditions of the theorem, then $A_1(t)-A_2(t)$ satisfies the assumptions of Proposition \ref{first Prop}, so $A_1(t)-A_2(t)=A_1(0)-A_2(0)=0$. And therefore $A_1(t)=A_2(t) \;$ for all $t \in \mathbb{R}$. 
@@ -160,17 +165,17 @@ There exists a unique increasing, continuous process, called the variance proces
 \\\\
 Given an arbitrary martingale $M(t)$, we define
 $$\tau_n := n \wedge \inf\{t \geq 0: |M(t)|\geq n\}, \text{ where } n \in \mathbb{N}.$$
-This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$ for all $t \in \mathbb{R}_0^+$. Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ such that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ that $M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$ is a martingale. 
-\newpage
-
-\noindent Since $M_n(t \wedge \tau_m)=M_m(t)$, the uniqueness statement implies that 
+This sequence of stopping times increases to infinity. Furthermore we already know, that $M_n(t)=M(t \wedge \tau_n)$ is a martingale for each $n \in \mathbb{N}$. Note that by the definition of the stopping times it is bounded by $n$, i.e. $| M_n(t) |\leq n$ for all $t \in \mathbb{R}_0^+$. 
+\newpage  
+\noindent Using our assumption, that the theorem is true for uniformly bounded martingales, we know that there exists the variance process $A_n(t)$ of $M_n(t)$ with $A_n(0)=0$ such that $M_n^2(t)-A_n(t)$ is a martingale. We also have for $m<n$ that $M_n^2(t \wedge \tau_m)-A_n(t \wedge \tau_m)$ is a martingale. Since $M_n(t \wedge \tau_m)=M_m(t)$, the uniqueness statement implies that 
 $$A_n(t \wedge \tau_m)=A_m(t) \quad i.e.\quad  A_n(t)=A_m(t) \quad for \;t\leq \tau_m.$$
 So we may define the process $A(t)$ by $A(t)=A_n(t)$ for $t<\tau_n$. Also note that $A_n(t) \uparrow A(t)$ and $A_n(t)$ is constant for $t\geq \tau_n$, since we have the following
 $$\mathbb{E}[A_n(t)-A_n(\tau_n), t>\tau_n]= \mathbb{E}[M_n^2(t)-M_n^2(\tau_n), t>\tau_n]=0.$$
 Moreover, by Jensen's inequality we obtain that
 $$M_n^2(t)=M^2(t \wedge \tau_n) \leq \mathbb{E}[M^2(t) \mid \mathcal{F}_{t \wedge \tau_n}],$$
-which entails that $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t \in \mathbb{R}$ and we can pass to the limit in the martingale property to conclude that $M^2(t)-A(t)$ is indeed is a martingale
-$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathcal{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t.$$
+which entails that $(M_n^2(t))_{n\geq 1}$ is uniformly integrable for each $t \in \mathbb{R}$ and we can pass to the limit in the martingale property,
+$$\mathbb{E}[M_n^2(t)-A_n(t) \mid \mathcal{F}_s]=M_n^2(s)-A_n(s), \quad \text{ for all }s<t,$$
+to conclude that $M^2(t)-A(t)$ is indeed is a martingale
 \end{proof}
 \noindent In order to construct Itô's integral we will proceed by defining it for so called predictable step functions. For the time being, we will consistently use $A(t)$ to denote the variance process corresponding to the martingale $M(t)$. 
 \begin{defn} \label{defitopredictable} A predictable step function is a stochastic process of the following type
@@ -212,9 +217,8 @@ can be written in the form of obvious martingales by considering all the cases f
 \\\\
 To prove the second statement, notice that $A^*(t)$ is increasing and continuous, thus by Theorem \ref{variancethm} it is enough to check that $(M^*(t))^2 - A^*(t)$ is a martingale. 
 \\\\
-The final statement is just a consequence of Doob's inequality. 
+Once these two statements have been established, we notice that $M^*(0)=0$ and since $(M^*(t))^2-A(t)$ is again a martingale, we arrive at Corollary \ref{corisometry} stated seperately below due to its importance. The final statement is then just a consequence of Doob's inequality \textit{(Reference: Theorem A.42 Liggett)}, since $ \mathbb{E}([M^*(t)]^2) = \mathbb{E}(A^*(t))$. 
 \end{proof}
-\noindent Since we have $M^*(0)=0$ and by Theorem \ref{variancethm} we know that $(M^*(t))^2 -A(t)$ is again a martingale, we easily arrive at
 \begin{cor} \label{corisometry} \begin{align*}
 \mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right).
 \end{align*}
@@ -274,7 +278,7 @@ is also a martingale it is enough to notice that the convergence $Y_n \to_\mathc
 \begin{align*}
 \int_0^t Y_n(s) dM(s) \to \int_0^t Y(s) dM(s) \text{ and } \int_0^t Y_n^2(s)dA(s) \to \int_0^t Y^2(s) dA(s)
 \end{align*}
-in $L^1$ and $L^2$ respectively, because of the isometry shown in Corollarly \ref{corisometry}. This permits passage to the limit in the conditional expectations relevant to the verify the martingale property in the two cases. 
+in $L^2$ and $L^1$ respectively, because of the isometry shown in Corollarly \ref{corisometry}. This permits passage to the limit in the conditional expectations relevant to verify the martingale property in the two cases. 
 \end{proof}
 \newpage
 \subsection{Itô's formula and applications}
@@ -373,16 +377,17 @@ f(X(t))-f(X(0)) = & \sum_{i=1}^n \int_0^t \dfrac{\partial f}{\partial x_i} (X(s)
 \end{thm}
 \noindent As an application of the generalized Itô's formula we will provide a method to generate many new martingales from a given one. 
 \newpage
-\begin{thm} \label{fromitotomartingale} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ is a function of class $C^2$ and satisfies \begin{align*}
+\begin{thm} \label{fromitotomartingale} Suppose $f: \mathbb{R}^2 \to \mathbb{R}$ or $\mathbb{C}$ is a $C^2$-function and satisfies \begin{align*}
 \dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2 f}{\partial x^2}= 0. 
 \end{align*}
 Let $M(t)$ be a continuous square integrable martingale and define the random vector $X(t):=(M(t), \langle M, M \rangle_t )$. If for every $t \in \mathbb{R}_+$ 
 \begin{align*}
-\mathbb{E} \left( \int_0^t \left[ \left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2 + \left| \dfrac{\partial f}{\partial y} (X(s)) \right| \right] d \langle M, M \rangle_s \right) < \infty \tag{$\diamondsuit$}
+\mathbb{E} \left( \int_0^t \left[ \left| \dfrac{\partial f}{\partial x}(X(s)) \right|^2 + \left| \dfrac{\partial f}{\partial y} (X(s)) \right| \right] d \langle M, M \rangle_s \right) < \infty \tag{$\diamondsuit$}
 \end{align*}
 then $f(X(t))$ is a martingale. 
 \end{thm}
-\begin{proof}
+\begin{proof} It is enough to consider a real-valued $f$, of course the result can be generalized to $\mathbb{C}$ by applying the statement separately to the real and the imaginary part of $f$. 
+\\\\
 We have $n=2$ and $X(t)=(M(t), \langle M, M \rangle_t)$, i.e. $X_1(t)=  M(t)$ and $X_2(t)= \langle M, M \rangle_t$ which are indeed both continuous semimartingales, in particular we have for $X_2$ the unique decomposition (see Definition \ref{defsemimartingale}) $X_2(t)=0 + \langle M, M \rangle_t$ because $\langle M, M \rangle$ is (locally) of bounded variation. This entails that $\langle X_1, X_2 \rangle_t = \langle M(t), 0 \rangle_t=0= \langle X_2, X_1 \rangle_t = \langle X_2, X_2 \rangle_t$.  
 \\\\
 Therefore the sum on Itô's formula breaks down to the three terms below
@@ -400,8 +405,6 @@ f(X(t))-f(X(0)) = \int_0^t \dfrac{\partial f}{\partial x} (X(s)) dM(s),
 \end{align*}
 which is a martingale. 
 \end{proof}
-\begin{rem} Of course $f$ above could also be complex valued, to establish this, simply apply the result separately to the real and imaginary part of $f$.
-\end{rem}
 \noindent Before we come to applications of Itô's formula in the theme of mathematical finance we present a very interesting application of the above theorem, it gives us a characterization of a standard Brownian Motion. 
 \\\\
 We recall that one way to characterize a standard Brownian Motion is to say that it is a continuous stochastic process $(B_t)_{t \geq 0}$ starting at $0$ with stationary, independent increments and $B_t \sim \mathcal{N}(0,t)$ for all $t \geq 0$. 
@@ -411,20 +414,20 @@ We recall that one way to characterize a standard Brownian Motion is to say that
 \begin{proof}
 Indeed if $M(t)=B(t)$ is a standard Brownian Motion, then we already know that it is a continuous, square integrable martingale with $B(0)=0$ and we also established, in Remark \ref{varianceprocessofBM}, that its variance process $\langle M, M \rangle_t$ is given by $t$.
 \\\\
-Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingtale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for $z \in \mathbb{C}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
+Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingtale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for a fixed $u \in \mathbb{R}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
 \begin{align*}
-f(x,y)= \exp ( zx-(z^2/2)y),
+f(x,y)= \exp ( iux+(u^2/2)y),
 \end{align*}
 then indeed $f$ is of class $C^2$ and it satisfies 
 \begin{align*}
 \dfrac{\partial f}{\partial y} + \frac{1}{2} \dfrac{\partial^2f}{\partial x^2}=0.
 \end{align*}
-Moreover, we have $X(t)=(M(t), \langle M, M \rangle_t ) = (M(t), t)$. Let us now specialize on $z=iu$ where $u \in \mathbb{R}$. We then easily verify that the condition $(\diamondsuit)$ in Theorem \ref{fromitotomartingale} holds, in order to see this just make use of the fact that 
+Moreover, we have $X(t)=(M(t), \langle M, M \rangle_t ) = (M(t), t)$. We easily verify that the condition $(\diamondsuit)$ in Theorem \ref{fromitotomartingale} holds, in order to see this just make use of the fact that 
 \begin{align*}
-\left( \dfrac{\partial f}{\partial x}(X(s)) \right)^2
-\leq \left| u^2 e^{2iu M(s) + (u^2/2) s} \right| \leq u^2 e^{(u^2/2)s}
+\left| \dfrac{\partial f}{\partial y}(X(s)) \right|
+= \left| \frac{u^2}{2} e^{iu M(s) + (u^2/2)s} \right| \leq \frac{u^2}{2} e^{(u^2/2)s}
 \end{align*} 
-and similarly for the 2nd partial derivative. Theorem \ref{fromitotomartingale} now yields taht  
+and similarly for the 1st partial derivative. Theorem \ref{fromitotomartingale} now yields that  
 \begin{align*}
 f(X(t)) = \exp \left( i u M(t) + \frac{u^2}{2}t \right) 
 \end{align*}
@@ -447,22 +450,24 @@ By identifying the characteristic function we conclude that $M(t)-M(s)$ is indep
 In this last section we give some more concrete examples that come from the field of mathematical finance.  \\
 \\
 Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
-$$ V=a_t S_t + b_t \beta_t $$
-Now let $$a_t=2 B_t;\quad b_t=-1-B_t^2-20 B_t;\quad S_t=10+B_t;\quad \beta_t=1$$
+$$ V=a_t S_t + b_t \beta_t. $$
+Now let $$a_t=2 B_t;\quad b_t=-1-B_t^2-20 B_t;\quad S_t=10+B_t;\quad \beta_t=1,$$
 where $B_t$ denotes a Brownian Motion at time $t$.
-We now can easily show using Itô's formula, that this portfolio is self-financing:
+We now can easily show, using Itô's formula, that this portfolio is self-financing:
 
 \begin{align*} V&=a_t S_t + b_t \beta_t = 2 B_t(10+B_t) +(-t-B_t^2-20B_t)\cdot 1\\
 &=20B_t + 2B_t^2-t-B_t^2-20B_t \\
-&=B_t^2-t 
+&=B_t^2-t. 
 \end{align*}
 Applying Itô's formula [$f(B_t) \Longrightarrow df=f'(B_t)dB_t + \frac{1}{2} f"(B_t)dt$] and quadratic variation [$(dB_t)^2=dt$] to it we get
 \begin{align*}  dV_t &= (2B_t dB_t + \frac{1}{2}\cdot 2 \langle B, B \rangle_t)-dt\\
 &= 2 B_t dB_t\\
-&= a_t dS_t + b_t d\beta_t
+&= a_t dS_t + b_t d\beta_t.
 \end{align*}
 Moreover, since $dS_t = dB_t$ and $d\beta_t=0$ we obtain
-\begin{align*}dV_t = a_t dS_t + b_t d\beta_t \end{align*}
+\begin{align*}
+dV_t = a_t dS_t + b_t d\beta_t, 
+\end{align*}
 which is a characterization of a self-financing portfolio.
 \newpage
 \noindent We will look at the usual model for the time-evolution of an asset price $S(t)$.
@@ -470,7 +475,7 @@ The original paper by Black and Scholes assumes that the price of the underlying
 \begin{align*}
 dS(t)=\mu S(t) dt + \sigma S(t) dB(t)
 \end{align*}
-where $\mu$ denotes the continuously compouded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. 
+where $\mu$ denotes the continuously compounded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. 
 In other words, $S(t)$ is a \textit{geometric Brownian motion}.\\
 \\
 Dividing by $S(t)$ in the equation above yields
@@ -479,13 +484,13 @@ Notice that the left-hand side looks similar to the derivative of $\log{S(t)}$.\
 Applying the generalized Itô's formula for semimartingales to the function $f(t,x)=\log(x)\in C^2(\mathbb{R}_+^2,\mathbb{R})$ and using that $\partial_t f(t,x)=0$, we get 
 %[-->plug it in in $df(t,X_t)= \partial_t f(t,X_t)dt + \partial_x f(t.X_t) dX_t + 1/2 \partial_{xx} f(t,X_t) d<X,X>_t$]
 \begin{align*}
-d(\log(S_t)&=\frac{1}{S_t} \, dS_t + \frac{1}{2}\cdot \left(-\frac{1}{S^2_t} \right) d\langle S,S\rangle_t 
+d(\log(S_t))&=\frac{1}{S_t} \, dS_t + \frac{1}{2}\cdot \left(-\frac{1}{S^2_t} \right) d\langle S,S\rangle_t 
 = \frac{1}{S_t} dS_t -\frac{1}{2} \sigma^2 dt \\
 &\stackrel{(\star)}{=} \mu \, dt + \sigma \, dB(t) -\frac{1}{2} \sigma^2 \, dt
-=\left(\mu -\frac{1}{2} \sigma^2\right)\, dt + \sigma \, dB(t)
+=\left(\mu -\frac{1}{2} \sigma^2\right)\, dt + \sigma \, dB(t).
 \end{align*}
 It follows that
-\begin{align*}\log(S(t))-\log(S(0)) =\left(\mu -\frac{1}{2} \sigma^2\right)t + \sigma B(t)
+\begin{align*}\log(S(t))-\log(S(0)) =\left(\mu -\frac{1}{2} \sigma^2\right)t + \sigma B(t).
 \end{align*}
 Taking the exponential of this equation finally gives us:
 \begin{align*}
