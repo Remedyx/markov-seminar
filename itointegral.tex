@@ -8,6 +8,7 @@
 \usepackage{mathrsfs}
 \usepackage[UKenglish]{isodate}
 \usepackage{epigraph}
+\usepackage{url}
 
 \newtheorem{lem}{Lemma}[section]
 \newtheorem{thm}{Theorem}[section]
@@ -18,7 +19,6 @@
 \newtheorem{rem}{Remark}[defn]
 
 \renewcommand\thesection{\arabic{section}}
-
 
 
 \begin{document}
@@ -41,16 +41,6 @@
 	}
 
 \end{titlepage}
-%\newpage 
-%\thispagestyle{empty}
-%\null\vfill
-%\begin{center}
-%\begin{flushleft}
-%\textit{\Large In precisely built mathematical structures, mathematicians find the same sort of beauty others find in enchanting pieces of music, or in magnificent architecture. There is, however, one great difference between the beauty of mathematical structures and that of great art. Music by Mozart, for instance, impresses greatly even those who do not know musical theory; the cathedral in Cologne overwhelms spectators even if they know nothing about Christianity. The beauty in mathematical structures, however, cannot be appreciated without understanding of a group of numerical formulae that express laws of logic. Only mathematicians can read "musical scores" containing many numerical formulae, and play that "music" in their hearts. } 
-%\end{flushleft}
-%\end{center}
-%\hfill Kiyosi Itô \textit{(1915-2008)}
-%\vfill\vfill
 
 \newpage
 \thispagestyle{empty}
@@ -85,20 +75,20 @@ At its heart, the most basic concept of Itô calculus is Itô's integral and amo
 In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being its first laureate, a price given to honor mathematicians for outstanding mathematical contributions that have found significant applications outside of the field of mathematics. The Gauss price is considered to be the highest honor conferred for applications of mathematics.
 \\
 \\
-The selection of Kiyosi Itô for the first laureate reflects his achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy. 
+The selection of Kiyosi Itô for the first laureate reflects his achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy \cite{KyotoUni}.
 \\\\
 %Source for this paragraph https://en.wikipedia.org/wiki/Order_of_Culture#2006
 % and http://www-history.mcs.st-andrews.ac.uk/Obits2/Ito_Times.html
-One week before his death he was awarded the Culture Medal of Japan, also known as the Order of culture, it is Japan's highest prize awarded by the Emperor himself. The Japanese mathematical community was intensely proud of him. Largely through his influence and prestige, probability theory is still strongly cultivated in Japan. Japanese probabilists tended to refer to him among themselves as \textit{"the Emperor"}. 
+One week before his death he was awarded the Culture Medal of Japan, also known as the Order of culture, it is Japan's highest prize awarded by the Emperor himself. The Japanese mathematical community was intensely proud of him. Largely through his influence and prestige, probability theory is still strongly cultivated in Japan. Japanese probabilists tended to refer to him among themselves as \textit{"the Emperor"} \cite{Turnbull}, \cite{Emperor}, \cite{MacTutor}. 
 \newpage 
 \section{Abstract}
 It is our goal to give a short but concise introduction to Itô's theory concerning stochastic integration. In general it is our goal to show applications of the most important results and provide a suitable amount of motivation from mathematical finance and/or economics. 
 \\\\
-Quite generally speaking, we will often sketch proofs by reducing them to their most important steps and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction,} which we used as a framework for this text. 
+Quite generally speaking, we will often sketch proofs by reducing them to their most important steps and leave the more technical involved steps open. The interested reader may fill in the missing gaps by consulting  Chapter 5 of \textit{T.M. Liggett's Continuous Time Markov Processes: An Introduction} \cite{Liggett}, which we used as a framework for this text. 
 \\\\
 We will introduce the notion of Itô's integral, first for predictable step functions and later on expand this result to obtain a general Itô integral. Moreover we will introduce Itô's formula for single martingales and for several semimartingales.
 \\\\
-\noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"}.
+\noindent These results are quite profound and can unequivocally be considered as revolutionizing, or to say it in the words of Revuz and Yor in their exemplary book on Brownian Motion: \textit{"To some extent, the whole sequel of this book is but an unending series of applications of Itô's formula"} \cite[page ~140]{RevuzYor}.
 \\\\
 A key result that we shall establish is Lévy's characterization of a Brownian Motion. The last section contains applications of Itô's formula in Finance. 
 \subsection{Motivation}
@@ -217,7 +207,7 @@ can be written in the form of obvious martingales by considering all the cases f
 \\\\
 To prove the second statement, notice that $A^*(t)$ is increasing and continuous, thus by Theorem \ref{variancethm} it is enough to check that $(M^*(t))^2 - A^*(t)$ is a martingale. 
 \\\\
-Once these two statements have been established, we notice that $M^*(0)=0$ and since $(M^*(t))^2-A(t)$ is again a martingale, we arrive at Corollary \ref{corisometry} stated seperately below due to its importance. The final statement is then just a consequence of Doob's inequality \textit{(Reference: Theorem A.42 Liggett)}, since $ \mathbb{E}([M^*(t)]^2) = \mathbb{E}(A^*(t))$. 
+Once these two statements have been established, we notice that $M^*(0)=0$ and since $(M^*(t))^2-A(t)$ is again a martingale, we arrive at Corollary \ref{corisometry} stated seperately below due to its importance. The final statement is then just a consequence of Doob's inequality \cite[Theorem A.42 \& Remark after 5.10 p.~198]{Liggett}, since $ \mathbb{E}([M^*(t)]^2) = \mathbb{E}(A^*(t))$. 
 \end{proof}
 \begin{cor} \label{corisometry} \begin{align*}
 \mathbb{E} \left( \left[ \int_0^t Y(s) dM(s) \right]^2\right) = \mathbb{E} \left( \int_0^t Y^2(s) dA(s) \right).
@@ -497,5 +487,34 @@ Taking the exponential of this equation finally gives us:
 S(t)=S(0) \cdot \exp\left( \left(\mu - \frac{1}{2}\sigma^2\right)\cdot t + \sigma B(t)\right).
 \end{align*}
 This is the solution to the SDE, and one can see that the process $S(t)$ is lognormally distributed as predicted by the Black-Scholes model.
+
+\newpage
+\section{Bibliography}
+\begin{thebibliography}{9}
+
+\bibitem{Liggett}
+  Thomas M. Liggett,
+  \textit{Continuous Time Markov Processes: An Introduction},
+  Volume 113 of Graduate Studies in Mathematics, American Mathematical Society,
+  Providence, Rhode Island,
+  2010.
+
+\bibitem{KyotoUni}
+	Kyoto University
+	\textit{Dr. Kiyosi Itô receives Gauss Prize}, \url{http://www.kyoto-u.ac.jp/en/about/profile/honor/awards/gauss.html}, \\ \textsc{Accessed}: 14.12.2017
+
+\bibitem{Turnbull}
+	Turnbull, School of Mathematics and Statistics, University of St. Andrews, \textit{Kiyosi Itô}, \url{http://www-groups.dcs.st-and.ac.uk/~history/Biographies/Ito.html}, \textsc{Accessed}: 14.12.2017
+
+\bibitem{Emperor}
+	Turnbull, School of Mathematics and Statistics, University of St. Andrews, \textit{Kiyosi Itô receives Order of Culture}, \url{http://www-groups.dcs.st-and.ac.uk/~history/Obits2/Ito_Times.html}, \\ \textsc{Accessed}: 14.12.2017
+
+\bibitem{MacTutor}
+	History of Mathematics archives, University of St. Andrews, \textit{Professor Kiyosi Itô: Mathematician and probability theory expert}, \url{http://www-history.mcs.st-andrews.ac.uk/Obits2/Ito_Times.html}, \\  \textsc{Accessed} 15.12.2017
+
+\bibitem{RevuzYor}
+	Daniel Revuz and Marc Yor, \textit{Continuous Martingales and Brownian Motion}, 2nd Edition, Springer, 1994. 
+
+\end{thebibliography}
 
 \end{document}
