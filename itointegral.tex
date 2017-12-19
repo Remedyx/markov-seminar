@@ -68,14 +68,14 @@
 
 \epigraph{\textit{People all over realized that what Itô had done explained things that were unexplainable before.}}{Prof. Daniel Strook, MIT}
 
-\noindent Kiyosi Itô born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influential that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
+\noindent Kiyosi Itô, born 7\textit{th} of September 1915, deceased 10\textit{th} of November 2008, was a japanese mathematician. He was a pioneer in the theory of stochastic integration and stochastic differential equations. His work was so influential that it is now adays known as Itô calculus, a very important aspect of stochastic calculus. 
 \\\\
 At its heart, the most basic concept of Itô calculus is Itô's integral and among the most important results is a version of the fundamental theorem of calculus, known as Itô's formula.
 \\\\
 In 2006 Kiyosi Itô was awarded the \textit{Carl Friedrich Gauss Price}, being its first laureate, a price given to honor mathematicians for outstanding mathematical contributions that have found significant applications outside of the field of mathematics. The Gauss price is considered to be the highest honor conferred for applications of mathematics.
 \\
 \\
-The selection of Kiyosi Itô for the first laureate reflects his achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economy \cite{KyotoUni}.
+The selection of Kiyosi Itô for the first laureate reflects his achievements in the field of stochastic analysis, starting with his invention of the stochastic differential equations, which have had a significant impact on applications outside of mathematics, most notably on mathematical finance and economics \cite{KyotoUni}.
 \\\\
 %Source for this paragraph https://en.wikipedia.org/wiki/Order_of_Culture#2006
 % and http://www-history.mcs.st-andrews.ac.uk/Obits2/Ito_Times.html
@@ -199,7 +199,7 @@ Moreover we have
 \begin{proof}
 The continuity and square integrability statements, as well as the fact that $M^*(t)$ is adapted, are all immediate consequences from the very definition of Itô's integral given in Definition \ref{defitopredictable}.
 \\\\
-For the martingale property, take $s < t$ arbitrary and note that for all $i \in \mathbb{N}$ the expression
+For the martingale property, take $s < t$ arbitrary and notice that for all $i \in \mathbb{N}$ the expression
 \begin{align*}
 M(t \wedge t_{i+1}) - M(t \wedge t_i) - M (s \wedge t_{i+1}) + M( s \wedge t_i)
 \end{align*}
@@ -229,7 +229,7 @@ Then $( \mathcal{H}, \| \cdot \|_T )$ has the structure of a normed space where 
 \item All predictable step functions $Y$ are in $\mathcal{H}$.
 \end{enumerate}
 \end{rem}
-\noindent By the above remark we know that the set of predictable space functions is a subset of the normed space $\mathcal{H}$, in fact, much more is true as the following Proposition entails.
+\noindent By the above remark we know that the set of predictable step functions is a subset of the normed space $\mathcal{H}$, in fact, much more is true as the following Proposition entails.
 \begin{prop}
 The class of predictable step functions is dense in $\mathcal{H}$.
 \end{prop}
@@ -273,10 +273,10 @@ in $L^2$ and $L^1$ respectively, because of the isometry shown in Corollarly \re
 \newpage
 \subsection{Itô's formula and applications}
 \epigraph{\textit{To some extent, the whole sequal of this book is but an unending series of applications of Itô's formula.}}{Revuz and Yor, page 140/560}
-\noindent Itô's formula is a central identity used in stochastic comptations and a version of the fundamental theorem of calculus having an extra term involving the second derivative. 
+\noindent Itô's formula is a central identity used in stochastic computations and a version of the fundamental theorem of calculus having an extra term involving the second derivative. 
 
 \begin{thm}[Itô's formula] \label{itosformula}
-Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^2$-function satisfiying
+Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^2$-function satisfying
 \begin{align*}
 \mathbb{E}\left( \int_0^t [f'(M(s))]^2 dA(s) \right) < \infty \text{ and } 
 \mathbb{E}\left( \int_0^t \mid f"(M(s))\mid dA(s) \right) < \infty.
@@ -378,7 +378,7 @@ then $f(X(t))$ is a martingale.
 \end{thm}
 \begin{proof} It is enough to consider a real-valued $f$, of course the result can be generalized to $\mathbb{C}$ by applying the statement separately to the real and the imaginary part of $f$. 
 \\\\
-We have $n=2$ and $X(t)=(M(t), \langle M, M \rangle_t)$, i.e. $X_1(t)=  M(t)$ and $X_2(t)= \langle M, M \rangle_t$ which are indeed both continuous semimartingales, in particular we have for $X_2$ the unique decomposition (see Definition \ref{defsemimartingale}) $X_2(t)=0 + \langle M, M \rangle_t$ because $\langle M, M \rangle$ is (locally) of bounded variation. This entails that $\langle X_1, X_2 \rangle_t = \langle M(t), 0 \rangle_t=0= \langle X_2, X_1 \rangle_t = \langle X_2, X_2 \rangle_t$.  
+We have $n=2$ and $X(t)=(M(t), \langle M, M \rangle_t)$, i.e. $X_1(t)=  M(t)$ and $X_2(t)= \langle M, M \rangle_t$ which are indeed both continuous semimartingales, in particular we have for $X_2$ the unique decomposition (see Definition \ref{defsemimartingale}) $X_2(t)=0 + \langle M, M \rangle_t$ because $\langle M, M \rangle_t$ is (locally) of bounded variation. This entails that $\langle X_1, X_2 \rangle_t = \langle M(t), 0 \rangle_t=0= \langle X_2, X_1 \rangle_t = \langle X_2, X_2 \rangle_t$.  
 \\\\
 Therefore the sum on Itô's formula breaks down to the three terms below
 \begin{align*}
@@ -463,13 +463,14 @@ which is a characterization of a self-financing portfolio.
 \noindent We will look at the usual model for the time-evolution of an asset price $S(t)$.
 The original paper by Black and Scholes assumes that the price of the underlying asset is a stochastic process $S(t)$ solving the following stochastic differential equation (SDE)
 \begin{align*}
-dS(t)=\mu S(t) dt + \sigma S(t) dB(t)
+dS(t)=\mu S(t) dt + \sigma S(t) dB(t),
 \end{align*}
 where $\mu$ denotes the continuously compounded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. 
 In other words, $S(t)$ is a \textit{geometric Brownian motion}.\\
 \\
 Dividing by $S(t)$ in the equation above yields
-\begin{align*}\frac{dS(t)}{S(t)}=\mu dt + \sigma dB(t)\quad (\star) \end{align*}
+\begin{align*}\frac{dS(t)}{S(t)}=\mu dt + \sigma dB(t).\tag{ $\star$}
+ \end{align*}
 Notice that the left-hand side looks similar to the derivative of $\log{S(t)}$.\\
 Applying the generalized Itô's formula for semimartingales to the function $f(t,x)=\log(x)\in C^2(\mathbb{R}_+^2,\mathbb{R})$ and using that $\partial_t f(t,x)=0$, we get 
 %[-->plug it in in $df(t,X_t)= \partial_t f(t,X_t)dt + \partial_x f(t.X_t) dX_t + 1/2 \partial_{xx} f(t,X_t) d<X,X>_t$]
