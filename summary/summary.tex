@@ -25,7 +25,7 @@
 \thispagestyle{empty}
 \tableofcontents
 \newpage
-\section{Conditional Expection}
+\section{Conditional Expectation}
 We start with some preliminaries, things known or less known.
 \\\\
 Let $( \Omega, \mathcal{F}, \mathbb{P})$ be a probability space
@@ -128,7 +128,7 @@ If any (and consequently all) of these conditions hold true, we say that $X$ is 
 \begin{enumerate}
 \item $X$ is UI. 
 \item $X$ converges almost surely and in $L^1$ to $X_\infty \in L^1.$ 
-\item There exists $X_\infty \in L^1$ such taht $\mathbb{E}(X_\infty \mid \mathcal{F}_n) = X_n$, i.e. the martingale is closed. 
+\item There exists $X_\infty \in L^1$ such that $\mathbb{E}(X_\infty \mid \mathcal{F}_n) = X_n$, i.e. the martingale is closed. 
 \end{enumerate}
 \end{thm}
 \begin{thm}[Optional stopping - strong version] Let $X$ be a closed (and thus UI) martingale. Then for any stopping times $S$ and $T$, one has 
@@ -720,4 +720,84 @@ where $(\Theta_t)_{t \geq 0}$ is the shift on $\mathcal{C}$, i.e. for any $s \in
 \end{thm}
 \begin{rem} Markov's property for BM states that under $\mathbb{P}_x$, the conditional law of $\Theta_t \omega$ given $\mathcal{F}_t^+$ is $\mathbb{P}_{ \omega_t}$.
 \end{rem}
+\noindent A consequence of the Markov's property for BM is given by Blumenthal's 0/1 law, it establishes that the germ sigma algebra is in fact a trivial sigma algebra.
+\begin{thm}[Blumenthal's 0/1 law] For any $x \in \mathbb{R}$ and any $A \in \mathcal{F}_0^+$ we have $\mathbb{P}_x(A) \in \lbrace 0,1 \rbrace$, i.e. the germ-sigma-algebra $\mathcal{F}_0^+$ is trivial. 
+\end{thm}
+\begin{thm}[Strong Markov Property] Let $F: \mathcal{C} \to \mathbb{R}$ be bounded measurable, $\tau$ be a stopping time with respect to $(\mathcal{F}_t^0)_{t \geq 0}$, then for all $x \in \mathbb{R}$ with $\mathbb{P}_x( \tau < \infty) =1$ we have 
+\begin{align*}
+\mathbb{E}_x( F \circ \Theta_\tau  \mid \mathcal{F}_\tau^+) = \mathbb{E}_{\omega_\tau} ( F)
+\end{align*}
+\end{thm}
+\begin{rem} This means that under $\mathbb{P}_x(  \cdot \mid \tau < \infty)$ the process $t \mapsto \omega_{t + \tau}$ has law $\mathbb{P}_{ \omega_\tau}$ and is indepent from $\mathcal{F}_\tau^+ = \cap_{ \epsilon >0} \mathcal{F}_{\tau + \epsilon}^0$.
+\end{rem}
+\newpage
+\begin{prop}[Reflection principle] Let $a>0$ and $b<a$ be arbitrary, then for any $t>0$ we have 
+\begin{align*}
+\mathbb{P}_0 \left( \max_{s \leq t} \omega_s >a, \ \omega_t < b \right) = \mathbb{P}_0( \omega_t > 2a-b) = \int_{2a-b}^\infty \dfrac{e^{-x^2/(2t)}}{\sqrt{2 \pi t}} dx 
+\end{align*}
+\end{prop}
+\begin{rem} \
+\begin{enumerate}
+\item The Reflection principle gives us the joint law of the supremum of the process and the process itself. 
+\item The last equality was just stated for the sake of completeness, indeed $\omega_t$ is a Gauss Random variable with mean zero and variance $t$ at time $t$. 
+\item For any $t>0$, let us denote $M_t= \max_{s \leq t} \omega_s$, then $M_t$ and $M_t- \omega_t$ have the same law as $(\omega_t)_{t \geq 0}$. 
+\end{enumerate}
+\end{rem}
+\noindent Here is the Reflection principle as presented by Norbert Wiener.
+\begin{thm}[Reflection Principle] Let $(W_t)_{t \geq 0}$ be a Wiener process (i.e. a standard Brownian Motion), and let $a>0$ be a treshold (also called a crossing point), then we have 
+\begin{align*}
+\mathbb{P}_0 \left( \sup_{0 \leq t \leq s } W_t \geq a \right) = 2 \mathbb{P}(  W_t \geq a)
+\end{align*} 
+\end{thm}
+\subsection{Sample path properties of a Brownian Motion}
+We start with the important time Inversion Formula for the Brownian Motion.
+\begin{prop}[Time Inversion] Let $(B_t)_{t \geq 0}$ be a standard Brownian Motion (i.e. it has law $\mathbb{P}_0$), then $(t B_{1/t})_{t \geq 0}$ is also a standard Brownian Motion (i.e. also has law $\mathbb{P}_0$). 
+\end{prop}
+\begin{proof}
+Let us define the process $Z_t:= t B_{1/t}$. Then clearly $(Z_t)_{t \geq 0}$ is a Gaussian process which is continuous for all $t>0$ (we need to pay seperate attention the time $t=0$). Moreover we have for all $s,t \in \mathbb{R}_0^+$,
+\begin{align*}
+\mathbb{E}(Z_tZ_s)= ts \mathbb{E}(B_{1/t}B_{1/s}) = ts \min \left( \frac{1}{t}, \frac{1}{s} \right) = \min (t, s ) 
+\end{align*}
+It remains to show that $\lim_{t \to 0} Z_t=0$, i.e. $Z_t$ is continuous at $t=0$. We notice that by Kolmogorov's LLN we have $\lim_{n \to \infty} \frac{B_n}{n}=0$ almost surely. Showing that $\lim_{t \to 0} Z_t =0$ is equivalent to showing that for all $\epsilon >0$ we have 
+\begin{align*}
+\mathbb{P}\left( \limsup_{t \to \infty} \frac{|B_t|}{t} > \epsilon \right) =0 
+\end{align*}
+\newpage
+By the Reflection principle we obtain for all $\lambda >0$ that 
+\begin{align*}
+\mathbb{P}\left( \sup_{0 \leq s \leq t }  B_s \geq \lambda \right) = 2 \mathbb{P}( B_t \geq \lambda) = \mathbb{P}( |B_t| \geq \lambda) \leq 2 e^{- \lambda^2/ (2t)}
+\end{align*}
+Specializing this bound on $\lambda= \sqrt{n}$ for a $n \in \mathbb{N_{\geq 1}}$ gives a summable upper bound. Thus by Borel-Cantelli Lemma we obtain that 
+\begin{align*}
+\sup_{n \leq s \leq n+1} B_s \leq \sqrt{n}, \text{ almost surely, eventually}. 
+\end{align*}
+This establishes that 
+\begin{align*}
+\limsup_{s \to \infty} \frac{B_s}{s} = 0, \text{ almost surely}. 
+\end{align*}
+Just replacing $B_s$ with $-B_s$ gives the statement about the liminf, we conclude that $\lim_{s \to \infty} B_s/s =0. $
+\end{proof}
+\begin{cor}[0/1 Law] Let $\tau = \displaystyle \bigcap_{t >0} \sigma( \omega_s : s \geq t )$ (tail $\sigma$-algebra), if $A \in \tau$, then $\mathbb{P}_x(A) \in \lbrace 0 , 1 \rbrace$ for all $ x \in \mathbb{R}$. 
+\end{cor}
+\noindent The next Proposition entails that the behaviour of a Brownian Motion is rather wild around its origin (conveniently picked to be at zero) and oscilating in general for large values of $t$. 
+\begin{prop} We have $\mathbb{P}_0$-almost surely that 
+\begin{align*}
+\limsup_{t \to 0} \frac{\omega_t}{\sqrt{t}} = + \infty \text{ and } \liminf_{t \to 0} \frac{\omega_t}{\sqrt{t}}= - \infty
+\end{align*}
+It also follows that 
+\begin{align*}
+\limsup_{t \to \infty}  \frac{\omega_t}{\sqrt{t}}= + \infty \text{ and } \liminf_{t \to \infty} \frac{\omega_t}{\sqrt{t}} = - \infty 
+\end{align*}
+\end{prop}
+\begin{proof}
+Let $a >0$ be arbitrary, by symmetry it is enough to establish that 
+\begin{align*}
+\mathbb{P}_0 \Big( \underbrace{\limsup_{t \to 0} \frac{\omega_t}{\sqrt{t}} > a}_{ \in \mathcal{F}_0^+} \Big) = 1
+\end{align*}
+By Blumenthal's 0/1 law, we just need to show that the above probability is strictly positive (since it can either be 0 or 1). However, we easily see that 
+\begin{align*}
+\mathbb{P}_0 \left( \limsup_{ \to 0} \frac{\omega_t}{\sqrt{t}} > a \right) & = \lim_{ \epsilon \to 0} \mathbb{P}_0 \left( \sup_{0 \leq t \leq \epsilon} \frac{\omega_t}{\sqrt{t}} >a \right) \\
+& \geq \lim_{ \epsilon \to 0 } \mathbb{P}_0 \left( \frac{\omega_\epsilon}{\sqrt{\epsilon}} > a \right) = \mathbb{P}( \mathcal{N}(0,1) >a)>0 
+\end{align*}
+\end{proof}
 \end{document}
