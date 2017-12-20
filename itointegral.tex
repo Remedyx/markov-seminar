@@ -404,7 +404,7 @@ We recall that one way to characterize a standard Brownian Motion is to say that
 \begin{proof}
 Indeed if $M(t)=B(t)$ is a standard Brownian Motion, then we already know that it is a continuous, square integrable martingale with $B(0)=0$ and we also established, in Remark \ref{varianceprocessofBM}, that its variance process $\langle M, M \rangle_t$ is given by $t$.
 \\\\
-Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingtale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for a fixed $u \in \mathbb{R}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
+Conversely, let us suppose that $M(t)$ is a continuous, square integrable martingale that satisfies $M(0)=0$ and its variance process is given by $\langle M, M \rangle_t =t$.  Let us consider for a fixed $u \in \mathbb{R}$ the complex valued function $f: \mathbb{R}^2 \to \mathbb{C}$ given by 
 \begin{align*}
 f(x,y)= \exp ( iux+(u^2/2)y),
 \end{align*}
@@ -437,7 +437,7 @@ By identifying the characteristic function we conclude that $M(t)-M(s)$ is indep
 \end{proof}
 \newpage
 \subsection{Application of Itô's formula in Finance}
-In this last section we give some more concrete examples that come from the field of mathematical finance.  \\
+In this last section we give some more concrete examples that come from the field of mathematical finance. A portfolio is said to be self-financing, if there is no exogeneous infusion or withdrawal of money, in particular the purchase of a new asset must be financed by the sale of an old one. \\
 \\
 Suppose we have a portfolio of Stocks ($S$) and savings account ($\beta_t$), then the value of the portfolio is
 $$ V=a_t S_t + b_t \beta_t. $$
@@ -460,18 +460,17 @@ dV_t = a_t dS_t + b_t d\beta_t,
 \end{align*}
 which is a characterization of a self-financing portfolio.
 \newpage
-\noindent We will look at the usual model for the time-evolution of an asset price $S(t)$.
+\noindent In this final example we will look at the usual model for the time-evolution of an asset price $S(t)$.
 The original paper by Black and Scholes assumes that the price of the underlying asset is a stochastic process $S(t)$ solving the following stochastic differential equation (SDE)
 \begin{align*}
 dS(t)=\mu S(t) dt + \sigma S(t) dB(t),
 \end{align*}
-where $\mu$ denotes the continuously compounded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. 
-In other words, $S(t)$ is a \textit{geometric Brownian motion}.\\
+where $\mu$ denotes the continuously compounded expected return on the stock (drift), $\sigma$ represents the volatility and $B(t)$ is a standard Brownian motion. For simplicity we will assume here $\mu$ and $\sigma$ to be constant. $S(t)$ is called a \textit{geometric Brownian motion}.\\
 \\
 Dividing by $S(t)$ in the equation above yields
 \begin{align*}\frac{dS(t)}{S(t)}=\mu dt + \sigma dB(t).\tag{ $\star$}
  \end{align*}
-Notice that the left-hand side looks similar to the derivative of $\log{S(t)}$.\\
+Notice that the left-hand side looks similar to the derivative of $\log{S(t)}$. It can be shown that the variance process of $S(t)$ is given by $\langle S, S \rangle_t = \sigma^2 S^2(t)$. 
 Applying the generalized Itô's formula for semimartingales to the function $f(t,x)=\log(x)\in C^2(\mathbb{R}_+^2,\mathbb{R})$ and using that $\partial_t f(t,x)=0$, we get 
 %[-->plug it in in $df(t,X_t)= \partial_t f(t,X_t)dt + \partial_x f(t.X_t) dX_t + 1/2 \partial_{xx} f(t,X_t) d<X,X>_t$]
 \begin{align*}
