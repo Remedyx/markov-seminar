@@ -800,4 +800,71 @@ By Blumenthal's 0/1 law, we just need to show that the above probability is stri
 & \geq \lim_{ \epsilon \to 0 } \mathbb{P}_0 \left( \frac{\omega_\epsilon}{\sqrt{\epsilon}} > a \right) = \mathbb{P}( \mathcal{N}(0,1) >a)>0 
 \end{align*}
 \end{proof}
+\newpage
+\begin{defn} Let $f$ be a real or complex-valued function on $\mathbb{R}$ and let $ 0 < \alpha \leq 1$. We say that $f$ is $\alpha$-Hölder continuous or that it satisfies a Hölder condition when there exists a real constant $C>0$ such that  
+\begin{align*}
+|f(x)-f(y)| \leq C |x-y|^\alpha, \text{ for all } x ,y \in \mathbb{R}.
+\end{align*}
+\end{defn}
+\begin{rem} \
+\begin{enumerate}
+\item We say $f$ is (locally) $\alpha$-Hölder continuous at $t \in \mathbb{R}$ if there exists a $\delta >0$ such that for  all $|x-y| < \delta$ the above inequality is satisfied.
+\item For $\alpha = 1$ we obtain the Lipschitz-Continuity. The case $\alpha=0$ isn't interesting because it only gives us bounded but not necessarily continuous functions. Moreover it can be shown that for $\alpha >1$ only constant functions satisfy the Hölder condition.
+\item We have the following chain of inclusions for all $\alpha \in (0,1]$: \\ Continuously differentiable $\subset$ Lipschitz continuous $\subset$ $\alpha$-Hölder continuous $\subset$ uniformly continuous $\subset$ continuous. 
+\end{enumerate}
+\end{rem}
+\begin{prop} For any $\alpha > 1/2$, $\mathbb{P}_0$ almost surely, the sample paths of $\omega$ are nowhere $\alpha$-Hölder-continuous. In particular, $\mathbb{P}_0$ almost-surely, the function $t \mapsto \omega_t$ is nowhere differentiable. 
+\end{prop}
+\begin{proof}
+Let $C>0$ and $\alpha > 1/2$. For any natural number $N \geq 1$ we define the set 
+\begin{align*}
+A_N:= \lbrace t \in [0,1] : |\omega_s- \omega_t| \leq C |t-s|^\alpha, \text{ for all $s$}: |s-t| \leq 1/N \rbrace 
+\end{align*}
+We want to show that $\mathbb{P}_0(A_N)=0$ for all $N \geq 1$. In fact, we have that $A_N$ is an increasing sequence of events, so we only need to prove that  
+\begin{align*}
+\lim_{N \to \infty} \mathbb{P}_0(A_N)=0 
+\end{align*}
+Let $n \in \mathbb{N}$ and for all $k = 0, 1 , \dots , 2nN$ define
+\begin{align*}
+Z_{N,k}:= \max_{j=1, \dots , n} \left| \frac{\omega_{j+k}}{2nN} - \frac{\omega_{j+k-1}}{2nN} \right| 
+\end{align*}
+Let us now define the set \begin{align*}
+D_N:= \left\lbrace k : Z_{N,k} \leq \frac{2C}{N^\alpha} \right\rbrace 
+\end{align*}
+We claim that that $A_n \subset D_n$, indeed for $ \omega \in A_N$ we set $k = \lfloor 2nNt \rfloor$, then the triangle inequality gives us
+\begin{align*}
+\left| \frac{\omega_{j+k+1}}{2nN} - \frac{\omega_{j+k}}{2nN} \right| \leq \left| \frac{\omega_{j+k+1}}{2nN}- \omega_t \right| + \left| \omega_t - \frac{\omega_{j+k}}{2nN} \right| \leq \frac{C}{N^\alpha} + \frac{C}{N^\alpha} = \frac{2C}{N^\alpha}
+\end{align*}
+which shows that $\omega \in D_N$, consequentally we have that $\mathbb{P}_0(A_N) \leq \mathbb{P}_0(D_N)$. 
+\newpage
+Since for $j=1, \dots , n$ the random variables 
+\begin{align*}
+\frac{\omega_{j+1+1}}{2nN} - \frac{\omega_{j+k}}{2nN}
+\end{align*}
+are i.i.d. $\mathcal{N}(0, 1/2nN)$ it follows that $Z_{N,k}$ are identically distributed for all $k=0, 1, \dots , 2nN$. Thus we can easily establish the bound
+\begin{align*}
+\mathbb{P}_0(D_N) \leq 2nN \mathbb{P}_0 \left( Z_{N,k} \leq \frac{2C}{N^\alpha} \right) = 2nN \mathbb{P}_0 \left( \left| \mathcal{N} \left( 0, \frac{1}{2nN} \right) \right| \leq \frac{2C}{N^\alpha} \right)^n 
+\end{align*}
+Using the trivial bound $\mathbb{P}(| \mathcal{N}(0,1)| \leq \lambda ) \leq \lambda$ for all $\lambda >0$ we find that
+\begin{align*}
+\mathbb{P}_0(D_N) &\leq 2nN \mathbb{P} \left(\frac{1}{\sqrt{2nN}} | \mathcal{N}(0,1)| \leq \frac{2C}{N^\alpha} \right)^n \\
+& = 2nN \mathbb{P}( | \mathcal{N}(0,1) | \leq C_n N^{1/2- \alpha} ) ^n \leq 2nC_n^n N^{n \left( \frac{1}{2}- \alpha \right)+1} 
+\end{align*}
+Since $\alpha > \frac{1}{2}$, we have that $(1/2 - \alpha) < 0$, choosing $n \in \mathbb{N}$ large enough we can guarantee that $n(0.5- \alpha) +1 <0 $. We conclude that 
+\begin{align*}
+\lim_{N \to \infty} \mathbb{P}_0 (D_N)=0, \text{ and thus } \lim_{N \to \infty} \mathbb{P}_0(A_N)=0
+\end{align*}
+\end{proof}
+\begin{rem} For any $0<\alpha < \frac{1}{2}$ one can show, that $\mathbb{P}_0$ almost surely, the sample path of $\omega$ are in fact $\alpha$-Hölder continuous at every point. However, no statement is possible for the case $ \alpha = 1/2$. 
+\end{rem}
+\begin{prop}[Law of iterated logarithm] Let $h_t:= \sqrt{ 2t \log | \log(t)|}$ for any $t>0$, then $\mathbb{P}_0$ almost surely we have 
+\begin{align*}
+\limsup_{t \to 0} \frac{\omega_t}{h_t}&=1 \\
+\liminf_{t \to 0} \frac{\omega_t}{h_t}& = -1 \\
+\limsup_{t \to \infty} \frac{\omega_t}{h_t} & = 1  
+\end{align*}
+\end{prop}
+\begin{proof}
+Exercise! 
+\end{proof}
 \end{document}
