@@ -867,4 +867,65 @@ Since $\alpha > \frac{1}{2}$, we have that $(1/2 - \alpha) < 0$, choosing $n \in
 \begin{proof}
 Exercise! 
 \end{proof}
+\newpage
+\subsection{Martingales derived from Brownian Motion}
+Let $B$ be a standard Brownian Motion
+\begin{prop} Let $(B_t)_{t \geq 0}$ be a standard Brownian Motion, then the following processes are martingales:
+\begin{enumerate}
+\item $(B_t^2-t)_{t \geq 0}$ 
+\item $M_t^\alpha = \exp\left( \alpha B_t - \frac{\alpha^2}{2}t \right)$ for all $t \geq 0$ with expected value $1$. 
+\item $\left( \dfrac{d}{d \alpha} \right)^k M_{t \ \mid \alpha =0} ^\alpha$, for any $k \in \mathbb{N}$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Exercise!
+\end{proof}
+\begin{thm}[Skorokhod's Theorem] Let $\xi$ be a random variable such that $\mathbb{E}( \xi)=0$ and $\mathbb{E}( \xi^2)= \sigma$. Then there exists a stopping time $\tau$ such that $\mathbb{E}( \tau)= \sigma^2$ and 
+\begin{align*}
+B_\tau \overset{d}= \xi. 
+\end{align*}
+\end{thm}
+\noindent In order to prove Skorokhod's Theorem we have another relevant exercise, it is a special case of Skorokho'ds Theorem for centered Bernoulli random variables. 
+\begin{prop} For any $\alpha \in \mathbb{R}$, let $\tau_\alpha = \inf \lbrace t >0 : \omega_t = \alpha \rbrace$. \\ If $\alpha < x < \beta$, show that $\mathbb{E}_x( \tau_\alpha \wedge \tau_\beta) < \infty$ and 
+\begin{align*}
+\mathbb{P}_x ( \tau_\alpha < \tau_\beta) = \frac{\beta-x}{\beta-\alpha}
+\end{align*}
+Deduce that if $X$ is a centered Bernoulli random variable taking values in $\lbrace a, \beta \rbrace$, then there exists a stopping time $\Lambda$ with finite mean so that $X$ and $\omega_\Lambda$ have the same law under $\mathbb{P}_0$. 
+\end{prop}
+\begin{proof}
+Exercise!
+\end{proof}
+\begin{rem} The strategy behind the proof of Skorokhod's Theorem is that we construct a sequence $\xi_n$ (taking finitely many values) such that $\xi_n \to \xi$ almost surely. Moreover we construct an increasing sequence of stopping times $\tau_n \uparrow \tau$ such that $\mathbb{E}( \tau ) < \infty$ and 
+\begin{align*}
+B_{\tau_n} \overset{d}= \xi_n
+\end{align*}
+The initiatel step is supported the above exercise, we then proceed iteratively by segmentation. 
+\end{rem}
+\newpage
+\noindent Finally we will state Donsker's invariance Theorem. Let $\xi_1, \xi_2, \dots$ be a sequence of i.i.d. Random Variables with mean zero and variance 1. Let $S_0:=0$ and $S_n = \xi_1 + \dots + \xi_n$ for all $n \geq 1$ be a Random Walk. We consider the continuous embedding of this Random Walk on the unit interval $[0,1]$, i.e. let 
+\begin{align*}
+\widetilde{S_t^N}:= \left\lbrace \frac{S_k+ \left( t- \frac{k}{N}\right) \xi_{k+1}}{\sqrt{N}} : t \in \left[ \frac{k}{N}, \frac{k+1}{N} \right], k = 0,1 \dots , N-1 \right\rbrace 
+\end{align*}
+\begin{thm}[Donsker's invariance Theorem] $\widetilde{S^N}$ converges in law to a standard Brownian Motion as $N \to \infty$ (in $\mathcal{C})$. This means that for any continuous and bounded function $F: \mathcal{C} \to \mathbb{R}$ we have 
+\begin{align*}
+\mathbb{E} \left( F \left( \widetilde{S^N} \right) \right) \to \mathbb{E}_0(F), \text{ as } N \to \infty 
+\end{align*}
+Where $\mathcal{C}=  \lbrace \omega : [0,1] \to \mathbb{R} \mid \text{continuous and } \omega_0 =0 \rbrace$ is a complete (separable) metric space with respect to the $\rho( \omega, \nu) = \sup_{t \in [0,1]} \mid \omega_t - \nu_t |$. 
+\end{thm}
+\begin{rem} Donsker's Theorem is an invariance theorem because it doesn't depend on the initial law we pick for the i.i.d. sequence $\xi$ that builds our Random Walk. 
+\end{rem}
+\begin{exmp} $F( \omega):= \sup_{t \in [0,1]} \omega_t$ is a continuous function on $\mathcal{C}$, thus by Donsker's invariance Theorem we obtain that 
+\begin{align*}
+ \sup_{t \in [0,1]} \widetilde{S_t^N} = \frac{1}{\sqrt{N}} \sup_{k \leq N} (S_k) \implies  \sup_{t \in [0,1]} B_t \overset{d}= | \mathcal{N}(0,1) | 
+\end{align*}
+\end{exmp}
+\begin{exmp} Let $F( \omega) = \omega_1$ be defined on $\mathcal{C}$, then we obtain the classical CLT because 
+\begin{align*}
+F(\widetilde{S^N})=\widetilde{S_1^N} = \frac{S_N}{\sqrt{N}} 
+\end{align*}
+and consequently 
+\begin{align*}
+\frac{S_N}{\sqrt{N}} \implies \mathcal{N}(0,1), \text{ as } N \to \infty. 
+\end{align*}
+\end{exmp}
 \end{document}
