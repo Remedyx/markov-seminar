@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  26 DEC 2017 17:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  28 DEC 2017 02:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -565,11 +565,11 @@ e
 ))
 isodate: babel.sty, (n)german.sty have not been loaded
 (./summary.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -591,42 +591,89 @@ Overfull \hbox (2.65839pt too wide) in paragraph at lines 41--42
  []
 
 [2]
-Overfull \hbox (14.37947pt too wide) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 61--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--66
+
+ []
+
+
+Overfull \hbox (3.32147pt too wide) in paragraph at lines 66--67
+\OT1/cmr/bx/n/10.95 Definition 1.2. \OT1/cmr/m/it/10.95 A se-quence of prob-a-b
+il-ity mea-sures $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.
+95 )[]$ \OT1/cmr/m/it/10.95 con-verges weakly
+ []
+
+[3]
+Overfull \hbox (14.37947pt too wide) in paragraph at lines 105--106
 \OT1/cmr/bx/n/10.95 Theorem 2.2 \OT1/cmr/m/n/10.95 (Mar-tin-gale con-ver-gence 
 The-o-rem)\OT1/cmr/bx/n/10.95 . \OT1/cmr/m/it/10.95 Let $\OML/cmm/m/it/10.95 X$
  \OT1/cmr/m/it/10.95 be a super-martingale
  []
 
-[3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 182--187
+[4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 205--210
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--187
+Underfull \hbox (badness 10000) in paragraph at lines 205--210
 
  []
 
-[6] [7] [8]
-Overfull \hbox (12.58578pt too wide) in paragraph at lines 257--258
+[7] [8] [9]
+Overfull \hbox (12.58578pt too wide) in paragraph at lines 280--281
 []\OT1/cmr/m/n/10.95 Here $(\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.95 )[]$ is
  called the col-lec-tion of fi-nite di-men-sional marginal
  []
 
-[9]
-Overfull \hbox (9.50034pt too wide) in paragraph at lines 282--283
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 299--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--310
+
+ []
+
+[11]
+Overfull \hbox (9.50034pt too wide) in paragraph at lines 322--323
 \OT1/cmr/m/it/10.95 there ex-ists a mea-sur-able map $\OML/cmm/m/it/10.95 Q \OT
 1/cmr/m/n/10.95 : \OMS/cmsy/m/n/10.95 H ! M\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10
 .95 H\OT1/cmr/m/n/10.95 ) := \OMS/cmsy/m/n/10.95 f[]Hg$
  []
 
 
-Overfull \hbox (27.87799pt too wide) in paragraph at lines 293--293
+Overfull \hbox (27.87799pt too wide) in paragraph at lines 338--338
 [] 
  []
 
-[10] [11] [12] [13] [14] [15] [16] [17] [18] [19]
-Overfull \hbox (13.98357pt too wide) in paragraph at lines 567--568
+[12] [13] [14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 482--485
+
+ []
+
+[17] [18] [19] [20] [21]
+Overfull \hbox (13.98357pt too wide) in paragraph at lines 619--620
 \OT1/cmr/m/it/10.95 Ma-trix $\OML/cmm/m/it/10.95 D \OT1/cmr/m/n/10.95 = (\OML/c
 mm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 where $\OML/cmm/m/
 it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
@@ -637,7 +684,7 @@ it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
  []
 
 
-Overfull \hbox (2.78313pt too wide) in paragraph at lines 575--576
+Overfull \hbox (2.78313pt too wide) in paragraph at lines 627--628
 \OT1/cmr/m/n/10.95 its co-vari-ance ker-nel $\OML/cmm/m/it/10.95 K\OT1/cmr/m/n/
 10.95 (\OML/cmm/m/it/10.95 t; t[]\OT1/cmr/m/n/10.95 ) := [](\OML/cmm/m/it/10.95
  X[]; X[]\OT1/cmr/m/n/10.95 ) = \U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 (\OML/cmm/
@@ -646,15 +693,15 @@ E\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )\U/msb/m/n/10.9
 5 E\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )$ 
  []
 
-[20]
-Overfull \hbox (5.88654pt too wide) in paragraph at lines 580--581
+[22]
+Overfull \hbox (5.88654pt too wide) in paragraph at lines 632--633
 \OT1/cmr/bx/n/10.95 Proposition 7.1 \OT1/cmr/m/n/10.95 (Char-ac-ter-i-za-tion)\
 OT1/cmr/bx/n/10.95 . \OT1/cmr/m/it/10.95 The fol-low-ing two state-ments are eq
 uiv-
  []
 
 
-Overfull \hbox (14.07068pt too wide) in paragraph at lines 598--599
+Overfull \hbox (14.07068pt too wide) in paragraph at lines 650--651
 \OT1/cmr/bx/n/10.95 Definition 7.6. \OT1/cmr/m/it/10.95 A Gaus-sian Hilbert spa
 ce $\OML/cmm/m/it/10.95 W$ \OT1/cmr/m/it/10.95 is a closed sub-space of $\OML/c
 mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
@@ -662,33 +709,33 @@ mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
 95 P\OT1/cmr/m/n/10.95 )$
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 607--609
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 659--661
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--641
+Underfull \hbox (badness 10000) in paragraph at lines 687--693
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--641
+Underfull \hbox (badness 10000) in paragraph at lines 687--693
 
  []
 
-[22] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 681--685
+[24] [25]
+Underfull \hbox (badness 10000) in paragraph at lines 733--737
 
  []
 
-[24] [25] [26] [27] [28] [29] [30]
-Overfull \hbox (2.9318pt too wide) in paragraph at lines 915--916
+[26] [27] [28] [29] [30] [31] [32]
+Overfull \hbox (2.9318pt too wide) in paragraph at lines 967--968
 \OT1/cmr/bx/n/10.95 Remark 7.9. \OT1/cmr/m/n/10.95 Donsker's The-o-rem is an in
 -vari-ance the-o-rem be-cause it doesn't
  []
 
-[31] (./summary.aux) ) 
+[33] (./summary.aux) ) 
 Here is how much of TeX's memory you used:
  3105 strings out of 494902
  39242 string characters out of 6179890
@@ -712,10 +759,10 @@ ic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on summary.pdf (31 pages, 288528 bytes).
+Output written on summary.pdf (33 pages, 297607 bytes).
 PDF statistics:
- 165 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 171 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

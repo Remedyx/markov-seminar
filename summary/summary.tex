@@ -57,6 +57,29 @@ in particular if $X$ is a random variable such that $X \in L^s$ then it always f
 \end{align*}
 \end{prop}
 \newpage
+\subsection{Weak convergence of measures}
+Weak convergence is one of many types of convergence relating to the convergence of measures. It depends on a topology on the underlying space and thus is not a purely measure theoretic notion. 
+\\\\
+There are several equivalent definitions of weak convergence of a sequence of measures, some of which are more general than others. The equivalence of these conditions is sometimes known as the Portmanteau theorem. It is an Exercise of Exercise Sheet 4 to prove this theorem.
+\\\\
+In the following let $\mathcal{X}$ be a metric space and let it be endowed with its Borel $\sigma$-Algebra $\Sigma$. Let $\mathcal{M}( \mathcal{X})$ denote the space of all measures on $\mathcal{X}$. 
+\begin{defn} A sequence of probability measures $( \mu_n)_{n \in \mathbb{N}}$ converges weakly to $\mu$ in $\mathcal{M}( \mathcal{X})$ if for all $f \in C_b( \mathcal{X} \to \mathbb{R})$ we have
+\begin{align*}
+\int f d \mu_n \to \int f d \mu, \text{ as } n \to \infty. \tag{*}
+\end{align*}
+We then simply denote this convergence by $\mu_n \implies \mu$. 
+\end{defn}
+\noindent 
+\textbf{Exercise 4.5. (Portmanteau's theorem)} The following assertions are equivalent:
+
+\begin{enumerate}
+\item $\mu_n \implies \mu$.
+\item (*) holds for all $f \in UC_b( \mathcal{X} \to \mathbb{R})$.
+\item $\liminf \mu_n(O) \geq \mu (O)$ for all open sets $O \subset \mathcal{X}$. 
+\item $\limsup \mu_n(A) \leq \mu (A)$ for all closed sets $A \subset \mathcal{X}$. 
+\item $\lim \mu_n(B) = \mu(B)$ for all measurable sets $B \subset \mathcal{X}$ such that $\mu(B^\circ)= \mu( \overline{B})$. 
+\end{enumerate}
+\newpage
 \section{Discrete time Martingales}
 \begin{defn} Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, an increasing sequence of $\sigma$-algebras $\mathcal{F}_0 \subset \mathcal{F}_1 \subset \mathcal{F}_2 \subset \cdots \subset \mathcal{F}$ is called a filtration on $\Omega$. We call the space $(\Omega, \mathcal{F}, (\mathcal{F})_{n \in \mathbb{N}}, \mathbb{P})$ a filtered probability space. 
 \end{defn}
@@ -271,6 +294,23 @@ H_i, & \text{ if } i \notin K \end{cases}
 This is sometimes called the \textit{canonical process}. 
 \end{rem}
 There is a section about the Galton-Watson process, it is an important exercise and will be left open on this summary. 
+\newpage 
+\subsection{Relevant Exercises}
+These Exercises are related to stochastic processes and are from Exercise Sheet 3. In the following let $\mathcal{B}$ denote the Borel $\sigma$-algebra on the unit interval $[0,1]$ and let $\lambda$ be the Lebesgue measure on $[0,1]$. \\
+\\
+\textbf{Exercise 3.1.} Construct on the probability space $([0,1], \mathcal{B}, \lambda)$ a sequence of independent Bernoulli random variables, that is a measurable map $X: [0,1] \to \lbrace 0,1 \rbrace^\mathbb{N}$ whose law is the appropriate product measure.
+\\\\
+\textbf{Exercise 3.2.} Construct on the probability space $([0,1], \mathcal{B}, \lambda)$ a sequence of independent random variables uniformly distributed on $[0,1]$. Then, deduce that for any sequence of probability measures $( \mu_n)_{n \in \mathbb{N}}$ on $\mathbb{R}$, there exists a stochastic process $X$ with law $\otimes_{n=1}^\infty \mu_n$. 
+\\\\
+\textbf{Exercise 3.4.} Show that on the probability space $([0,1], \mathcal{B}, \lambda)$ there can be no process $(X_t)_{t \geq 0}$ such that the $X_t$ are i.i.d. Bernoulli $1/2$ random variables. Why isn't this a contradiction to Kolmogorov's Extension Theorem?
+\\\\
+The next Exercise is from Exercise Sheet 5 and rather tough. 
+\\\\
+We define the standad $n$-dimensional Gaussian measure $\gamma_n$ to be the probability with density with respect to the Lebesgue measure $\lambda_n$ on $\mathbb{R}^n$ given by 
+\begin{align*}
+\dfrac{d \gamma_n}{d \lambda_n}(x) = \dfrac{e^{-|x|^2/2}}{(2 \pi)^{n/2}}, \text{ for all } x \in \mathbb{R}^n 
+\end{align*}
+Exercise 5.6. * Show that the sequence of probability measures $( \gamma_n)_{n=1}^\infty$ satisfies the Kolmogorov consistentcy condition and deduce that there exists a probability measure $\Gamma$ on $\mathbb{R}^\mathbb{N}$ such that if $X \sim \Gamma$, then $X=(X_1, X_2, \dots )$ is a sequence of independent, identically distributed stnadard Gaussian random variables. 
 \newpage
 \section{Markov Processes}
 \begin{defn}
@@ -281,6 +321,11 @@ A stochastic process $(X_t)_{t \in I}$ is a Markov if for all \\ $f: \mathcal{H}
 \end{defn}
 \begin{defn} A process $(X_n)_{n \in \mathbb{N}}$ is a time-homogenous Markov chain if there exists a measurable map $Q: \mathcal{H} \to \mathcal{M}( \mathcal{H}):= \lbrace \text{probability measures on } \mathcal{H} \rbrace$ such that $\mathbb{P}(X_n \in A \mid X_{n-1} = x ) = Q(x,A)$ for all Borel sets $A \subset \mathcal{H}$. We call $Q$ the transition probability of the Markov chain. $\mathcal{H}$ is called the state space of the Chain, moreover $x \in \mathcal{H}$ is called a state of the chain. 
 \end{defn}
+\noindent \textbf{Exercise 5.1.} Let $( \xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. real-valued random variables with common law $\mu$. Let $F: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be a measurable map. Show that the process given by 
+\begin{align*}
+X_n:= F(X_{n-1}, \xi_n)
+\end{align*}
+is a time-homogenous Markov chain on $\mathbb{R}$ and find its transition probability. Is the converse of this statement true? I.e. does every time-homogenous Markov chain admit such a representation?
 \begin{prop} $\mathcal{M}( \mathcal{H})$ equipped with the topology of weak convergence is a completely metrizable, separable space. 
 \end{prop}
 \noindent Recall that a sequence $\mu_n \in \mathcal{M}( \mathcal{H})$ converges weakly to $\mu \in \mathcal{M}( \mathcal{H})$ if and only if 
@@ -298,7 +343,6 @@ By Kolmogorov's extension theorem, there exists a unique probability measure $\m
 \end{thm}
 \begin{thm}[Strong Markov Property] Let $T$ be a stopping time such that $\mathbb{P}_\nu (T < \infty) >0 $. Conditionally on the event $\lbrace T < \infty \rbrace$ and $\mathcal{F}_T$ we have that $\Theta^n$ is a Markov Chain with law given by $\mathbb{P}_{X_T}$ and independent of $\mathcal{F}_{T-1}$ 
 \end{thm}
-\newpage
 We now work (hopefully) with $\mathcal{H}$ a countable (or finite) state space, the transition probability $Q$ is then represented as a matrix, i.e. we have 
 \begin{align*}
 Q(x,A) = \sum_{y \in A} Q_{xy}, \text{ for all } x \in \mathcal{H}
@@ -346,6 +390,11 @@ Let $R:= \lbrace x \in \mathcal{H} : \mathbb{P}_x ( R_x < \infty) = 1 \rbrace$ t
 \end{cor}
 \begin{rem} The above corollary yields that the being recurrent gives equivalent classes on $R$. We have $R = \cup_{j \in I} R_j$ and the sets $R_j$ are disjoint, the $R_j$'s are called the recurrence classes. We define the equivalence relation $x \sim y$ if $G(x,y) >0$. It follows that $x \in R_j$, then $G(x,y) >0$ if and only if $y \in R_j$. 
 \end{rem}
+\noindent \textbf{Exercise 5.3. **} We define the simple random walk on $\mathbb{Z}^d$ to be the Markov process with transition probability given by 
+\begin{align*}
+Q_{x,y} = 2^{-d} 1_{|x-y|=1}, \text{ for all } x,y \in \mathbb{Z}^d
+\end{align*}
+Compute the Green function $G_{00}$ for the simple random walk on $\mathbb{Z}^d$. Deduce that the walk is recurrent if and only if $d \leq 2$. 
 \begin{thm}[Classification of states] The following holds true
 \begin{enumerate}
 \item If $x \in R_j$ for some $j \in I$, then 
@@ -377,7 +426,7 @@ We consider a Markov Chain with transition probability $Q$.
 \mu_x Q_{xy} = \mu_y Q_{yx}, \text{ for all } x,y \in  \mathcal{H}
 \end{align*}
 \end{defn}
-\textbf{Exercise}: Check that if $\mu$ is reversible, then it is also stationary. 
+\noindent \textbf{Exercise 6.6.}: Check that if $\mu$ is reversible, then it is also stationary. 
 \begin{lem} Let $z \in R$ and define for all $x \in \mathcal{H}$
 \begin{align*}
 \hat{\pi}(x):= \sum_{n=0}^\infty \mathbb{P}_z ( \omega_n =x, R_z >n )
@@ -430,6 +479,9 @@ i.e. the law of $\omega_n$ under $\mathbb{P}_z$ converges in total variation to 
 \end{thm}
 \textbf{Exercise:} Given a transition probability $Q$. Show that $\tilde{Q} = (I + Q)/2$ defines an irreducible aperiodic chain, it is called the lazy chain. 
 \newpage
+\noindent \textbf{Exercise 6.1. *} Let $Q$ be an irreducible transition matrix and assume that the chain has a stationary measure which is finite. Show that the chain is positive recurrent. 
+\\\\
+\textbf{Exercise 6.2.} Let $Q$ be a transition matrix of an irreducible recurrent chain. Show that $\widehat{Q}= \epsilon I + (1- \epsilon) Q$ is also a transition matrix for any $0 < \epsilon < 1$ and that the corresponding chain is irreducible and aperiodic. 
 \begin{thm} Let $Z=(Z_k)_{k \in \mathbb{N}}$ identically distributed random variables such that
 \begin{enumerate}
 \item $\mathbb{E}(Z_k^2)=1$ 
@@ -460,7 +512,7 @@ In this section we consider $H$ to be complete, separable metric space with Bore
 \end{align*}
 \begin{defn} Let $\mu$ be a measure on $H$. We say that $\mu$ is an invariant measure if $\mu (T_t^{-1}(A))= \mu (A)$ for all $A \in \mathcal{F}$ and for all $t \in \mathbb{R}$. \\  $(H, \mathcal{F},  \mu , T_t) $ is called a dynamical system. 
 \end{defn}
-\begin{defn} $\mu$ is called ergodic if for every $a \in \mathcal{F}$ with $T_t^{-1}(A)=A$ for all $t \in \mathbb{R}$ we have  $\mu(A) \in \lbrace 0 ,1 \rbrace $. 
+\begin{defn} $\mu$ is called ergodic if for every $A \in \mathcal{F}$ with $T_t^{-1}(A)=A$ for all $t \in \mathbb{R}$ we have  $\mu(A) \in \lbrace 0 ,1 \rbrace $. 
 \end{defn}
 \noindent We consider the functional expression
 \begin{align*}
@@ -490,7 +542,7 @@ and we wonder under what conditions we have that $R_t(f) \to \int f d \mu$ as $t
 \begin{lem} Let us define $\mathcal{I}:= \lbrace A \in \mathcal{F} : T_t^{-1}(A) = A \text{ for all } t \in \mathbb{R} \rbrace$, then $\mathcal{I}$ is a $\sigma$-algebra, it is called the $\sigma$-algebra of invariant sets. 
 \end{lem}
 \begin{proof}
-Exercise!
+Exercise! (Exercise 7.5)
 \end{proof}
 \begin{cor} Let $\mu$ be an invariant measure under $(T_t)_{t \in \mathbb{R}}$, $\mathcal{I}$ the $\sigma$-algebra of invariant sets as above, then we have 
 \begin{align*}
