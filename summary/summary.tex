@@ -69,6 +69,8 @@ In the following let $\mathcal{X}$ be a metric space and let it be endowed with 
 \end{align*}
 We then simply denote this convergence by $\mu_n \implies \mu$. 
 \end{defn}
+\begin{rem}With this mode of convergence, we increasingly expect to see the next outcome in a sequence of random experiments becoming better and better modeled by a given probability distribution. Moreover, convergence in distribution or weak convergence is, as the name suggests, the weakest form of convergence. 
+\end{rem}
 \noindent 
 \textbf{Exercise 4.5. (Portmanteau's theorem)} The following assertions are equivalent:
 
@@ -79,6 +81,13 @@ We then simply denote this convergence by $\mu_n \implies \mu$.
 \item $\limsup \mu_n(A) \leq \mu (A)$ for all closed sets $A \subset \mathcal{X}$. 
 \item $\lim \mu_n(B) = \mu(B)$ for all measurable sets $B \subset \mathcal{X}$ such that $\mu(B^\circ)= \mu( \overline{B})$. 
 \end{enumerate}
+\begin{thm}[Lévy's continuity theorem] Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables and let $\varphi_n(t):= \mathbb{E}(e^{itX_n})$ for $t \in \mathbb{R}$ denote the characteristic function. We then have $X_n \implies X$ if and only if $\varphi_n(t) \to \varphi(t)$. 
+
+\end{thm}
+\begin{prop} Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables, then $X_n \implies X$ if and only if $\mathbb{P}(X_n \leq x) \to \mathbb{P}(X_n \leq x)$ for all cotninuity points of $x \mapsto \mathbb{P}(X \leq x)$. 
+
+\end{prop}
+
 \newpage
 \section{Discrete time Martingales}
 \begin{defn} Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, an increasing sequence of $\sigma$-algebras $\mathcal{F}_0 \subset \mathcal{F}_1 \subset \mathcal{F}_2 \subset \cdots \subset \mathcal{F}$ is called a filtration on $\Omega$. We call the space $(\Omega, \mathcal{F}, (\mathcal{F})_{n \in \mathbb{N}}, \mathbb{P})$ a filtered probability space. 
@@ -170,7 +179,7 @@ If any (and consequently all) of these conditions hold true, we say that $X$ is 
 \end{align*}
 \end{thm}
 \begin{proof}
-\textbf{Exercise.} Kolmogorov's LLN can be shown in it's full generality (i.e. for $L^1$ RV) by using backwards martingales and Kolomogorov's 0-1 Law. 
+\textbf{Exercise 2.4.} Kolmogorov's LLN can be shown in it's full generality (i.e. for $L^1$ RV) by using backwards martingales and Kolomogorov's 0-1 Law. 
 \end{proof}
 \begin{thm}[Kolmogorov's 0-1 Law] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables and let $\mathcal{H}_n = \sigma( \xi_j : j \geq n )$. Then, the sigma algebra $\mathcal{H}_\infty := \cup_{n \in \mathbb{N}} \mathcal{H}_n$ is trivial, i.e. for every event $A \in \mathcal{H}_\infty$ we have  \\ $\mathbb{P}(A) \in \lbrace 0 ,1 \rbrace$. 
 \end{thm}
@@ -539,16 +548,40 @@ and we wonder under what conditions we have that $R_t(f) \to \int f d \mu$ as $t
 \end{thm}
 \begin{rem} The convergence above is of course meant with respect to the norm in $H$ which is induced by the scalar product that is given on $H$. 
 \end{rem}
-\begin{lem} Let us define $\mathcal{I}:= \lbrace A \in \mathcal{F} : T_t^{-1}(A) = A \text{ for all } t \in \mathbb{R} \rbrace$, then $\mathcal{I}$ is a $\sigma$-algebra, it is called the $\sigma$-algebra of invariant sets. 
+\begin{lem} Let us define $\mathcal{I}:= \lbrace A \in \mathcal{F} : T_t^{-1}(A) = A \text{ for all } t \in \mathbb{R} \rbrace$, then $\mathcal{I}$ is a $\sigma$-algebra, it is called the $\sigma$-algebra of invariant sets. Moreover, $f: H \to \mathbb{R}$ is $\mathcal{I}$-measurable if and only if $f \circ T_t = f$. 
 \end{lem}
 \begin{proof}
-Exercise! (Exercise 7.5)
+Exercise! (Exercise 7.6)
 \end{proof}
 \begin{cor} Let $\mu$ be an invariant measure under $(T_t)_{t \in \mathbb{R}}$, $\mathcal{I}$ the $\sigma$-algebra of invariant sets as above, then we have 
 \begin{align*}
 \lim_{t \to \infty} \frac{1}{t} \int_0^t f (T_s \omega) ds = \mathbb{E}(f \mid \mathcal{I}) \text{ in } L^2( \mu).
 \end{align*}
 \end{cor}
+\noindent Next we discuss the Poincaré recurrence theorem, for dynamical systems it states that  after a sufficiently long but finite time the system will return to a state very close to the initial state. 
+\\\\
+Let $\Omega$ be a separable complete metric space and $\theta: \Omega \to \Omega$ be a continuous map with a continuous inverse (i.e. a Homeomorphism). Let $\mu$ be an invariant probability measure on $\Omega$, that is $\mu$ satisfies $\mu( \theta^{-1} A)= \mu(A)$ for all $A \in \mathcal{B}( \Omega)$. We then call $( \Omega, \theta, \mu)$ a dynamical system. 
+\begin{thm}[Poincaré recurrence Theorem] Given a dynamical system as above. For any $A \in \mathcal{B}(\Omega)$ we have for $\mu$ almost all $x \in A$, that $\theta^n(x) \in A$ infinitely often. 
+
+\end{thm}
+\begin{proof}
+Exercise 7.5. !
+\end{proof}
+\begin{defn} A dynamical system $( \Omega, \theta, \mu)$ is called mixing if for any $A,B \in \mathcal{B}( \Omega)$ we have
+\begin{align*}
+\lim_{n \to \infty} \mu(\theta^{-n}( A \cap B)) = \mu(A) \mu(B)
+\end{align*}
+\end{defn}
+\begin{prop} Show that a dynamical system $( \Omega, \theta, \mu)$ is ergodic if and only if 
+\begin{align*}
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \mu( \theta^{-k}( A \cap B)) = \mu(A) \mu(B)
+\end{align*}
+Deduce that mixing implies ergodicity. 
+\end{prop}
+\begin{proof}
+Exercise! (Exercise 8.1)
+\end{proof}
+\noindent \textbf{Exercise 8.4.} Let $( \Omega, \theta, \mu_1)$ and $( \Omega, \theta, \mu_2)$ be two ergodic dynamical systems. Show that if $\mu_1 \neq \mu_2$, then these two measures are mutually singular. 
 \newpage
 \section{Continuous time Martingales}
 \begin{defn} Let $X=(X_t)_{t \in T}$ be a stochastic process on some filtered probability space $( \Omega, \mathcal{F}, ( \mathcal{F}_t)_{t \in T}, \mathbb{P})$. Then we say that $X$ is a martingale if  
@@ -593,7 +626,7 @@ Moreover, if $(\mathcal{F}_t)_{t \geq 0}$ satisfies the usual conditions, then $
 Moreover if $X$ is UI, then $X_t \to X_\infty$ in $L^1( \Omega, \mathcal{F}, \mathbb{P})$. 
 \end{thm}
 \begin{proof}
-Exercise!
+Exercise! (Exercise 9.3.)
 \end{proof}
 \begin{thm}[Stopping Theorem] Let $X$ be a cadlag martingale and let $\tau \leq \Lambda$ be stopping times with respect to $( \mathcal{F}_t)_{t \geq 0}$. If $\Lambda \leq C$ for some constant $C >0$, then 
 \begin{align*}
