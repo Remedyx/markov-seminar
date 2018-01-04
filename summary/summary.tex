@@ -62,7 +62,7 @@ Weak convergence is one of many types of convergence relating to the convergence
 \\\\
 There are several equivalent definitions of weak convergence of a sequence of measures, some of which are more general than others. The equivalence of these conditions is sometimes known as the Portmanteau theorem. It is an Exercise of Exercise Sheet 4 to prove this theorem.
 \\\\
-In the following let $\mathcal{X}$ be a metric space and let it be endowed with its Borel $\sigma$-Algebra $\Sigma$. Let $\mathcal{M}( \mathcal{X})$ denote the space of all measures on $\mathcal{X}$. 
+Let $\mathcal{X}$ be a metric space and let it be endowed with its Borel $\sigma$-Algebra $\Sigma$. Let $\mathcal{M}( \mathcal{X})$ denote the space of all probability measures on $\mathcal{X}$. 
 \begin{defn} A sequence of probability measures $( \mu_n)_{n \in \mathbb{N}}$ converges weakly to $\mu$ in $\mathcal{M}( \mathcal{X})$ if for all $f \in C_b( \mathcal{X} \to \mathbb{R})$ we have
 \begin{align*}
 \int f d \mu_n \to \int f d \mu, \text{ as } n \to \infty. \tag{*}
@@ -81,6 +81,7 @@ We then simply denote this convergence by $\mu_n \implies \mu$.
 \item $\limsup \mu_n(A) \leq \mu (A)$ for all closed sets $A \subset \mathcal{X}$. 
 \item $\lim \mu_n(B) = \mu(B)$ for all measurable sets $B \subset \mathcal{X}$ such that $\mu(B^\circ)= \mu( \overline{B})$. 
 \end{enumerate}
+\noindent In the case where $\mathcal{X}= \mathbb{R}$ with its usual topology we have the following two criteria. 
 \begin{thm}[Lévy's continuity theorem] Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables and let $\varphi_n(t):= \mathbb{E}(e^{itX_n})$ for $t \in \mathbb{R}$ denote the characteristic function. We then have $X_n \implies X$ if and only if $\varphi_n(t) \to \varphi(t)$. 
 
 \end{thm}
@@ -181,7 +182,7 @@ If any (and consequently all) of these conditions hold true, we say that $X$ is 
 \begin{proof}
 \textbf{Exercise 2.4.} Kolmogorov's LLN can be shown in it's full generality (i.e. for $L^1$ RV) by using backwards martingales and Kolomogorov's 0-1 Law. 
 \end{proof}
-\begin{thm}[Kolmogorov's 0-1 Law] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables and let $\mathcal{H}_n = \sigma( \xi_j : j \geq n )$. Then, the sigma algebra $\mathcal{H}_\infty := \cup_{n \in \mathbb{N}} \mathcal{H}_n$ is trivial, i.e. for every event $A \in \mathcal{H}_\infty$ we have  \\ $\mathbb{P}(A) \in \lbrace 0 ,1 \rbrace$. 
+\begin{thm}[Kolmogorov's 0-1 Law] Let $(\xi_n)_{n \in \mathbb{N}}$ be a sequence of i.i.d. random variables and let $\mathcal{H}_n = \sigma( \xi_j : j \geq n )$. Then, the sigma algebra $\mathcal{H}_\infty := \bigcap_{n \in \mathbb{N}} \mathcal{H}_n$ is trivial, i.e. for every event $A \in \mathcal{H}_\infty$ we have  \\ $\mathbb{P}(A) \in \lbrace 0 ,1 \rbrace$. 
 \end{thm}
 \noindent Next we will remind the very important Borel-Cantelli Lemmas. We recall the following definiton. Let $(A_n)_{n \in \mathbb{N}}$ be a sequence of events in a probability space $( \Omega, \mathcal{F}, \mathbb{P})$ then we define 
 \begin{align*}
@@ -194,9 +195,9 @@ We remark that the following is true
 \omega \in \bigcap_{n=1}^\infty \bigcup_{i \geq n}^\infty A_i &\iff \forall n \in \mathbb{N}, \exists i \geq n : \omega \in A_i   \\
 \omega \in \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\infty A_i^c &\iff \exists n \in \mathbb{N}, \forall i \geq n : \omega \in A_i
 \end{align*}
-\begin{thm}[Borel-Cantelli Lemma 1] If $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) < \infty$, then we have $\mathbb{P}(A_n \text{ i.o.} \rbrace=0$.
+\begin{thm}[Borel-Cantelli Lemma 1] If $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) < \infty$, then we have $\mathbb{P}(A_n \text{ i.o.} )=0$.
 \end{thm}
-\begin{thm}[Borel-Cantelli Lemma 2] If the events $A_n$ are independent and $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) = \infty$, then we have $\mathbb{P}( A_n \text{ i.o.} \rbrace = 1$ 
+\begin{thm}[Borel-Cantelli Lemma 2] If the events $A_n$ are independent and $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) = \infty$, then we have $\mathbb{P}( A_n \text{ i.o.} ) = 1$ 
 \end{thm}
 \newpage
 \begin{thm}[Extension of Borel Cantelli Lemma] Let $\mathcal{F}= (\mathcal{F}_n)_{n = 1}^\infty$ be a Filtration and suppose $A_n \in \mathcal{F}_n$, then we have
@@ -206,23 +207,23 @@ We remark that the following is true
 for all $k \in \mathbb{N}$ up to a set of measure zero. 
 \end{thm}
 \noindent We now give some results that are related to the Central Limit Theorem (CLT). We will first recall the classical result.
-\begin{thm}[CLT] Let $X_1, X_2, \dots$ be a sequence of i.i.d. $L^2$ random variables with $\mathbb{E}(X)= \mu$ and Var$(X)= \sigma >0$. Let $S_n= X_1 + \dots + X_n$, then we have
+\begin{thm}[CLT] Let $X_1, X_2, \dots$ be a sequence of i.i.d. $L^2$ random variables with $\mathbb{E}(X)= \mu$ and Var$(X)= \sigma^2 >0$. Let $S_n= X_1 + \dots + X_n$, then we have
 \begin{align*}
-\frac{S_n-n \mu }{n \sigma} \implies \mathcal{N}(0,1) 
+\frac{S_n-n \mu }{\sqrt{n} \sigma} \implies \mathcal{N}(0,1) 
 \end{align*}
 \end{thm}
-\noindent It is our goal to generalize this result, i.e. weaken the conditions and then give a central limit theorem for martingales. 
+\noindent It is our goal to generalize this result, i.e. weaken the conditions (in particular get rid of i.i.d.) and then give a central limit theorem for martingales. 
 \\\\
 The outline is the following: Let $\lbrace X_{n,k} : 1 \leq k \leq J(n), n \in \mathbb{N}_{ \geq 1 } \rbrace$ be an array of centered random variables. Here $K$ can be random, however it is almost surely finite with $J(n) \to \infty$ as $n \to \infty$.  
 \\\\
-Let $( \xi_j)_{j \in \mathbb{N}}$ be a sequence of (centered?) i.i.d. random variables, we then set 
+Let $( \xi_j)_{j \in \mathbb{N}}$ be a sequence of centered i.i.d. random variables, we then set 
 \begin{align*}
 X_{n,k} = \frac{\xi_k}{\sqrt{n}}
 \end{align*}
 Suppose that $X_{n,k} \in L^2( \mathcal{F})$ and let \begin{align*}
 S_n := \sum_{k=1}^{J(n)} X_{n,k}
 \end{align*}
-\begin{thm}[Mc Leish] In the situation as above, let us define \\ $T_n = \prod_{k=1}^{J(n)} (1 + it X_{n,k})$ and suppose that
+\begin{thm}[Mc Leish CLT] In the situation as above, let us define \\ $T_n = \prod_{k=1}^{J(n)} (1 + it X_{n,k})$ and suppose that
 \begin{enumerate}
 \item $T_n$ is UI and $\mathbb{E}(T_n) \to 1$ as $n \to \infty$.
 \item $ \sum_{k=1}^{J(n)} X_{n,k}^2 \to 1$ in Probability.
@@ -233,7 +234,7 @@ Then $S_n \implies \mathcal{N}(0,1)$ as $n \to \infty$.
 \newpage
 \begin{thm}[Martingale Central Limit Theorem] Let $X_{n,k}$ where $1 \leq k \leq m_n$ ($m_n$ is deterministic with $m_n \to \infty$ as $n \to \infty$) be a $\mathcal{F}_{n,k}$-measurable martingale difference array. Suppose that 
 \begin{enumerate}
-\item $\mathbb{E}(X_{n,k} \mid \mathcal{F}_{n,k-1}) = 0$ 
+\item $\mathbb{E}(X_{n,k} \mid \mathcal{F}_{n,k-1}) = 0$ (Martingale difference property)
 \item $V_n:= \sum_{j=1}^{m_n} X_{n,j}^2 \to 1$ in Probability.
 \item (Lindenberg Condition) For any $\epsilon >0$ we have that 
 \begin{align*}
@@ -288,7 +289,7 @@ H_i, & \text{ if } i \notin K \end{cases}
 \end{thm}
 \begin{rem} \ \begin{enumerate} \item Here $( \mu_K)_{K \subset I, K \text{ finite} }$ is called the collection of finite dimensional marginal distributions of $\mu$.
 \item Kolmogorov extension theorem says that, given the finite dimensional marginales $( \mu_K)$ as above, if they satisfy the consistency condition as requested in the theorem, then there exists a unique extension $\mu$ to the whole product space $H$ with marginale $(\mu_K)$ 
-\item The Theorem is also known as Kolmogorov's existence theorem or Kolmogorov's consistency theorem. It guarantees taht a suitably "consistent" (here consistency is meant as in the theorem) collection of finite-dimensional distributions will define a stochastic process. 
+\item The Theorem is also known as Kolmogorov's existence theorem or Kolmogorov's consistency theorem. It guarantees that a suitably "consistent" (here consistency is meant as in the theorem) collection of finite-dimensional distributions will define a stochastic process. In particular the theorem is essential to guarantee the existence of Probability measures on uncountable product spaces. 
 \end{enumerate}
 \end{rem}
 \begin{defn} A stochastic process $X=(X_i)_{i \in I}$,  where $I$ is an arbitraty index sex, is a collection of random variables defined on the same probability space $( \Omega, \mathcal{F}, \mathbb{P})$, i.e. $X_i : \Omega \to H_i$ is $\mathcal{F}$-measurable. \\ The law of $X$ is a probability measure $ \mu$ on $H= \prod_{i \in I} H_i$ such that for all finite $K \subset I$, the marginal law $\mu_K$ of $\mu$ is given by  
@@ -319,11 +320,11 @@ We define the standad $n$-dimensional Gaussian measure $\gamma_n$ to be the prob
 \begin{align*}
 \dfrac{d \gamma_n}{d \lambda_n}(x) = \dfrac{e^{-|x|^2/2}}{(2 \pi)^{n/2}}, \text{ for all } x \in \mathbb{R}^n 
 \end{align*}
-Exercise 5.6. * Show that the sequence of probability measures $( \gamma_n)_{n=1}^\infty$ satisfies the Kolmogorov consistentcy condition and deduce that there exists a probability measure $\Gamma$ on $\mathbb{R}^\mathbb{N}$ such that if $X \sim \Gamma$, then $X=(X_1, X_2, \dots )$ is a sequence of independent, identically distributed stnadard Gaussian random variables. 
+\textbf{Exercise 5.6.} * Show that the sequence of probability measures $( \gamma_n)_{n=1}^\infty$ satisfies the Kolmogorov consistentcy condition and deduce that there exists a probability measure $\Gamma$ on $\mathbb{R}^\mathbb{N}$ such that if $X \sim \Gamma$, then $X=(X_1, X_2, \dots )$ is a sequence of independent, identically distributed stnadard Gaussian random variables. 
 \newpage
 \section{Markov Processes}
 \begin{defn}
-A stochastic process $(X_t)_{t \in I}$ is a Markov if for all \\ $f: \mathcal{H} \to \mathbb{R}_+$ measurable ($\mathcal{H}$ is a metric space) and for all $s <t$ we have 
+A stochastic process $(X_t)_{t \in I}$ is a Markov process if for all \\ $f: \mathcal{H} \to \mathbb{R}_+$ measurable ($\mathcal{H}$ is a metric space) and for all $s <t$ we have 
 \begin{align*}
 \mathbb{E}(f(X_t) \mid \mathcal{F}_s^X ) = \mathbb{E}(f (X_t) \mid \sigma (X_s)), \text{ where } \mathcal{F}_s^X := \sigma ( X_t : t \leq s )  
 \end{align*}
