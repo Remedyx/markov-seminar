@@ -347,13 +347,15 @@ is a time-homogenous Markov chain on $\mathbb{R}$ and find its transition probab
 \mathbb{P}_\nu ( x_0 \in A_0 , x_1 \in A_1, \dots , x_n \in A_n ) = \int \limits_{A_0 \times \cdots \times A_n} \nu (dx_0) Q(x_0,dx_1) \dots Q(dx_{n-1}, dx_n)
 \end{align*}
 By Kolmogorov's extension theorem, there exists a unique probability measure $\mathbb{P}_\nu$ on $( \Omega, \mathcal{F}_\infty)$, where $\mathcal{F}_\infty = \bigvee_{n=1}^\infty \mathcal{F}_n$ is the product $\sigma$-algebra on $\Omega$, with marginal distribution as above. 
+\\\\
+We now consider the case where $\Omega = \mathcal{H}^\mathbb{N}= \lbrace  \omega = ( \omega_0, \omega_1, \dots ) : \omega_i \in \mathcal{H} \rbrace$ is the so called configuration space. The coordinate process $X_n( \omega)= \omega_n$ is a Markov Chain w.r.t. the canonical Filtration $\mathcal{F}_n = \sigma( \omega_0, \omega_1, \dots , \omega_n)$.  
 \begin{defn} We define the shift operator acting on $\Omega$ by $\Theta :\Omega \to \Omega$, $\Theta(\omega)=( \omega_1, \omega_2, \omega_3, \dots )$ where $\omega=( \omega_0, \omega_1, \dots )$. \\ We then have $\Theta^n( \omega) = ( \omega_{n+j})_{j=0}^\infty$ for all $n \in \mathbb{N}$.
 \end{defn}
-\begin{thm}[Markov Property] Under $\mathbb{P}_\nu$, conditionally on the canonical filtration $\mathcal{F}_n= \sigma( \omega_0, \omega_1, \dots , \omega_n)$, $\Theta^n ( \omega)$ has law given by $\mathbb{P}_{\omega_n}$ and is independent of $\mathcal{F}_{n-1}$ for all $n \in \mathbb{N}_{ \geq 1}$. 
+\begin{thm}[Weak Markov Property] Under $\mathbb{P}_\nu$, conditionally on the canonical filtration $\mathcal{F}_n= \sigma( \omega_0, \omega_1, \dots , \omega_n)$, $\Theta^n ( \omega)$ has law given by $\mathbb{P}_{\omega_n}$ and is independent of $\mathcal{F}_{n-1}$ for all $n \in \mathbb{N}_{ \geq 1}$. 
 \end{thm}
-\begin{thm}[Strong Markov Property] Let $T$ be a stopping time such that $\mathbb{P}_\nu (T < \infty) >0 $. Conditionally on the event $\lbrace T < \infty \rbrace$ and $\mathcal{F}_T$ we have that $\Theta^n$ is a Markov Chain with law given by $\mathbb{P}_{X_T}$ and independent of $\mathcal{F}_{T-1}$ 
+\begin{thm}[Strong Markov Property] Let $X$ denote a Markov Chain. Let $T$ be a stopping time such that $\mathbb{P}_\nu (T < \infty) >0 $. Conditionally on the event $\lbrace T < \infty \rbrace$ and $\mathcal{F}_T$ we have that $\Theta^T (X)$ is a Markov Chain with law given by $\mathbb{P}_{X_T}$ and independent of $\mathcal{F}_{T-1}$ 
 \end{thm}
-We now work (hopefully) with $\mathcal{H}$ a countable (or finite) state space, the transition probability $Q$ is then represented as a matrix, i.e. we have 
+Let be $\mathcal{H}$ a countable/finite state space, the transition probability $Q$ is then represented as a matrix, i.e. we have 
 \begin{align*}
 Q(x,A) = \sum_{y \in A} Q_{xy}, \text{ for all } x \in \mathcal{H}
 \end{align*}
@@ -383,6 +385,7 @@ G_{xy}:= \mathbb{E}_x ( N_y) = \sum_{n \in \mathbb{N}} Q_{xy}^n = \sum_{n \in \m
 \end{align*}
 i.e. the expected number of visits of $y$ starting from the state $x$. \\ (Recall that $Q_{xy}^n = \mathbb{P}_x( \omega_n =y)$.)
 \end{defn}
+\newpage 
 \begin{prop} Let $x,y \in \mathcal{H}$, $x \neq y$, then the following holds
 \begin{enumerate}
 \item $G_{xx}= \infty$ if and only if $x$ is recurrent.
@@ -394,17 +397,21 @@ i.e. the expected number of visits of $y$ starting from the state $x$. \\ (Recal
 \begin{proof}
 See Exercises!
 \end{proof}
-\newpage
 \begin{cor}
 Let $R:= \lbrace x \in \mathcal{H} : \mathbb{P}_x ( R_x < \infty) = 1 \rbrace$ the set of recurrent states. We have that if $x \in R$ and $G(x,y) > 0$, then $y \in R$ and also $G(y,x)>0,  \ \mathbb{P}_y(R_x < \infty ) =1$. 
 \end{cor}
-\begin{rem} The above corollary yields that the being recurrent gives equivalent classes on $R$. We have $R = \cup_{j \in I} R_j$ and the sets $R_j$ are disjoint, the $R_j$'s are called the recurrence classes. We define the equivalence relation $x \sim y$ if $G(x,y) >0$. It follows that $x \in R_j$, then $G(x,y) >0$ if and only if $y \in R_j$. 
+\begin{defn} Let $x,y \in \mathcal{H}$ be two states. We say that $x$ and $y$ communicate if $\mathbb{P}_x(H_y< \infty)>0$ and $\mathbb{P}_y(H_x < \infty)>0$. Alternatively, thanks to the above Proposition we can say, $x$ and $y$ communicate if $G(x,y) >0$ and $G(y,x) >0$. 
+\end{defn}
+\begin{rem} \ \begin{enumerate} \item  We define an equivalence relation on $R$ by $x \sim y$ if $G(x,y) >0$ or equivalently thanks to the above Proposition $x \sim y$ if $\mathbb{P}_x(R_y < \infty)>0$. The above corollarly yields that this indeed defines an equivalence relation on $R$. We have $R = \cup_{j \in I} R_j$ and the sets $R_j$ are disjoint, the $R_j$'s are called the recurrence classes.  It follows that for $x \in R_j$, then $G(x,y) >0$ if and only if $y \in R_j$.
+\item Alternatively we can say that "communicates with" defines an equivalence relation on the set $R$. 
+\end{enumerate}
 \end{rem}
 \noindent \textbf{Exercise 5.3. **} We define the simple random walk on $\mathbb{Z}^d$ to be the Markov process with transition probability given by 
 \begin{align*}
 Q_{x,y} = 2^{-d} 1_{|x-y|=1}, \text{ for all } x,y \in \mathbb{Z}^d
 \end{align*}
 Compute the Green function $G_{00}$ for the simple random walk on $\mathbb{Z}^d$. Deduce that the walk is recurrent if and only if $d \leq 2$. 
+\newpage 
 \begin{thm}[Classification of states] The following holds true
 \begin{enumerate}
 \item If $x \in R_j$ for some $j \in I$, then 
@@ -412,11 +419,21 @@ Compute the Green function $G_{00}$ for the simple random walk on $\mathbb{Z}^d$
 \begin{cases} \mathbb{P}_x ( N_y = \infty) = 1, & \text{ for all } y \in R_j \\ 
 \mathbb{P}_x ( N_y = 0) = 1, & \text{ for all } y \notin R_j \end{cases}
 \end{align*}
-\item Let $T= \inf \lbrace n \geq 0 : \omega_n \in R \rbrace$ be the first time, then some weird statement that should be reformulated. 
+\item Let $T= \inf \lbrace n \geq 0 : \omega_n \in R \rbrace$ be the first time when the Markov Chain meets the recurrent states. Assume that $x$ is transient, i.e. $x \notin R$, then one of the following applies:
+\begin{enumerate}
+\item  $T= \infty$ and we have $\mathbb{P}_x(N_y < \infty) =1$ for all $y \in \mathcal{H}$. 
+\item $T < \infty$ and there exists a random index $J$ such that $\theta^T(\omega) \in R_J$. 
+\end{enumerate}
 \end{enumerate}
 \end{thm}
-\begin{defn} The chain is called irreducible if $G_{xy} > 0$ for all $x,y \in \mathcal{H}$. Irreducibility means that either we have $R= \mathcal{H}$ or $R= \emptyset$. 
+\begin{rem} The Theorem states if we start in a recurrence class $R_j$, then we will visit every state in the same recurrence class infinitely often and every state outside of said class not even once. In particular this means that our Markov Chain is stuck in said recurrence class. 
+\\\\
+On the other hand, if we start with a transient state $x \notin R$, then either we will never meet the set of recurrent states $R$ (i.e. we stay in the space of transient states) and in this case $\mathbb{P}_x$-almost surely we will only meet every $y \in \mathcal{H}$ finitely many times, or the chain eventually meets a certain recurrence class $R_J$ and then gets stuck there. 
+\end{rem}
+\begin{defn} The chain is called irreducible if $G_{xy} > 0$ for all $x,y \in \mathcal{H}$, i.e. all states of the chain communicate.  
 \end{defn}
+\begin{rem}Irreducibility means that either we have $R= \mathcal{H}$ or $R= \emptyset$. Indeed if all states communicate, then if one states is recurrent $(G_{xx}= \infty$) then all states are recurrent, also if one state is transient, then consequently all states are transient. In particular we only have one recurrence class $\mathcal{H}=R$ or we have that $R= \emptyset$. We formulate this in the next corollary. 
+\end{rem}
 \begin{cor} If the chain is irreducible, one of the following applies
 \begin{enumerate}
 \item All states are recurrent, in particular $\mathbb{P}_x( N_y = \infty, \text{ for all } y \in \mathcal{H} \rbrace = 1$ for all $x \in \mathcal{H}$.
