@@ -400,7 +400,7 @@ See Exercises!
 \begin{cor}
 Let $R:= \lbrace x \in \mathcal{H} : \mathbb{P}_x ( R_x < \infty) = 1 \rbrace$ the set of recurrent states. We have that if $x \in R$ and $G(x,y) > 0$, then $y \in R$ and also $G(y,x)>0,  \ \mathbb{P}_y(R_x < \infty ) =1$. 
 \end{cor}
-\begin{defn} Let $x,y \in \mathcal{H}$ be two states. We say that $x$ and $y$ communicate if $\mathbb{P}_x(H_y< \infty)>0$ and $\mathbb{P}_y(H_x < \infty)>0$. Alternatively, thanks to the above Proposition we can say, $x$ and $y$ communicate if $G(x,y) >0$ and $G(y,x) >0$. 
+\begin{defn} Let $x,y \in \mathcal{H}$ be two states. We say that $x$ and $y$ communicate if $\mathbb{P}_x(R_y< \infty)>0$ and $\mathbb{P}_y(R_x < \infty)>0$. Alternatively, thanks to the above Proposition we can say, $x$ and $y$ communicate if $G(x,y) >0$ and $G(y,x) >0$. 
 \end{defn}
 \begin{rem} \ \begin{enumerate} \item  We define an equivalence relation on $R$ by $x \sim y$ if $G(x,y) >0$ or equivalently thanks to the above Proposition $x \sim y$ if $\mathbb{P}_x(R_y < \infty)>0$. The above corollarly yields that this indeed defines an equivalence relation on $R$. We have $R = \cup_{j \in I} R_j$ and the sets $R_j$ are disjoint, the $R_j$'s are called the recurrence classes.  It follows that for $x \in R_j$, then $G(x,y) >0$ if and only if $y \in R_j$.
 \item Alternatively we can say that "communicates with" defines an equivalence relation on the set $R$. 
@@ -456,7 +456,7 @@ We consider a Markov Chain with transition probability $Q$.
 \noindent \textbf{Exercise 6.6.}: Check that if $\mu$ is reversible, then it is also stationary. 
 \begin{lem} Let $z \in R$ and define for all $x \in \mathcal{H}$
 \begin{align*}
-\hat{\pi}(x):= \sum_{n=0}^\infty \mathbb{P}_z ( \omega_n =x, R_z >n )
+\hat{\pi}(x):= \sum_{n=0}^\infty \mathbb{P}_z ( \omega_n =x, R_z >n ) = \mathbb{E}_z \left( \sum_{n=0}^{R_z-1} 1_{ \omega_n=x} \right)
 \end{align*}
 Then $\hat{\pi}$ is a stationary measure and we have $\hat{\pi}(x) >0 $ if and only if $x \sim z$ i.e. $G_{zx}>0$. 
 \end{lem}
@@ -467,7 +467,7 @@ Exercise!
 \end{proof}
 \begin{thm} Assume that the chain is irreducible and recurrent. Then we have the following dichotomy. 
 \begin{enumerate}
-\item The chain is positive recurrent, i.e. there exists a stationary measure with finite mass. Moreover we then have, the probability measure \\ $ \pi_x = 1/ \mathbb{E}_x(R_x)$ is staionary, $\pi$ is called the equilibrium measure. 
+\item The chain is positive recurrent, i.e. there exists a unique stationary measure with finite mass. Moreover we then have, the probability measure $ \pi_x = 1/ \mathbb{E}_x(R_x)$ is staionary, $\pi$ is called the equilibrium measure. 
 \item The chain is null recurrent, i.e. all stationary measures have infinite mass. Moreover we then have, $\mathbb{E}_x(R_x) =  \infty$ for all $x \in \mathcal{H}$. 
 \end{enumerate}
 \end{thm}
@@ -496,15 +496,16 @@ where $\pi$ is the equilibrium measure.
 \end{defn}
 \begin{prop} A chain is aperiodic if and only if there exists a positive integer $k >0$ such that $Q_{xy}^k >0$ for all $x,y \in \mathcal{H}$.
 \end{prop}
-\begin{prop} Let $X$ be an irreducible markov chain, then all states $x$ have the same period $d$. In particular for an irreducible chain it is enough to find one recurrent state to conclude that the chain is aperiodic. 
+\begin{prop} Let $X$ be an irreducible markov chain, then all states $x$ have the same period $d$. In particular for an irreducible chain it is enough to find one recurrent state with period $d=1$ to conclude that the chain is aperiodic. 
 \end{prop}
-\begin{thm} Suppose the chain is positive recurrent and aperiodic, then 
+\begin{thm}[Asymptotic behaviour of a MC] Suppose the chain is positive recurrent and aperiodic, then 
 \begin{align*}
 \sum_{x \in \mathcal{H}} | \mathbb{P}_z( \omega_n =x) - \pi (x) | \to 0, \text{ as } n \to \infty 
 \end{align*}
 i.e. the law of $\omega_n$ under $\mathbb{P}_z$ converges in total variation to $\pi$. 
 \end{thm}
-\textbf{Exercise:} Given a transition probability $Q$. Show that $\tilde{Q} = (I + Q)/2$ defines an irreducible aperiodic chain, it is called the lazy chain. 
+\begin{rem} Convergence in total variation is a very strong convergence, in particular it follows that the law of $\omega_n$ converges to the equilibirum measure $\pi$ in distribution as $n \to \infty$. 
+\end{rem}
 \newpage
 \noindent \textbf{Exercise 6.1. *} Let $Q$ be an irreducible transition matrix and assume that the chain has a stationary measure which is finite. Show that the chain is positive recurrent. 
 \\\\
@@ -513,7 +514,7 @@ i.e. the law of $\omega_n$ under $\mathbb{P}_z$ converges in total variation to 
 \begin{enumerate}
 \item $\mathbb{E}(Z_k^2)=1$ 
 \item $\mathbb{E}(Zk \mid \mathcal{F}_{k-1}) = 0$ where $\mathcal{F}_k = \sigma (Z_1, \dots , Z_k)$
-\item $Z$ is erogidic, in this regime this means 
+\item $Z$ is ergodic, in this regime this means 
 \begin{align*}
 \frac{1}{n} \sum_{j=1}^n f(Z_j) \to \mathbb{E}(f(Z)), \text{ almost surely, for all integrable $f$}.
 \end{align*}
@@ -526,7 +527,7 @@ Then we have that
 \begin{proof}
 Follows by McLeish CLT.
 \end{proof}
-\begin{cor} Let $\mathcal{H}$ be a finite state space and $Q$ be an irreducible transition Matrix with equilibrium measure $\pi$. If $\int f d  \pi =0$ and $\sigma = \int f^2 d \pi <  \infty$ then we have that 
+\begin{cor} Let $\mathcal{H}$ be a finite state space and $Q$ be an irreducible transition Matrix with equilibrium measure $\pi$. If $\int f d  \pi =0$ and $\sigma^2 = \int f^2 d \pi <  \infty$ then we have that 
 \begin{align*}
 \frac{1}{\sqrt{n}} \sum_{j=1}^n f ( \omega_j) \implies \mathcal{N}(0, \sigma^2), \text{ as } n  \to \infty 
 \end{align*}
@@ -573,7 +574,7 @@ Exercise! (Exercise 7.6)
 \end{proof}
 \begin{cor} Let $\mu$ be an invariant measure under $(T_t)_{t \in \mathbb{R}}$, $\mathcal{I}$ the $\sigma$-algebra of invariant sets as above, then we have 
 \begin{align*}
-\lim_{t \to \infty} \frac{1}{t} \int_0^t f (T_s \omega) ds = \mathbb{E}(f \mid \mathcal{I}) \text{ in } L^2( \mu).
+\lim_{t \to \infty} \frac{1}{t} \int_0^t f (T_s \omega) ds = \mathbb{E}^\mu(f \mid \mathcal{I}) \text{ in } L^2( \mu).
 \end{align*}
 \end{cor}
 \noindent Next we discuss the Poincaré recurrence theorem, for dynamical systems it states that  after a sufficiently long but finite time the system will return to a state very close to the initial state. 
