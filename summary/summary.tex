@@ -478,7 +478,67 @@ Exercise!
 \begin{align*}
 \dfrac{\sum_{j=0}^n f( \omega_j)}{\sum_{j=0}^n g( \omega_j)} \to \dfrac{\int f d \hat{\pi}}{\int g d \hat{\pi}} \text{ as } n \to \infty 
 \end{align*}
+Moreover, if the chain is positive recurrent then we have 
+\begin{align*}
+\frac{1}{n} \sum_{j=0}^n f( \omega_j) \to \int f d \pi, \text{ as } n \to \infty
+\end{align*}
+where $\pi$ is the (unique) equilibrium measure. 
 \end{thm}
+\begin{proof}
+We first show the second part of the statement. To this extend let $g \equiv 1$, then we have $\int g d \hat{\pi}= \hat{\pi}( \mathcal{H})< \infty$ because the chain is positive recurrent, also $\sum_{j=1}^n g( \omega_j) = n$, thus we obtain 
+\begin{align*}
+\frac{1}{n} \sum_{j=0}^n f( \omega_j) \to \frac{1}{\hat{\pi}(\mathcal{H})}  \sum_{y \in \mathcal{H}} f(y) \hat{\pi}(y) = \sum_{y \in \mathcal{H}} f(y) \pi(y), \text{ where } \pi(y) = \frac{\hat{\pi}(y)}{\hat{\pi}(\mathcal{H})}
+\end{align*}
+To show the more general statement, we first discuss the idea. The idea behind the proof is that we divide the path of $X=( \omega_i)_{i=0}^\infty$ at the times when $\omega_i=z$ (where $z \in \mathcal{H}$ is our recurrent state) and we consider the resulting sequence of i.i.d. random variables (they are i.i.d. thanks to the strong Markov Property), then finally we apply Kolmogorov's LLN to obtain the statement. We now implement this idea:
+\\\\
+Without loss of generality (we will discuss at the very end of the proof why this is the case) we let $g(y)= 1_{ \lbrace z=y \rbrace}$, in this setup we get that 
+\begin{align*}
+\sum_{j=0}^n g( \omega_j)= \# \lbrace j \leq n : \omega_j = z \rbrace.
+\end{align*}
+Let now $T_0:=0, T_1= R_z, \dots , T_{n+1}:= inf \lbrace i > T_n : \omega_j = z \rbrace$ a sequence of finite stopping times (as discussed above, dividing the MC at the recurrent state $z$). Thanks to the strong Markov Property we have that \begin{align*}
+\xi_n := \sum_{j= T_n}^{T_{n+1}-1} f( \omega_j), \text{ defines an i.i.d. seq. of RV}.
+\end{align*}
+We compute
+\begin{align*}
+\mathbb{E}( \xi_0)&= \mathbb{E}_z \left( \sum_{j=0}^{T_1-1} f( \omega_j) \right) = \mathbb{E}_z \left( \sum_{j=0}^{R_z-1} f( \omega_j) \right) 
+ = \mathbb{E}_z \left( \sum_{j=1}^{R_z-1} \sum_{y \in \mathcal{H}} f(y) 1_{ \lbrace \omega_j = y \rbrace} \right) \\ & \overset{\text{pos.}}= \sum_{y \in \mathcal{H}} f(y) \mathbb{E}_z \left( \sum_{j=1}^{R_z-1} 1_{ \lbrace \omega_j =y \rbrace} \right)  
+ = \sum_{y \in \mathcal{H}} f(y) \hat{\pi}(y) =: \hat{\pi}(f)
+\end{align*}
+\newpage
+Thanks to Kolmogorov's LLN we get that \begin{align*}
+\frac{\xi_0 + \dots + \xi_n}{n+1} \to \hat{\pi}(f), \text{ a.s. as n} \to \infty 
+\end{align*}
+But since we also have 
+\begin{align*}
+\sum_{j=0}^{T_{n+1}-1} g( \omega_j) = \# \lbrace j +1 \leq T_{n+1} : \omega_j = z \rbrace = n+1
+\end{align*}
+and 
+\begin{align*}
+\int g d \hat{\pi} &= \int_{ \mathcal{H}} 1_{ \lbrace z \rbrace } (y) d \hat{\pi }= \hat{\pi}(z) = \mathbb{E}_z \left( \sum_{n=0}^{R_z-1} 1_{ \omega_n = z } \right)= \mathbb{E}_z( 1_{ \omega_0 = z } ) \\ 
+& = \mathbb{P}_z ( \omega_0 =z ) = 1,
+\end{align*}
+we have therefore actually shown 
+\begin{align*}
+\dfrac{\sum_{j=0}^{T_{n+1}-1} f( \omega_j)}{\sum_{j=0}^{T_{n+1}-1} g( \omega_j)} = \dfrac{\sum_{j=0}^{T_{n+1}-1} f( \omega_j)}{n+1} \to \frac{\hat{\pi}(f)}{1} = \frac{\hat{\pi}(f)}{ \int g d \hat{\pi}}, \text{ a.s.}
+\end{align*}
+that is, we have proven the statement for the sequence of stopping times $(T_n)_{n \in \mathbb{N}}$. \\
+\\
+Clearly, we always have $T_k \leq n < T_{k+1}$ for all $n \in \mathbb{N}$ and since $f \geq 0$ we thus have 
+\begin{align*}
+\frac{\sum_{j=0}^{T_k-1}f ( \omega_j)}{k} \leq \frac{\sum_{j=0}^n f( \omega_j)}{n} \leq \frac{\sum_{j=0}^{T_{k+1}-1}f( \omega_j)}{k+1}
+\end{align*}
+then if $n \to \infty$, we have in particular that $k \to \infty$ and the statement follows because both sides converge to the desired result, as we have already established.
+\\\\
+We finally discuss the w.l.o.g.-argument that we assumed at the beginning of the proof. Let $h: \mathcal{H} \to \mathbb{R}_+$ be general with $\hat{\pi}( \mathcal{H}) < \infty$, then we have already shown that 
+\begin{align*}
+\frac{\sum_{i=0}^n f( \omega_i)}{\sum_{i=0}^n g( \omega_i)} \to \frac{\hat{\pi}(f)}{\hat{\pi}(g)}, \text{ almost surely}
+\end{align*}
+but also 
+\begin{align*}
+ \frac{\sum_{i=0}^n h( \omega_i)}{\sum_{i=0}^n g( \omega_i)} \to \frac{\hat{\pi}(h)}{\hat{\pi}(g)}, \text{ almost surely}.
+\end{align*}
+Taking now the quotient (cancellation) and letting $n \to \infty$ gives the general statement. 
+\end{proof}
 \begin{cor} The following holds 
 \begin{enumerate}
 \item If the chain is positive recurrent, then for $\mu \in \mathcal{M}( \mathcal{H})$ one has $\mathbb{P}_\mu$ almost surely that 
@@ -760,7 +820,7 @@ Furthermore, it is possible to show that $\lbrace 1, \Psi_{n,k} \rbrace_{n \geq 
 Z_n(t) :=& \sum_{k=0}^{2^n-1} \xi_{n,k} \int_0^t \Psi_{n,k}(x) dx = \sum_{k=0}^{2^n-1} \xi_{n,k} \langle 1_{[0,t]}, \Psi_{n,k} \rangle_{L^2} \\ 
 & \text{where } (\xi_{n,k})_{ \substack{ k = 0, \dots , 2^n-1 \\ n \geq 0 }} \text{ is an array of i.i.d. } \mathcal{N}(0,1)
 \end{align*}
-Then $Z_n$ is continuous for all $n \geq 0$. We can estimate 
+Then $Z_n$ is continuous in $t \in \mathbb{R}_+$ for all $n \geq 0$. We can estimate 
 \begin{align*}
 \max_{t \in [0,1]} |Z_n(t)|  &\leq \sum_{k=0}^{2^n-1} | \xi_{n,k} | \left| \int_0^t \Psi_{n,k}(x) dx \right| \\ & \leq \max_{k =0, \dots , 2^n-1} |\xi_{n,k}| \sum_{k=0}^{2^n-1} \left| \int_{k2^{-n}}^{(k+1)2^{-n}} \Psi_{n,k}(x) dx \right|  \\
 &\leq \max_k | \xi_{n,k}|  \left| \int_0^1 \Psi_{n,k}(x) dx \right| \leq  \max_{k} | \xi_{n,k} | 2^{-n/2}
@@ -811,6 +871,8 @@ Exercise!
 \end{proof}
 \begin{defn} We define $\mathcal{F}_s^0 = \sigma ( B_t : 0 \leq t \leq s)$ and $\mathcal{F}_s^+ = \cap_{t >s} \mathcal{F}_t^0$ the right-continuous extension. In particular we call $\mathcal{F}_0^+$ the germ-sigma-algebra. 
 \end{defn}
+\begin{rem} Notice that $\mathcal{F}_s^+ = \bigcap_{t>s}\mathcal{F}_t^0$ is the sigma-algebra that contains the information of an infinitesimal amount into the future of the BM.
+\end{rem}
 \begin{thm}[Markov Property] For any bounded measurable $F: \mathcal{C} \to \mathbb{R}$ and any $t >0$ the Markov Property holds, i.e. we have
 \begin{align*}
 \mathbb{E}_x ( F \circ \Theta_t \mid \mathcal{F}_t^+ ) = \mathbb{E}_{ \omega_t} (F), \ x \in \mathbb{R}
@@ -822,8 +884,37 @@ where $(\Theta_t)_{t \geq 0}$ is the shift on $\mathcal{C}$, i.e. for any $s \in
 \end{cases}
 \end{align*}
 \end{thm}
-\begin{rem} Markov's property for BM states that under $\mathbb{P}_x$, the conditional law of $\Theta_t \omega$ given $\mathcal{F}_t^+$ is $\mathbb{P}_{ \omega_t}$.
+\begin{rem} Markov's property for BM states that under $\mathbb{P}_x$, the conditional law of $\Theta_t \omega$ given $\mathcal{F}_t^+$ is $\mathbb{P}_{ \omega_t}$. In particular it states that a BM is independent of the information that exists an infinitesimal amount of time into the future. 
 \end{rem}
+\begin{proof}
+We first start with a remark, we know by the Exercise (Lemma 7.1.) that for all $s>0$ $B_{s+t}-B_s$ is again a standard Brownian Motion that is independent of $\mathcal{F}_s^0 = \sigma (B_t, 0 \leq t \leq s)$. Since the Brownian motion is a continuous process we moreover obtain for any sequence stritly decreasing sequence $(s_n)_{n \in \mathbb{N}}$ with $s_n \downarrow s$ that 
+\begin{align*}
+B_{s+t}-B_s = \lim_{n \to \infty} B_{s_n + t}-B_{s_n}
+\end{align*}
+but the right hand side is independent of $\mathcal{F}_{s_n}^0$ and as $s \downarrow s$ therefore the LHS independent of $\mathcal{F}_s^0$. We work now towards a proof of the Theorem in a more abstract/rigoros setting.
+\newpage
+We can show that for a sequence $(f_n)_{n \in \mathbb{N}}$ of continuous bounded functions $f_i : \mathbb{R} \to \mathbb{R}$ and times $0 < t_1< t_2 < \dots < t_n$ the cylinder functions 
+\begin{align*}
+Y( \omega) = \prod_{k=1}^n f_k( \omega_{t_k})
+\end{align*}
+define a continuous function $x \mapsto \mathbb{E}_x(Y)$ for all $x \in \mathbb{R}$. Notice that \begin{align*}
+Y( \theta_t \omega) = \prod_{k=1}^n f_k ( \omega_{t_k + t})
+\end{align*}
+We then obtain
+\begin{align*}
+\mathbb{E}_x( Y \circ \theta_t \mid \mathcal{F}_{t + \epsilon}^0) &= \mathbb{E}_x \left( \prod_{k=1}^n f_k( \omega_{t + t_k}) \mid \mathcal{F}_{t+ \epsilon}^0 \right) \\
+& = \mathbb{E}_x \left( \prod_{k=1}^n f_k( \omega_{t+t_k} - \omega_{t + \epsilon} + \omega_{t + \epsilon}) \mid \mathcal{F}_{t + \epsilon}^0 \right) \\
+& = \mathbb{E}_{\omega_{t + \epsilon}} \left( \prod_{k=1}^n f_k( \omega_{t_k - \epsilon}) \right) \overset{ \epsilon \to 0}\longrightarrow \mathbb{E}_{ \omega_t} \left( \prod_{k=1}^n f_k ( \omega_{t_k}) \right) = \mathbb{E}_{ \omega_t}(Y)
+\end{align*}
+where we used that $\omega_{t+ t_k}- \omega_{t + \epsilon}$ has law of $\mathbb{P}_0$ and is independent of $\mathcal{F}_{t + \epsilon}^0$ and also that $x \mapsto \mathbb{E}_x(Y)$ is continuous with $f_k$ and $\omega_{t_k- \epsilon}$ also continuous. Since $\mathcal{F}_t^+ = \bigcap_{ \epsilon >0} \mathcal{F}_{t + \epsilon}^0$ we obtain from the above 
+\begin{align*}
+\lim_{ \epsilon \downarrow 0 } \mathbb{E}_x ( Y \circ \theta_t \mid \mathcal{F}_{t + \epsilon}^0 ) = \mathbb{E}_x( Y \circ \theta_t \mid \mathcal{F}_{t}^0 )
+\end{align*}
+This entails that \begin{align*}
+\mathbb{E}_x( Y \circ \theta_t \mid \mathcal{F}_t^+) = \mathbb{E}_{ \omega_t}(Y)
+\end{align*}
+a monotone class argument lets us generalize this identity to all functions $F : \mathcal{C} \to \mathbb{R}$ measurable and bounded. 
+\end{proof}
 \noindent A consequence of the Markov's property for BM is given by Blumenthal's 0/1 law, it establishes that the germ sigma algebra is in fact a trivial sigma algebra.
 \begin{thm}[Blumenthal's 0/1 law] For any $x \in \mathbb{R}$ and any $A \in \mathcal{F}_0^+$ we have $\mathbb{P}_x(A) \in \lbrace 0,1 \rbrace$, i.e. the germ-sigma-algebra $\mathcal{F}_0^+$ is trivial. 
 \end{thm}
@@ -844,13 +935,13 @@ where $(\Theta_t)_{t \geq 0}$ is the shift on $\mathcal{C}$, i.e. for any $s \in
 \begin{enumerate}
 \item The Reflection principle gives us the joint law of the supremum of the process and the process itself. 
 \item The last equality was just stated for the sake of completeness, indeed $\omega_t$ is a Gauss Random variable with mean zero and variance $t$ at time $t$. 
-\item For any $t>0$, let us denote $M_t= \max_{s \leq t} \omega_s$, then $M_t$ and $M_t- \omega_t$ have the same law as $(\omega_t)_{t \geq 0}$. 
+\item For any $t>0$, let us denote $M_t= \max_{s \leq t} \omega_s$, then $M_t$ and $M_t- \omega_t$ have the same law as $(|\omega_t|)_{t \geq 0}$. 
 \end{enumerate}
 \end{rem}
 \noindent Here is the Reflection principle as presented by Norbert Wiener.
 \begin{thm}[Reflection Principle] Let $(W_t)_{t \geq 0}$ be a Wiener process (i.e. a standard Brownian Motion), and let $a>0$ be a treshold (also called a crossing point), then we have 
 \begin{align*}
-\mathbb{P}_0 \left( \sup_{0 \leq t \leq s } W_t \geq a \right) = 2 \mathbb{P}(  W_t \geq a)
+\mathbb{P}_0 \left( \sup_{0 \leq t \leq s } W_t \geq a \right) = 2 \mathbb{P}(  W_s \geq a)
 \end{align*} 
 \end{thm}
 \subsection{Sample path properties of a Brownian Motion}
@@ -869,9 +960,9 @@ It remains to show that $\lim_{t \to 0} Z_t=0$, i.e. $Z_t$ is continuous at $t=0
 \newpage
 By the Reflection principle we obtain for all $\lambda >0$ that 
 \begin{align*}
-\mathbb{P}\left( \sup_{0 \leq s \leq t }  B_s \geq \lambda \right) = 2 \mathbb{P}( B_t \geq \lambda) = \mathbb{P}( |B_t| \geq \lambda) \leq 2 e^{- \lambda^2/ (2t)}
+\mathbb{P}\left( \sup_{n \leq s \leq n+1 }  B_s \geq \lambda \right) = 2 \mathbb{P}( B_1 \geq \lambda) = \mathbb{P}( |B_1| \geq \lambda) \leq 2 e^{- \lambda^2/ 2}
 \end{align*}
-Specializing this bound on $\lambda= \sqrt{n}$ for a $n \in \mathbb{N_{\geq 1}}$ gives a summable upper bound. Thus by Borel-Cantelli Lemma we obtain that 
+Specializing this bound on $\lambda= \sqrt{n}$ for a $n \in \mathbb{N}_{\geq 1}$ gives a summable upper bound. Thus by Borel-Cantelli Lemma we obtain that 
 \begin{align*}
 \sup_{n \leq s \leq n+1} B_s \leq \sqrt{n}, \text{ almost surely, eventually}. 
 \end{align*}
@@ -984,7 +1075,7 @@ Let $B$ be a standard Brownian Motion
 \begin{proof}
 Exercise!
 \end{proof}
-\begin{thm}[Skorokhod's Theorem] Let $\xi$ be a random variable such that $\mathbb{E}( \xi)=0$ and $\mathbb{E}( \xi^2)= \sigma$. Then there exists a stopping time $\tau$ such that $\mathbb{E}( \tau)= \sigma^2$ and 
+\begin{thm}[Skorokhod's Theorem] Let $\xi$ be a random variable such that $\mathbb{E}( \xi)=0$ and $\mathbb{E}( \xi^2)= \sigma^2$. Then there exists a stopping time $\tau$ such that $\mathbb{E}( \tau)= \sigma^2$ and 
 \begin{align*}
 B_\tau \overset{d}= \xi. 
 \end{align*}
@@ -1032,4 +1123,50 @@ and consequently
 \frac{S_N}{\sqrt{N}} \implies \mathcal{N}(0,1), \text{ as } N \to \infty. 
 \end{align*}
 \end{exmp}
+\newpage
+\section{Summary}
+After working through this Script and the relevant exercises the following topics should be understood, \textbf{bold} means in particular important. 
+\begin{enumerate}
+\item Measures on product spaces
+\begin{itemize}
+\item \textbf{Kolmogorov's extension theorem}
+\item \textbf{Weak convergence (Portmanteau's Theorem)}
+\item càdlàg measurability issues (e.g. martingale regularization thm)
+\item Gaussian process 
+\end{itemize}
+\item Martingales
+\begin{itemize}
+\item \textbf{Basics (definition, conditional expectation etc)}
+\item \textbf{Uniform integrability and martingale convergence theorems}
+\item \textbf{Basic properties of Random Walks}
+\item Galton-Watson processes (extinction/survival)
+\end{itemize}
+\item Convergence Theorems
+\begin{itemize}
+\item \textbf{Strong law of large numbers}
+\item \textbf{Classical CLT (i.i.d. RVs)}
+\item Mc Leish CLT for tarray of martingale differences
+\item \textbf{Markov Property (and definition of Markov Process)}
+\item Classification of Markov Chains
+\item \textbf{Ergodic Theorem (for countable state spaces with proof, renewal times)}
+\item Convergence theorem for aperiodic positive recurrent chains (existence and uniqueness of the equilibirum measure)
+\end{itemize}
+\item Dynamical Systems
+\begin{itemize}
+\item Poincaré recurrence theorem
+\item Von Neumann Ergodic Theorem
+\end{itemize}
+\item Brownian Motion
+\begin{itemize}
+\item \textbf{Definitions}
+\item Construction (Gaussian Hilbert space etc)
+\item Basic properties: \textbf{scaling invariance, markov property, time inversion.} All with \textbf{proof}!
+\item \textbf{Strong markov property}
+\item \textbf{0/1 laws (Blumenthal/Kolmogorov)}
+\item Reflection principle (consequences: $|B_t| \overset{d}= \sup_{s \in [0,t} B_s)$
+\item sample path properties: $\alpha$-Hölder continuity, differentiability, law of iterated logarithm with proof!
+\item Skorokhod's Theorem 
+\item \textbf{Donsker's Theorem}
+\end{itemize}
+\end{enumerate}
 \end{document}
