@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  27 JAN 2018 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  28 JAN 2018 20:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -663,7 +663,7 @@ Overfull \hbox (9.50034pt too wide) in paragraph at lines 332--333
  []
 
 
-Overfull \hbox (27.87799pt too wide) in paragraph at lines 348--348
+Overfull \hbox (22.17867pt too wide) in paragraph at lines 348--348
 [] 
  []
 
@@ -677,38 +677,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 429--432
 
  []
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 491--495
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 445--447
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 492--496
 
  []
 
 
-Overfull \hbox (4.35783pt too wide) in paragraph at lines 506--506
+Overfull \hbox (4.35783pt too wide) in paragraph at lines 507--507
 [] 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 523--527
+Underfull \hbox (badness 10000) in paragraph at lines 524--528
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--533
+Underfull \hbox (badness 10000) in paragraph at lines 530--534
 
  []
 
 [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
+Underfull \hbox (badness 10000) in paragraph at lines 571--574
 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 640--643
+Underfull \hbox (badness 10000) in paragraph at lines 641--644
 
  []
 
 [22] [23] [24]
-Overfull \hbox (13.98357pt too wide) in paragraph at lines 731--732
+Overfull \hbox (13.98357pt too wide) in paragraph at lines 732--733
 \OT1/cmr/m/it/10.95 Ma-trix $\OML/cmm/m/it/10.95 D \OT1/cmr/m/n/10.95 = (\OML/c
 mm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 where $\OML/cmm/m/
 it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
@@ -719,7 +724,7 @@ it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
  []
 
 
-Overfull \hbox (2.78313pt too wide) in paragraph at lines 739--740
+Overfull \hbox (2.78313pt too wide) in paragraph at lines 740--741
 \OT1/cmr/m/n/10.95 its co-vari-ance ker-nel $\OML/cmm/m/it/10.95 K\OT1/cmr/m/n/
 10.95 (\OML/cmm/m/it/10.95 t; t[]\OT1/cmr/m/n/10.95 ) := [](\OML/cmm/m/it/10.95
  X[]; X[]\OT1/cmr/m/n/10.95 ) = \U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 (\OML/cmm/
@@ -729,14 +734,14 @@ E\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )\U/msb/m/n/10.9
  []
 
 [25]
-Overfull \hbox (5.88654pt too wide) in paragraph at lines 744--745
+Overfull \hbox (5.88654pt too wide) in paragraph at lines 745--746
 \OT1/cmr/bx/n/10.95 Proposition 7.1 \OT1/cmr/m/n/10.95 (Char-ac-ter-i-za-tion)\
 OT1/cmr/bx/n/10.95 . \OT1/cmr/m/it/10.95 The fol-low-ing two state-ments are eq
 uiv-
  []
 
 
-Overfull \hbox (14.07068pt too wide) in paragraph at lines 762--763
+Overfull \hbox (14.07068pt too wide) in paragraph at lines 763--764
 \OT1/cmr/bx/n/10.95 Definition 7.6. \OT1/cmr/m/it/10.95 A Gaus-sian Hilbert spa
 ce $\OML/cmm/m/it/10.95 W$ \OT1/cmr/m/it/10.95 is a closed sub-space of $\OML/c
 mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
@@ -745,43 +750,43 @@ mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 771--773
+Underfull \hbox (badness 10000) in paragraph at lines 772--774
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--805
+Underfull \hbox (badness 10000) in paragraph at lines 800--806
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--805
+Underfull \hbox (badness 10000) in paragraph at lines 800--806
 
  []
 
 [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 845--849
+Underfull \hbox (badness 10000) in paragraph at lines 846--850
 
  []
 
 [29] [30] [31] [32] [33] [34] [35] [36] [37]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1132
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1133
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1132.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1133.
 
  [38] [39]
 (./summary.aux) ) 
 Here is how much of TeX's memory you used:
- 3124 strings out of 494902
- 39553 string characters out of 6179890
+ 3130 strings out of 494902
+ 39628 string characters out of 6179890
  103482 words of memory out of 5000000
- 6358 multiletter control sequences out of 15000+600000
- 11498 words of font info for 43 fonts, out of 8000000 for 9000
+ 6363 multiletter control sequences out of 15000+600000
+ 12745 words of font info for 48 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  39i,20n,25p,538b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -792,17 +797,17 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
-0.pfb>
-Output written on summary.pdf (39 pages, 320254 bytes).
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on summary.pdf (39 pages, 328426 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
+ 196 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

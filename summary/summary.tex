@@ -76,16 +76,16 @@ We then simply denote this convergence by $\mu_n \implies \mu$.
 
 \begin{enumerate}
 \item $\mu_n \implies \mu$.
-\item (*) holds for all $f \in UC_b( \mathcal{X} \to \mathbb{R})$.
+\item (*) holds for all $f \in UC_b( \mathcal{X} \to \mathbb{R})$ (i.e. bounded uniformly contin. $f$).
 \item $\liminf \mu_n(O) \geq \mu (O)$ for all open sets $O \subset \mathcal{X}$. 
 \item $\limsup \mu_n(A) \leq \mu (A)$ for all closed sets $A \subset \mathcal{X}$. 
 \item $\lim \mu_n(B) = \mu(B)$ for all measurable sets $B \subset \mathcal{X}$ such that $\mu(B^\circ)= \mu( \overline{B})$. 
 \end{enumerate}
-\noindent In the case where $\mathcal{X}= \mathbb{R}$ with its usual topology we have the following two criteria. 
+\noindent In the case when we specialize $\mathcal{X}= \mathbb{R}$, with its usual topology, then we have the following two more applicable criteria. 
 \begin{thm}[Lévy's continuity theorem] Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables and let $\varphi_n(t):= \mathbb{E}(e^{itX_n})$ for $t \in \mathbb{R}$ denote the characteristic function. We then have $X_n \implies X$ if and only if $\varphi_n(t) \to \varphi(t)$. 
 
 \end{thm}
-\begin{prop} Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables, then $X_n \implies X$ if and only if $\mathbb{P}(X_n \leq x) \to \mathbb{P}(X_n \leq x)$ for all cotninuity points of $x \mapsto \mathbb{P}(X \leq x)$. 
+\begin{prop} Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random variables, then $X_n \implies X$ if and only if $\mathbb{P}(X_n \leq x) \to \mathbb{P}(X_n \leq x)$ for all continuity points of $x \mapsto \mathbb{P}(X \leq x)$. 
 
 \end{prop}
 
@@ -134,7 +134,7 @@ In addition, for $p > 1$, we have
 \begin{enumerate}
 \item $\sup_{n \in \mathbb{N}} \|X_n\|_p < \infty$ 
 \item $X_n$ converges almost surely and in $L^p$ to $X_\infty \in L^p$ 
-\item There exists a random varaible $X_\infty \in L^p$ such that 
+\item There exists a random variable $X_\infty \in L^p$ such that 
 \begin{align*}
 \mathbb{E}(X_\infty \mid \mathcal{F}_n) = X_n \text{ for all } n \in \mathbb{N}
 \end{align*}
@@ -193,7 +193,7 @@ A^c &:= \liminf_{n \to \infty} A_n := \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\
 We remark that the following is true
 \begin{align*}
 \omega \in \bigcap_{n=1}^\infty \bigcup_{i \geq n}^\infty A_i &\iff \forall n \in \mathbb{N}, \exists i \geq n : \omega \in A_i   \\
-\omega \in \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\infty A_i^c &\iff \exists n \in \mathbb{N}, \forall i \geq n : \omega \in A_i
+\omega \in \bigcup_{n=1}^\infty \bigcap_{i \geq n }^\infty A_i &\iff \exists n \in \mathbb{N}, \forall i \geq n : \omega \in A_i
 \end{align*}
 \begin{thm}[Borel-Cantelli Lemma 1] If $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n) < \infty$, then we have $\mathbb{P}(A_n \text{ i.o.} )=0$.
 \end{thm}
@@ -249,7 +249,7 @@ S_n=  \sum_{k=1}^{m_n} X_{n,k} \implies \mathcal{N}(0,1)
 \newpage
 \section{Stochastic processes}
 Let $(H_i)_{i \in I}$ be a sequence of complete, separable metric spaces, where $I$ is an arbitrary index set.
-\begin{defn}[Product space] We define the product topology for $H= \prod_{i \in I} H_i$ to be the coarsest (that is the weakest/smallest) topology such that all the maps $\pi_i: H \to H_i$ are continuous. 
+\begin{defn}[Product space] We define the product topology for the product space $H= \prod_{i \in I} H_i$ to be the coarsest (that is the weakest/smallest) topology such that all the maps $\pi_i: H \to H_i$ are continuous. 
 \end{defn}
 \begin{rem} \ \begin{enumerate}
 \item This construction is equivalent to the construction of the weak topology. 
@@ -281,18 +281,18 @@ It is by no means clear that such a unique product measure exists at all, this i
 \mu_J \left( \prod_{i \in J} A_i\right) = \mu_K \left( \prod_{i \in K} B_i \right), \text{ with } A_i = \begin{cases} B_i \in \mathcal{B}(H_i), & \text{ if } i \in K \\
 H_i, & \text{ if } i \notin K  \end{cases}
 \end{align*}
-Then there exists a unique measure on $H= \prod_{i \in I} H_i$ such that for all finite subsets $K \subset I$ one has 
+Then there exists a unique measure on the product space $H= \prod_{i \in I} H_i$ such that for all finite subsets $K \subset I$ one has 
 \begin{align*}
 \mu \left( \prod_{i \in I} A_i \right) = \mu_K \left( \prod_{i \in K } B_i \right), \text{ with } A_i = \begin{cases} B_i \in \mathcal{B}(H_i), & \text{ if } i \in K \\
 H_i, & \text{ if } i \notin K \end{cases}
 \end{align*}
 \end{thm}
 \begin{rem} \ \begin{enumerate} \item Here $( \mu_K)_{K \subset I, K \text{ finite} }$ is called the collection of finite dimensional marginal distributions of $\mu$.
-\item Kolmogorov extension theorem says that, given the finite dimensional marginales $( \mu_K)$ as above, if they satisfy the consistency condition as requested in the theorem, then there exists a unique extension $\mu$ to the whole product space $H$ with marginale $(\mu_K)$ 
+\item Kolmogorov extension theorem says that, given the finite dimensional marginales $( \mu_K)$ as above, if they satisfy the consistency condition as requested in the theorem, then there exists a unique extension $\mu$ to the whole product space $H$ with marginale $(\mu_K)$. 
 \item The Theorem is also known as Kolmogorov's existence theorem or Kolmogorov's consistency theorem. It guarantees that a suitably "consistent" (here consistency is meant as in the theorem) collection of finite-dimensional distributions will define a stochastic process. In particular the theorem is essential to guarantee the existence of Probability measures on uncountable product spaces. 
 \end{enumerate}
 \end{rem}
-\begin{defn} A stochastic process $X=(X_i)_{i \in I}$,  where $I$ is an arbitraty index sex, is a collection of random variables defined on the same probability space $( \Omega, \mathcal{F}, \mathbb{P})$, i.e. $X_i : \Omega \to H_i$ is $\mathcal{F}$-measurable. \\ The law of $X$ is a probability measure $ \mu$ on $H= \prod_{i \in I} H_i$ such that for all finite $K \subset I$, the marginal law $\mu_K$ of $\mu$ is given by  
+\begin{defn} A stochastic process $X=(X_i)_{i \in I}$,  where $I$ is an arbitrary index sex, is a collection of random variables defined on the same probability space $( \Omega, \mathcal{F}, \mathbb{P})$, i.e. $X_i : \Omega \to H_i$ is $\mathcal{F}$-measurable. \\ The law of $X$ is a probability measure $ \mu$ on $H= \prod_{i \in I} H_i$ such that for all finite $K \subset I$, the marginal law $\mu_K$ of $\mu$ is given by  
 \begin{align*}
 \mu_K \left( \prod_{j \in K} A_j \right) = \mathbb{P}( X_j \in A_j, j \in K) \text{ for all } A_j \in \mathcal{B}(H_j) 
 \end{align*}
@@ -344,7 +344,7 @@ is a time-homogenous Markov chain on $\mathbb{R}$ and find its transition probab
 \end{align*}
 \noindent Given $Q$ as above, then there exists a Markov chain with $\mathbb{P}_\nu ( X_0 \in A) = \nu (A)$ and transition probability $Q$. We define for all $n  \in \mathbb{N}$ 
 \begin{align*}
-\mathbb{P}_\nu ( x_0 \in A_0 , x_1 \in A_1, \dots , x_n \in A_n ) = \int \limits_{A_0 \times \cdots \times A_n} \nu (dx_0) Q(x_0,dx_1) \dots Q(dx_{n-1}, dx_n)
+\mathbb{P}_\nu ( x_0 \in A_0 , x_1 \in A_1, \dots , x_n \in A_n ) = \int \limits_{A_0 \times \cdots \times A_n} \nu (dx_0) Q(x_0,dx_1) \dots Q(x_{n-1}, dx_n)
 \end{align*}
 By Kolmogorov's extension theorem, there exists a unique probability measure $\mathbb{P}_\nu$ on $( \Omega, \mathcal{F}_\infty)$, where $\mathcal{F}_\infty = \bigvee_{n=1}^\infty \mathcal{F}_n$ is the product $\sigma$-algebra on $\Omega$, with marginal distribution as above. 
 \\\\
@@ -353,7 +353,7 @@ We now consider the case where $\Omega = \mathcal{H}^\mathbb{N}= \lbrace  \omega
 \end{defn}
 \begin{thm}[Weak Markov Property] Under $\mathbb{P}_\nu$, conditionally on the canonical filtration $\mathcal{F}_n= \sigma( \omega_0, \omega_1, \dots , \omega_n)$, $\Theta^n ( \omega)$ has law given by $\mathbb{P}_{\omega_n}$ and is independent of $\mathcal{F}_{n-1}$ for all $n \in \mathbb{N}_{ \geq 1}$. 
 \end{thm}
-\begin{thm}[Strong Markov Property] Let $X$ denote a Markov Chain. Let $T$ be a stopping time such that $\mathbb{P}_\nu (T < \infty) >0 $. Conditionally on the event $\lbrace T < \infty \rbrace$ and $\mathcal{F}_T$ we have that $\Theta^T (X)$ is a Markov Chain with law given by $\mathbb{P}_{X_T}$ and independent of $\mathcal{F}_{T-1}$ 
+\begin{thm}[Strong Markov Property] Let $X$ denote a Markov Chain. Let $T$ be a stopping time such that $\mathbb{P}_\nu (T < \infty) >0 $. Conditionally on the event $\lbrace T < \infty \rbrace$ and $\mathcal{F}_T$ we have that $\Theta^T (X)$ is a Markov Chain with law given by $\mathbb{P}_{X_T}$ and independent of $\mathcal{F}_{T-1}$.
 \end{thm}
 Let be $\mathcal{H}$ a countable/finite state space, the transition probability $Q$ is then represented as a matrix, i.e. we have 
 \begin{align*}
@@ -441,7 +441,8 @@ On the other hand, if we start with a transient state $x \notin R$, then either 
 \end{enumerate}
 \end{cor}
 \newpage
-\subsection{Stationary measures}
+\subsection{Stationary measures $\&$ the Ergodic Theorem}
+In this important section we introduce stationary measures, they play an important role when we introduce our 2 central results, namely the ergodic theorem and the asymptotic behaviour of a Markov chain. \\\\
 We consider a Markov Chain with transition probability $Q$. 
 \begin{defn} Let $\mu$ be a non-trivial measure on $\mathcal{H}$ such that $\mu_x< \infty$ for all $x \in \mathcal{H}$. We say that $\mu$ is stationary if $\mu = \mu Q$.  That is
 \begin{align*}
@@ -467,7 +468,7 @@ Exercise!
 \end{proof}
 \begin{thm} Assume that the chain is irreducible and recurrent. Then we have the following dichotomy. 
 \begin{enumerate}
-\item The chain is positive recurrent, i.e. there exists a unique stationary measure with finite mass. Moreover we then have, the probability measure $ \pi_x = 1/ \mathbb{E}_x(R_x)$ is staionary, $\pi$ is called the equilibrium measure. 
+\item The chain is positive recurrent, i.e. there exists a unique stationary measure with finite mass. Moreover we then have, the probability measure $ \pi_x = 1/ \mathbb{E}_x(R_x)$ is stationary, $\pi$ is called the equilibrium measure. 
 \item The chain is null recurrent, i.e. all stationary measures have infinite mass. Moreover we then have, $\mathbb{E}_x(R_x) =  \infty$ for all $x \in \mathcal{H}$. 
 \end{enumerate}
 \end{thm}
@@ -594,7 +595,7 @@ Follows by McLeish CLT.
 \end{cor}
 \newpage
 \section{Ergodicity}
-In this section we consider $H$ to be complete, separable metric space with Borel $\sigma$-algebra $\mathcal{F}$. For all $t \in \mathbb{R}$ let $T_t : H \to H$ be a family of bijective measurable transformations such that they satisfy the semigroup property, i.e.
+In this section we consider $H$ to be a complete, separable metric space with Borel $\sigma$-algebra $\mathcal{F}$. For all $t \in \mathbb{R}$ let $T_t : H \to H$ be a family of bijective measurable transformations such that they satisfy the semigroup property, i.e.
 \begin{align*}
 \begin{cases} T_t \circ T_s = T_{t+s} \\ T_0(x) = x \end{cases}
 \end{align*}
@@ -616,7 +617,7 @@ and we wonder under what conditions we have that $R_t(f) \to \int f d \mu$ as $t
 \end{align*}
 \end{enumerate}
 \end{defn}
-\begin{lem} Let $U_s : L^2(H, F, \mu)=:H \to H$ be defines as $H_sf(x)=f(T_sx)$ for all $s \in \mathbb{R}$. Then $U_s$ is an unitary operator on $L^2( \mu)$.
+\begin{lem} Let $U_s : L^2(H, F, \mu)=:H \to H$ be defined as $H_sf(x)=f(T_sx)$ for all $s \in \mathbb{R}$. Then $U_s$ is an unitary operator on $L^2( \mu)$.
 \end{lem}
 \begin{lem} If $U$ is a unitary operator on a Hilbert space $H$, then we have ran$(I-U)^\perp = \ker(I-U)$ where $I: H \to H$ is the identity operator. 
 \end{lem}
@@ -687,13 +688,13 @@ Exercise! (Exercise 8.1)
 \mathcal{F}_{t^-}:= \bigvee_{s <t} \mathcal{F}_s \text{ and } \mathcal{F}_{t^+} := \bigcap_{s >t} \mathcal{F}_s
 \end{align*}
 \end{defn}
-\begin{rem} We have the inclusions $\mathcal{F}_{t^-} \subset \mathcal{F}_t \subset \mathcal{F}_{t^+}$ for all $t \in \mathbb{R}_0^+$ and it is very well possible that these inclusions are strict. 
+\begin{rem} We have the inclusions $\mathcal{F}_{t^-} \subset \mathcal{F}_t \subset \mathcal{F}_{t^+}$ for all $t \in \mathbb{R}_0^+$ and it is very well possible that these inclusions are proper/strict. 
 \end{rem}
 \begin{defn} Let $(\mathcal{F}_t)_{t \geq 0}$ be a Filtration. We define
 \begin{align*}
 \tilde{\mathcal{F}}_t := \sigma ( \mathcal{F}_{t^+}, \mathcal{N}), \text{ where } \mathcal{N} \text{ is the set of $\mathbb{P}$-negligible sets}. 
 \end{align*}
-We say that out Filtration $( \mathcal{F}_t)_{t \geq 0}$ satisfies the usual conditions if $\mathcal{F}_t = \tilde{\mathcal{F}}_t$ for all $t \in \mathbb{R}_0^+$.
+We say that our Filtration $( \mathcal{F}_t)_{t \geq 0}$ satisfies the usual conditions if $\mathcal{F}_t = \tilde{\mathcal{F}}_t$ for all $t \in \mathbb{R}_0^+$.
 \end{defn}
 \noindent We come now to our main result in this section. It states that we can regulate martingales, i.e. represent them as modifications through cadlag (continue a droite, limites a gauche) martingales. 
 \begin{thm}[Martingale regularization theorem] \ \\ Let $(X_t)_{t \geq 0}$ be a $ \mathcal{F}_t$-martingale, then there exists $(\widetilde{X_t})_{t \geq 0}$ a $\widetilde{\mathcal{F}_t}$-martingale which is cadlag such that $X_t = \mathbb{E}( \widetilde{X_t} \mid \mathcal{F}_t) $ almost surely for all $t \geq 0$. \\
@@ -795,7 +796,7 @@ Where the finiteness of the above sum comes from the fact that $\| \cdot \|_{H^2
 \end{align*}
 Using our work done above, we can set $X_t:= \Phi( 1_{[0,t]})$ and following our calculations above, it is obvious to conclude that $X_t$ is a Gaussian process. Moreover we have 
 \begin{align*}
-\mathbb{E}(X_t X_s) = \mathbb{E} \left( \Phi(1_{[0,t]}) \Phi(1_{[0,s]}) \right) &= \langle 1_{[0,t]},  1_{[0,s]}  \rangle_{L^2} \\ &= \int_0^\infty 1_{[0,t]}(x) 1_{[0,s]}(x) ds = t \wedge s  
+\mathbb{E}(X_t X_s) = \mathbb{E} \left( \Phi(1_{[0,t]}) \Phi(1_{[0,s]}) \right) &= \langle 1_{[0,t]},  1_{[0,s]}  \rangle_{L^2} \\ &= \int_0^\infty 1_{[0,t]}(x) 1_{[0,s]}(x) dx = t \wedge s  
 \end{align*}
 We have thus shown that the process $X_t = \Phi(1_{[0,t]})$ satisfies 2) in Proposition \ref{charbmprop} and consequently also 1). We are not done yet with the construction, because we need a continuous process. 
 \\\\
