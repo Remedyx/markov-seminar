@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  28 JAN 2018 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.17)  29 JAN 2018 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -564,156 +564,159 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 isodate: babel.sty, (n)german.sty have not been loaded
-(./summary.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 2.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+)
+
+LaTeX Warning: No \author given.
+
+(./summary.toc)
 \tf@toc=\write3
 \openout3 = `summary.toc'.
 
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 29--32
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
 
  []
 
 
-Overfull \hbox (2.65839pt too wide) in paragraph at lines 41--42
+Overfull \hbox (2.65839pt too wide) in paragraph at lines 42--43
 []\OT1/cmr/m/n/10.95 H^^?older's in-equal-ity is the rea-son why prob-a-bil-ity
  the-ory be-haves "nicer"
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 61--66
+Underfull \hbox (badness 10000) in paragraph at lines 62--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--66
+Underfull \hbox (badness 10000) in paragraph at lines 62--67
 
  []
 
 
-Overfull \hbox (3.32147pt too wide) in paragraph at lines 66--67
+Overfull \hbox (3.32147pt too wide) in paragraph at lines 67--68
 \OT1/cmr/bx/n/10.95 Definition 1.2. \OT1/cmr/m/it/10.95 A se-quence of prob-a-b
 il-ity mea-sures $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.
 95 )[]$ \OT1/cmr/m/it/10.95 con-verges weakly
  []
 
 [3]
-Overfull \hbox (14.37947pt too wide) in paragraph at lines 115--116
+Overfull \hbox (14.37947pt too wide) in paragraph at lines 116--117
 \OT1/cmr/bx/n/10.95 Theorem 2.2 \OT1/cmr/m/n/10.95 (Mar-tin-gale con-ver-gence 
 The-o-rem)\OT1/cmr/bx/n/10.95 . \OT1/cmr/m/it/10.95 Let $\OML/cmm/m/it/10.95 X$
  \OT1/cmr/m/it/10.95 be a super-martingale
  []
 
 [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 215--220
+Underfull \hbox (badness 10000) in paragraph at lines 216--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--220
+Underfull \hbox (badness 10000) in paragraph at lines 216--221
 
  []
 
 [7] [8] [9]
-Overfull \hbox (12.58578pt too wide) in paragraph at lines 290--291
+Overfull \hbox (12.58578pt too wide) in paragraph at lines 291--292
 []\OT1/cmr/m/n/10.95 Here $(\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.95 )[]$ is
  called the col-lec-tion of fi-nite di-men-sional marginal
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 309--320
+Underfull \hbox (badness 10000) in paragraph at lines 310--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--320
+Underfull \hbox (badness 10000) in paragraph at lines 310--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--320
+Underfull \hbox (badness 10000) in paragraph at lines 310--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--320
+Underfull \hbox (badness 10000) in paragraph at lines 310--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--320
+Underfull \hbox (badness 10000) in paragraph at lines 310--321
 
  []
 
 [11]
-Overfull \hbox (9.50034pt too wide) in paragraph at lines 332--333
+Overfull \hbox (9.50034pt too wide) in paragraph at lines 333--334
 \OT1/cmr/m/it/10.95 there ex-ists a mea-sur-able map $\OML/cmm/m/it/10.95 Q \OT
 1/cmr/m/n/10.95 : \OMS/cmsy/m/n/10.95 H ! M\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10
 .95 H\OT1/cmr/m/n/10.95 ) := \OMS/cmsy/m/n/10.95 f[]Hg$
  []
 
 
-Overfull \hbox (22.17867pt too wide) in paragraph at lines 348--348
+Overfull \hbox (22.17867pt too wide) in paragraph at lines 349--349
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--352
+Underfull \hbox (badness 10000) in paragraph at lines 349--353
 
  []
 
 [12] [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 429--432
+Underfull \hbox (badness 10000) in paragraph at lines 430--433
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 445--447
+Underfull \hbox (badness 10000) in paragraph at lines 446--448
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 492--496
+Underfull \hbox (badness 10000) in paragraph at lines 493--497
 
  []
 
 
-Overfull \hbox (4.35783pt too wide) in paragraph at lines 507--507
+Overfull \hbox (4.35783pt too wide) in paragraph at lines 508--508
 [] 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 524--528
+Underfull \hbox (badness 10000) in paragraph at lines 525--529
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 530--534
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
 
  []
 
 [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 571--574
+Underfull \hbox (badness 10000) in paragraph at lines 572--575
 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 641--644
+Underfull \hbox (badness 10000) in paragraph at lines 642--645
 
  []
 
 [22] [23] [24]
-Overfull \hbox (13.98357pt too wide) in paragraph at lines 732--733
+Overfull \hbox (13.98357pt too wide) in paragraph at lines 733--734
 \OT1/cmr/m/it/10.95 Ma-trix $\OML/cmm/m/it/10.95 D \OT1/cmr/m/n/10.95 = (\OML/c
 mm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 where $\OML/cmm/m/
 it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
@@ -724,7 +727,7 @@ it/10.95 D[] \OT1/cmr/m/n/10.95 := [](\OML/cmm/m/it/10.95 X[]; X[]\OT1/cmr/m/n/
  []
 
 
-Overfull \hbox (2.78313pt too wide) in paragraph at lines 740--741
+Overfull \hbox (2.78313pt too wide) in paragraph at lines 741--742
 \OT1/cmr/m/n/10.95 its co-vari-ance ker-nel $\OML/cmm/m/it/10.95 K\OT1/cmr/m/n/
 10.95 (\OML/cmm/m/it/10.95 t; t[]\OT1/cmr/m/n/10.95 ) := [](\OML/cmm/m/it/10.95
  X[]; X[]\OT1/cmr/m/n/10.95 ) = \U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 (\OML/cmm/
@@ -734,14 +737,14 @@ E\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )\U/msb/m/n/10.9
  []
 
 [25]
-Overfull \hbox (5.88654pt too wide) in paragraph at lines 745--746
+Overfull \hbox (5.88654pt too wide) in paragraph at lines 746--747
 \OT1/cmr/bx/n/10.95 Proposition 7.1 \OT1/cmr/m/n/10.95 (Char-ac-ter-i-za-tion)\
 OT1/cmr/bx/n/10.95 . \OT1/cmr/m/it/10.95 The fol-low-ing two state-ments are eq
 uiv-
  []
 
 
-Overfull \hbox (14.07068pt too wide) in paragraph at lines 763--764
+Overfull \hbox (14.07068pt too wide) in paragraph at lines 764--765
 \OT1/cmr/bx/n/10.95 Definition 7.6. \OT1/cmr/m/it/10.95 A Gaus-sian Hilbert spa
 ce $\OML/cmm/m/it/10.95 W$ \OT1/cmr/m/it/10.95 is a closed sub-space of $\OML/c
 mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
@@ -750,43 +753,43 @@ mm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 (
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 772--774
+Underfull \hbox (badness 10000) in paragraph at lines 773--775
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--806
+Underfull \hbox (badness 10000) in paragraph at lines 801--807
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--806
+Underfull \hbox (badness 10000) in paragraph at lines 801--807
 
  []
 
 [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 846--850
+Underfull \hbox (badness 10000) in paragraph at lines 847--851
 
  []
 
 [29] [30] [31] [32] [33] [34] [35] [36] [37]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1133
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1134
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1134.
 
  [38] [39]
 (./summary.aux) ) 
 Here is how much of TeX's memory you used:
- 3130 strings out of 494902
- 39628 string characters out of 6179890
- 103482 words of memory out of 5000000
- 6363 multiletter control sequences out of 15000+600000
- 12745 words of font info for 48 fonts, out of 8000000 for 9000
+ 3139 strings out of 494902
+ 39758 string characters out of 6179890
+ 103514 words of memory out of 5000000
+ 6371 multiletter control sequences out of 15000+600000
+ 14699 words of font info for 56 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  39i,20n,25p,538b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -798,16 +801,17 @@ re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on summary.pdf (39 pages, 328426 bytes).
+type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on summary.pdf (39 pages, 342009 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 200 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
