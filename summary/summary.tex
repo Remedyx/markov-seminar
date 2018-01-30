@@ -937,7 +937,7 @@ a monotone class argument lets us generalize this identity to all functions $F :
 \begin{enumerate}
 \item The Reflection principle gives us the joint law of the supremum of the process and the process itself. 
 \item The last equality was just stated for the sake of completeness, indeed $\omega_t$ is a Gauss Random variable with mean zero and variance $t$ at time $t$. 
-\item For any $t>0$, let us denote $M_t= \max_{s \leq t} \omega_s$, then $M_t$ and $M_t- \omega_t$ have the same law as $(|\omega_t|)_{t \geq 0}$. 
+\item For any $t>0$, let us denote $M_t= \max_{s \leq t} \omega_s$, then $M_t$ and $M_t- \omega_t$ have the same law as $(|\omega_t|)_{t \geq 0}$. \textit{(Exercise 10.5.)}
 \end{enumerate}
 \end{rem}
 \noindent Here is the Reflection principle as presented by Norbert Wiener.
@@ -955,7 +955,7 @@ Let us define the process $Z_t:= t B_{1/t}$. Then clearly $(Z_t)_{t \geq 0}$ is 
 \begin{align*}
 \mathbb{E}(Z_tZ_s)= ts \mathbb{E}(B_{1/t}B_{1/s}) = ts \min \left( \frac{1}{t}, \frac{1}{s} \right) = \min (t, s ) 
 \end{align*}
-It remains to show that $\lim_{t \to 0} Z_t=0$, i.e. $Z_t$ is continuous at $t=0$. We notice that by Kolmogorov's LLN we have $\lim_{n \to \infty} \frac{B_n}{n}=0$ almost surely. Showing that $\lim_{t \to 0} Z_t =0$ is equivalent to showing that for all $\epsilon >0$ we have 
+It remains to show that $\lim_{t \to 0} Z_t=0$, i.e. $Z_t$ is continuous at $t=0$. Showing that $\lim_{t \to 0} Z_t =0$ is equivalent to showing that for all $\epsilon >0$ we have 
 \begin{align*}
 \mathbb{P}\left( \limsup_{t \to \infty} \frac{|B_t|}{t} > \epsilon \right) =0 
 \end{align*}
@@ -1054,28 +1054,42 @@ Since $\alpha > \frac{1}{2}$, we have that $(1/2 - \alpha) < 0$, choosing $n \in
 \end{proof}
 \begin{rem} For any $0<\alpha < \frac{1}{2}$ one can show, that $\mathbb{P}_0$ almost surely, the sample path of $\omega$ are in fact $\alpha$-Hölder continuous at every point. However, no statement is possible for the case $ \alpha = 1/2$. 
 \end{rem}
-\begin{prop}[Law of iterated logarithm] Let $h_t:= \sqrt{ 2t \log | \log(t)|}$ for any $t>0$, then $\mathbb{P}_0$ almost surely we have 
-\begin{align*}
-\limsup_{t \to 0} \frac{\omega_t}{h_t}&=1 \\
-\liminf_{t \to 0} \frac{\omega_t}{h_t}& = -1 \\
-\limsup_{t \to \infty} \frac{\omega_t}{h_t} & = 1  
-\end{align*}
+\begin{prop}[Law of iterated logarithm] Let $h_t:= \sqrt{ 2t \log | \log(t)|}$ for any $t>0$, then $\mathbb{P}_0$ almost surely we have the 4 laws of iterated logarithms
+\begin{enumerate}
+\item $\limsup_{t \to \infty} \frac{\omega_t}{h_t}  = 1  $
+\item $\liminf_{t \to \infty} \frac{\omega_t}{h_t} = -1$ 
+\item $\limsup_{t \to 0} \frac{\omega_t}{h_t}=1 $
+\item $\liminf_{t \to 0} \frac{\omega_t}{h_t} = -1 $
+
+\end{enumerate}
+
 \end{prop}
 \begin{proof}
 Exercise! 
 \end{proof}
+\begin{rem} In the following we only discuss the first law. The (1st) law of iterated logarithm is an asymptotic behaviour statement (compare for instance with Prime Number Theorem). It can be interpreted as that the asymptotic behaviour of a Brownian Motion is equivalent to $h_t = \sqrt{2t  \log|\log (t)|}$.
+\\
+More formaly, let $\epsilon >0$ and define $f_+(t)= (1 + \epsilon)\sqrt{2t \log | \log t|}$ and $f_-(t) = (1-\epsilon) \sqrt{2t \log | \log t |}$ then there exists a (random) time $0< T_\epsilon (\omega)< \infty$ such that \begin{itemize}
+\item $ \forall t > T_\epsilon (\omega)$ we have $W_t(\omega)< f_+(t)$ (i.e. $f_+$ will never be exceeded)
+\item $\forall T \geq T_\epsilon (\omega)$, $\exists t \geq T: W_t( \omega) > f_-$ (i.e. $f_-$ will repeatedly be exceeded)
+\end{itemize}
+The 2nd law is interpreted analogeously by replacing $f_+,f_-$ with their negatives and the word exceeded with fall below.
+\end{rem}
 \newpage
 \subsection{Martingales derived from Brownian Motion}
 Let $B$ be a standard Brownian Motion
 \begin{prop} Let $(B_t)_{t \geq 0}$ be a standard Brownian Motion, then the following processes are martingales:
 \begin{enumerate}
+\item $(B_t)_{t \geq 0}$ i.e. the Brownian Motion itself. 
 \item $(B_t^2-t)_{t \geq 0}$ 
 \item $M_t^\alpha = \exp\left( \alpha B_t - \frac{\alpha^2}{2}t \right)$ for all $t \geq 0$ with expected value $1$. 
 \item $\left( \dfrac{d}{d \alpha} \right)^k M_{t \ \mid \alpha =0} ^\alpha$, for any $k \in \mathbb{N}$
 \end{enumerate}
 \end{prop}
-\begin{proof}
-Exercise!
+\begin{proof} Only show 1. the rest are Exercises! Indeed we know from (for instance the strong Markov Property or by the independence of increments) that $B_t-B_s$ is independent of $\mathcal{F}_s$ for all $s>t$. Moreover, by stationarity we have that $B_t-B_s \sim B_{t-s} \sim N(0,t-s)$. Consequently we have for $s<t$ \begin{align*}
+\mathbb{E}(B_t \mid \mathcal{F}_s)&= \mathbb{E}(B_t-B_s + B_s \mid \mathcal{F}_s) = \mathbb{E}(B_{t-s} \mid \mathcal{F}_s) + B_s \\
+&= \mathbb{E}(B_{t-s} ) + B_s = B_s
+\end{align*}
 \end{proof}
 \begin{thm}[Skorokhod's Theorem] Let $\xi$ be a random variable such that $\mathbb{E}( \xi)=0$ and $\mathbb{E}( \xi^2)= \sigma^2$. Then there exists a stopping time $\tau$ such that $\mathbb{E}( \tau)= \sigma^2$ and 
 \begin{align*}
@@ -1098,7 +1112,6 @@ B_{\tau_n} \overset{d}= \xi_n
 \end{align*}
 The initiatel step is supported the above exercise, we then proceed iteratively by segmentation. 
 \end{rem}
-\newpage
 \noindent Finally we will state Donsker's invariance Theorem. Let $\xi_1, \xi_2, \dots$ be a sequence of i.i.d. Random Variables with mean zero and variance 1. Let $S_0:=0$ and $S_n = \xi_1 + \dots + \xi_n$ for all $n \geq 1$ be a Random Walk. We consider the continuous embedding of this Random Walk on the unit interval $[0,1]$, i.e. let 
 \begin{align*}
 \widetilde{S_t^N}:= \left\lbrace \frac{S_k+ \left( t- \frac{k}{N}\right) \xi_{k+1}}{\sqrt{N}} : t \in \left[ \frac{k}{N}, \frac{k+1}{N} \right], k = 0,1 \dots , N-1 \right\rbrace 
