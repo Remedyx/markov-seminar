@@ -1086,7 +1086,7 @@ Let $B$ be a standard Brownian Motion
 \item $\left( \dfrac{d}{d \alpha} \right)^k M_{t \ \mid \alpha =0} ^\alpha$, for any $k \in \mathbb{N}$
 \end{enumerate}
 \end{prop}
-\begin{proof} Only show 1. the rest are Exercises! Indeed we know from (for instance the strong Markov Property or by the independence of increments) that $B_t-B_s$ is independent of $\mathcal{F}_s$ for all $s>t$. Moreover, by stationarity we have that $B_t-B_s \sim B_{t-s} \sim N(0,t-s)$. Consequently we have for $s<t$ \begin{align*}
+\begin{proof} Only show 1. the rest are Exercises! Indeed we know from (for instance the strong Markov Property or by the independence of increments) that $B_t-B_s$ is independent of $\mathcal{F}_s$ for all $t>s$. Moreover, by stationarity we have that $B_t-B_s \sim B_{t-s} \sim N(0,t-s)$. Consequently we have for $s<t$ \begin{align*}
 \mathbb{E}(B_t \mid \mathcal{F}_s)&= \mathbb{E}(B_t-B_s + B_s \mid \mathcal{F}_s) = \mathbb{E}(B_{t-s} \mid \mathcal{F}_s) + B_s \\
 &= \mathbb{E}(B_{t-s} ) + B_s = B_s
 \end{align*}
